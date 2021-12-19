@@ -1,10 +1,12 @@
 import './App.css';
-import Signup from './Signup/Signup';
+import MultipleInputs from './components/forms/multipleInputs';
+
 
 function App() {
   return (
     <div className="App">
-      <Signup/>
+
+      <MultipleInputs></MultipleInputs>
     </div>
   );
 }
