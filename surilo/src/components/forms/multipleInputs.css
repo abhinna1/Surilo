@@ -95,6 +95,12 @@ label{
     height: 100%;
 }
 
+.error-msg{
+    color: red;
+    font-size: 12px;
+    text-align: right;
+}
+
 @media (max-width: 480px) { 
     .entry-Ctn{
         margin: 30px auto;
