@@ -13,13 +13,13 @@ body{
 .d-flex{
     width: 100%;
     height:100vh;
-    margin: 0 auto;
 }
 
 
 .d-flex hr{
     width: 20em;
     margin: 15px auto;
+    margin-bottom: -10px;
     border: 0.2px solid rgb(255, 255, 255);
     
 }
@@ -28,7 +28,7 @@ body{
 .logo-cont img{
     width: 250px;
     height: 56px;
-    margin: -65px 0 40px 0;
+    margin: 0 0 40px 0;
 }
 
 .slogan h1{
@@ -38,19 +38,9 @@ body{
     font-weight: bolder;
 }
 
-.info h4{
-    color: #fff;
-    font-family: 'Poppins';
-    font-size: 0.7em;
-    font-weight: 500;
-    text-align: center;
-    margin: 10px 0 5px 0 ;
-}
-
 label{
     color: #fff;
     font-size: 14px;
-    
     font-family: 'Poppins';
 }
 
@@ -58,6 +48,7 @@ label{
     margin: 40px auto;
     width: 20em;
     height: 45px;
+    /* background-color: blue; */
 }
 
 .usrEnt{
@@ -75,15 +66,32 @@ label{
 
 .gender-container{
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 45px;
-    background-color: red;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 3px;
 }
 
-.gCtn{
-    width: 20%;
-    height: 45px;
+.g-ctn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28%;
+    height: 50px;
+    text-align: center;
+    border: 1px solid white;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.gen-chk{
+    width: 15px;
+    height: 15px;
+    margin: 0 5px 0 0;
+}
+
+
+.gen-label{
+    font-size: 14px;
 }
 
 
@@ -96,6 +104,34 @@ label{
     color: red;
     font-size: 12px;
     text-align: right;
+}
+
+.regBtn-ctn{
+    padding-top: 30px ;
+    text-align: center;
+}
+
+.reg-btn{
+    width: 150px;
+    height: 55px;
+    border-radius: 50px;
+    background-color: #E68415;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    border: 0;
+}
+
+.existLabel{
+    color:#fff;
+    font-size: 14px;
+    font-family: 'Poppins';
+    margin-top: 10px;
+}
+
+.existLabel a{
+    text-decoration: none;
+    color: #E68415;
 }
 
 @media (max-width: 480px) { 
@@ -159,6 +195,12 @@ label{
         height: 60px;
         margin: 80px 0 20px 0;
     }
+
+    .regBtn-ctn{
+        padding-top: 50px ;
+        text-align: center;
+    }
+
 }
 
 @media (max-width: 376px) {
@@ -198,6 +240,11 @@ label{
         text-align: center;
         margin: 10px 0 -20px 0 ;
     }
+
+    .reg-btn{
+    width: 140px;
+    height: 50px;
+}
 }
 
 @media (max-width: 323px) {

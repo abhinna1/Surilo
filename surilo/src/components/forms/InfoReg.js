@@ -1,5 +1,5 @@
 import React from 'react';
-import "./multipleInputs.css";
+import "./InfoReg.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./surilo2.png";
 import next from "./next.png";
@@ -22,7 +22,6 @@ export default function MultipleInputs(){
         }
     }
 
-  
 
     return (
 
@@ -60,13 +59,35 @@ export default function MultipleInputs(){
                     {errors.dob && <p className='error-msg'>Please enter your Date of birth</p>}
                 </div>      
 
-                <div className="entry-Ctn">
-                <div className="gender-container">
-                    <div className='gCtn'>male</div>
-                    <div className='gCtn'>female</div>
-                    <div className='gCtn'>other</div>
+
+                <div className='entry-Ctn'>   
+                    <label htmlFor="dob">Gender</label>
+                    <div className='gender-container'>
+                        <div className='g-ctn'>
+                            <input type="checkbox" className='gen-chk' name="male" id="maleChk" />
+                            <label for="male" className='gen-label'> Male</label>
+                        </div>
+
+                        <div className='g-ctn'>
+                            <input type="checkbox" className='gen-chk' name="female" id="femaleChk" />
+                            <label for="female" className='gen-label'> Female</label>
+                        </div>
+
+                        <div className='g-ctn'>
+                            <input type="checkbox" className='gen-chk' name="other" id="otherChk" />
+                            <label for="other" className='gen-label'> Other</label>
+                        </div>
+                    </div>
+
+                </div>    
+
+                <div className='regBtn-ctn'>
+                    <button className='reg-btn'>Sign up</button>
+                    <h6 className='existLabel'>Already have an account? <a href="">Log in</a></h6>
                 </div>
-                </div>
+                
+
+
 
 
             </form>
