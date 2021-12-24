@@ -1,5 +1,5 @@
 import React from 'react';
-import "./multipleInputs.css";
+import './multipleInputs.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./surilo2.png";
 import next from "./next.png";
@@ -36,7 +36,7 @@ export default function MultipleInputs(){
                 <h1>Sign up to discover your favorite artists</h1>
             </div>
 
-            <hr />
+            <hr className='hor'/>
 
             <div class="info">
                 <h4>Kindly fill with valid details</h4>
