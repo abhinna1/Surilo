@@ -24,12 +24,16 @@
     font-family: 'Montserrat';
     font-size: 22px;
 }
-
+form{
+    width: 100%;
+    /* background-color: red; */
+    text-align: center;
+    margin-top: 30px;
+}
 .otp-area{
     width: 100%;
     height: 50px;
-    
-    /* background-color: red; */
+    margin-bottom: 20px;
 }
 
 .box{
