@@ -2,37 +2,51 @@ import React from 'react';
 import "./InfoReg.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./surilo2.png";
-import next from "./next.png";
-import { useForm }  from "react-hook-form";
+import { useState } from 'react';
     
 
 export default function MultipleInputs(){
 
-    const {register, handleSubmit, formState:{ errors },} = useForm();
-
-
-    const onSubmit = (data) => {
-        console.log(data.password)
-        console.log(data.confirmPassword)
-
-        if (data.confirmPassword.match(data.password)){
-            document.getElementById("err").innerHTML="Password Matched"
-        }else{
-            document.getElementById("err").innerHTML="Password not match"
+    const fieldData = {
+        firstName :"",
+        lastName :"",
+        dob :"",
         }
+
+        const genderData ={
+            male: false,
+            female: false,
+            other:false
+        }
+
+    const [fields,setFields] = useState({fieldData});
+    const [gender,setGender] = useState({genderData});
+
+
+    const handleChange = (event) => {
+        setFields({...fields, [event.target.name]: event.target.value})
     }
+
+    const handleGenderChange = (event) =>{
+        console.log(event.target.name ,":", event.target.checked)
+    }
+    
+    console.log(fields.firstName)
+    console.log(fields.lastName)
+    console.log(fields.dob)
+    
 
 
     return (
 
         <div className='d-flex flex-column justify-content-center align-items-center'>
             
-            <div class="logo-cont">
+            <div className="logo-cont">
                 <img src={logo} alt="Surilo Logo" />
             </div>
             
 
-            <div class="slogan">
+            <div className="slogan text-center">
                 <h1>Just a bit to go</h1>
             </div>
 
@@ -40,41 +54,47 @@ export default function MultipleInputs(){
 
             
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className='entry-Ctn'>   
+            <form>
+                <div className="label-ctn">
                     <label htmlFor="firstName">First Name</label>
-                    <input className='usrEnt' type="text" autoComplete='off' name="firstName" placeholder='Elon' id="firstName" {...register("firstName", {required:true})}  /> 
-                    {errors.firstName && <p className='error-msg'>Please enter your First Name</p>}
                 </div>
                 <div className='entry-Ctn'>   
+                    <input className='usrEnt' value={fields.firstName} type="text" autoComplete='off' name="firstName" placeholder='Elon' id="firstName" onChange={e => handleChange(e)}/> 
+                
+                </div>
+                <div className="label-ctn">
                     <label htmlFor="lastName">Last Name</label>
-                    <input className='usrEnt' type="text" autoComplete='off' name="lastName" placeholder='Musk' id="lastName" {...register("lastName", {required:true})}  /> 
-                    {errors.lastName && <p className='error-msg'>Please enter your Last Name</p>}
+                </div>
+                <div className='entry-Ctn'>   
+                    <input className='usrEnt' value={fields.lastName} type="text" autoComplete='off' name="lastName" placeholder='Musk' id="lastName" onChange={e => handleChange(e)}/> 
+                    
                 </div>
                  
-
-                <div className='entry-Ctn'>   
+                <div className="label-ctn">
                     <label htmlFor="dob">Date of birth</label>
-                    <input className='usrEnt' type="date" autoComplete='off' name="dob" id="dob" {...register("dob", {required:true})}  /> 
-                    {errors.dob && <p className='error-msg'>Please enter your Date of birth</p>}
+                    </div>
+                <div className='entry-Ctn'>   
+                    <input className='usrEnt' value={fields.dob} type="date" autoComplete='off' name="dob" id="dob" onChange={e => handleChange(e)}/> 
+                    
                 </div>      
 
-
-                <div className='entry-Ctn'>   
+                <div className="label-ctn">
                     <label htmlFor="dob">Gender</label>
+                    </div>
+                <div className='entry-Ctn'>   
                     <div className='gender-container'>
                         <div className='g-ctn'>
-                            <input type="checkbox" className='gen-chk' name="male" id="maleChk" />
+                            <input type="checkbox" className='gen-chk' name="male" id="maleChk" onChange ={e => handleGenderChange(e)} checked={gender.male}/>
                             <label for="male" className='gen-label'> Male</label>
                         </div>
 
                         <div className='g-ctn'>
-                            <input type="checkbox" className='gen-chk' name="female" id="femaleChk" />
+                            <input type="checkbox" className='gen-chk' name="female" id="femaleChk"  onChange ={e => handleGenderChange(e)} checked={gender.female}/>
                             <label for="female" className='gen-label'> Female</label>
                         </div>
 
                         <div className='g-ctn'>
-                            <input type="checkbox" className='gen-chk' name="other" id="otherChk" />
+                            <input type="checkbox" className='gen-chk' name="other" id="otherChk"  onChange ={e => handleGenderChange(e)} checked={gender.other}/>
                             <label for="other" className='gen-label'> Other</label>
                         </div>
                     </div>

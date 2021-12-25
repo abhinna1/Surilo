@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       {/* <MultipleInputs></MultipleInputs> */}
-      {/* <InfoReg></InfoReg> */}
-      <Otp></Otp>
+      <InfoReg></InfoReg>
+      {/* <Otp></Otp> */}
 
     </div>
   );

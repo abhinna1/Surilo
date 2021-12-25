@@ -70,8 +70,9 @@ const Otp = () => {
             </div>
                 <button disabled={enable} id="submitBtn" onClick = {e => handleOTP(e,g)} type='Submit' className='rounded p-1'>Confirm</button>
                 <button onClick={e => sendOTP(e)} className='rounded p-1'>Send Code</button>
+
             </form>
-            
+            <a onClick={e => sendOTP(e)}>Resend Code</a>
             </div>
 
         </div>

@@ -37,17 +37,23 @@ body{
     color: #fff;
     font-weight: bolder;
 }
-
-label{
+.label-ctn{
+    margin: 0 auto;
+    width:20em;
+    text-align: left;
+}
+.label-ctn label{
     color: #fff;
     font-size: 14px;
     font-family: 'Poppins';
+
 }
 
 .entry-Ctn{
-    margin: 40px auto;
+    margin: 0 auto;
     width: 20em;
     height: 45px;
+    margin-bottom: 10px;
     /* background-color: blue; */
 }
 
@@ -63,6 +69,7 @@ label{
     font-size: 14px;
     font-family: 'Poppins';
 }
+
 
 .gender-container{
     display: flex;
@@ -92,6 +99,7 @@ label{
 
 .gen-label{
     font-size: 14px;
+    color:#fff
 }
 
 
@@ -134,7 +142,7 @@ label{
     color: #E68415;
 }
 
-@media (max-width: 480px) { 
+/* @media (max-width: 480px) { 
     .entry-Ctn{
         margin: 30px auto;
         width: 20em;
@@ -283,4 +291,4 @@ label{
         text-align: center;
         margin: 10px 0 -20px 0 ;
     }
-}
+} */
