@@ -25,6 +25,30 @@ const Otp = (props) => {
     
     const handleChange = (event) =>{
         setCode({...code, [event.target.name]: event.target.value})
+
+            const { maxLength, value, id } = event.target;
+            const [fieldId, fieldIndex] = id.split("-");
+          
+            let fieldIntIndex = parseInt(fieldIndex, 6);
+          
+            // Check if number of character in field == maxlength
+            if (value.length >= maxLength) {
+          
+              // It should not be last input field
+              if (fieldIntIndex < 7) {
+          
+                // Get the next input field using it's name
+                const nextfield = document.querySelector(
+                  `input[id=chk-${fieldIntIndex + 1}]`
+                );
+          
+                // If found, focus the next field
+                if (nextfield !== null) {
+                  nextfield.focus();
+                }
+              }
+            }
+
     }
 
     const sendOTP = (e) => {
@@ -49,14 +73,18 @@ const Otp = (props) => {
 
         if(usrCode == getOtp){
             alert("Otp Valid")
-            console.log(fields)
+            console.log(`FirstName:${fields.firstName}`)
+            console.log(`LastName:${fields.lastName}`)
+            console.log(`Date of Birth:${fields.dob}`)
+            console.log(`Gender:${gender}`)
 
         }else{
             alert("Invalid")
             setCode(emptyData)
         }
     }
-    
+
+
     return ( 
 
         <div className="main-container d-flex justify-content-center align-items-center">
@@ -67,12 +95,12 @@ const Otp = (props) => {
             
                 <form>
                 <div className='otp-area d-flex justify-content-between' >
-                    <input className="box" value ={code.code1} autoComplete='off' type="text" name="code1" maxLength= "1" id="num" onChange={e => handleChange(e)}/>
-                    <input className="box" value ={code.code2} autoComplete='off' type="text" name="code2" maxLength= "1" id="num" onChange={e => handleChange(e)}/>
-                    <input className="box" value ={code.code3} autoComplete='off' type="text" name="code3" maxLength= "1" id="num" onChange={e => handleChange(e)}/>
-                    <input className="box" value ={code.code4} autoComplete='off' type="text" name="code4" maxLength= "1" id="num" onChange={e => handleChange(e)}/>
-                    <input className="box" value ={code.code5} autoComplete='off' type="text" name="code5" maxLength= "1" id="num" onChange={e => handleChange(e)}/>
-                    <input className="box" value ={code.code6} autoComplete='off' type="text" name="code6" maxLength= "1" id="num" onChange={e => handleChange(e)}/>
+                    <input className="box" value ={code.code1} autoComplete='off' type="text" name="code1" maxLength= "1" id="chk-1" onChange={e => handleChange(e)}/>
+                    <input className="box" value ={code.code2} autoComplete='off' type="text" name="code2" maxLength= "1" id="chk-2" onChange={e => handleChange(e)}/>
+                    <input className="box" value ={code.code3} autoComplete='off' type="text" name="code3" maxLength= "1" id="chk-3" onChange={e => handleChange(e)}/>
+                    <input className="box" value ={code.code4} autoComplete='off' type="text" name="code4" maxLength= "1" id="chk-4" onChange={e => handleChange(e)}/>
+                    <input className="box" value ={code.code5} autoComplete='off' type="text" name="code5" maxLength= "1" id="chk-5" onChange={e => handleChange(e)}/>
+                    <input className="box" value ={code.code6} autoComplete='off' type="text" name="code6" maxLength= "1" id="chk-6" onChange={e => handleChange(e)}/>
 
             </div>
                 <button disabled={enable} id="submitBtn" onClick = {e => validateOTP(e,otp)} type='Submit' className='confirm-btn p-1'>Confirm</button>

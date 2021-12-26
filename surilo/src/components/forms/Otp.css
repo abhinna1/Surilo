@@ -6,7 +6,7 @@
 }
 
 .main-container{
-    background-color: rgba(36, 36, 36, 0.9);
+    background-color: #c4c4c478;
 }
 
 .main-area{
@@ -14,7 +14,7 @@
     height: 220px;
     background-color: #080605;
     border-radius: 5px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .main-area hr{
     width: 5em;
@@ -24,6 +24,7 @@
 .title{
     font-family: 'Montserrat';
     font-size: 22px;
+    font-weight: 900;
 }
 form{
     width: 100%;
@@ -57,13 +58,14 @@ form{
     color: #393939;
     font-family: 'Poppins';
     font-weight: 700;
+    border:0;
 }
 
 .confirm-btn:disabled{
     background-color: #6d6c6c;
 }
 .codeSend{
-    font-family: 'roboto slab';
+    font-family: 'Roboto Slab';
     margin-top: 5px;
     font-size: 13px;
     color: #E5E5E5;

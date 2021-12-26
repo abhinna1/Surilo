@@ -15,7 +15,6 @@ export default function InfoReg(){
         firstName :"",
         lastName :"",
         dob :"",
-        gender:""
         }
 
     const [fields,setFields] = useState({fieldData});
@@ -28,12 +27,7 @@ export default function InfoReg(){
     }
 
     const handleGenderChange = (event) =>{
-        // console.log(event.target.name ,":", event.target.checked)
-        
-        if(event.target.checked){
-            setGender(event.target.value)
-            setFields({...fields, [event.target.name]: event.target.value})
-        }
+        setFields({...fields, [event.target.name]: event.target.value})
     }
 
     const handleSubmit = (event) =>{
