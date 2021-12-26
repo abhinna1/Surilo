@@ -3,7 +3,10 @@ import React from 'react';
 import { useState } from 'react';
 
 
-const Otp = () => {
+const Otp = (props) => {
+
+    const fields = props.fields;
+    const gender = props.gender
 
     const emptyData = {
         code1:"",
@@ -31,11 +34,13 @@ const Otp = () => {
         console.log(`OTP: ${otpValid}`)
         setOtp(otpValid)
         setEnable(false)
+
+        document.getElementById("sendCode").innerHTML="Code not reached yet? Resend"
     }
 
-    const g = otp;
 
-    const handleOTP = (e,getOtp) => {
+
+    const validateOTP = (e,getOtp) => {
         e.preventDefault()
 
         const usrCode = code.code1 + code.code2 + code.code3 + code.code4 + code.code5 + code.code6
@@ -44,6 +49,8 @@ const Otp = () => {
 
         if(usrCode == getOtp){
             alert("Otp Valid")
+            console.log(fields)
+
         }else{
             alert("Invalid")
             setCode(emptyData)
@@ -68,11 +75,10 @@ const Otp = () => {
                     <input className="box" value ={code.code6} autoComplete='off' type="text" name="code6" maxLength= "1" id="num" onChange={e => handleChange(e)}/>
 
             </div>
-                <button disabled={enable} id="submitBtn" onClick = {e => handleOTP(e,g)} type='Submit' className='rounded p-1'>Confirm</button>
-                <button onClick={e => sendOTP(e)} className='rounded p-1'>Send Code</button>
-
+                <button disabled={enable} id="submitBtn" onClick = {e => validateOTP(e,otp)} type='Submit' className='confirm-btn p-1'>Confirm</button>
+                
             </form>
-            <a onClick={e => sendOTP(e)}>Resend Code</a>
+            <a id="sendCode" className="codeSend" onClick={e => sendOTP(e)}>Send Code</a>
             </div>
 
         </div>

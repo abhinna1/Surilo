@@ -3,38 +3,45 @@ import "./InfoReg.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./surilo2.png";
 import { useState } from 'react';
+import Otp from './Otp';
     
 
-export default function MultipleInputs(){
+export default function InfoReg(){
+
+    let formIsValid = true;
+
 
     const fieldData = {
         firstName :"",
         lastName :"",
         dob :"",
-        }
-
-        const genderData ={
-            male: false,
-            female: false,
-            other:false
+        gender:""
         }
 
     const [fields,setFields] = useState({fieldData});
-    const [gender,setGender] = useState({genderData});
+    const [gender,setGender] = useState();
 
 
     const handleChange = (event) => {
         setFields({...fields, [event.target.name]: event.target.value})
+
     }
 
     const handleGenderChange = (event) =>{
-        console.log(event.target.name ,":", event.target.checked)
+        // console.log(event.target.name ,":", event.target.checked)
+        
+        if(event.target.checked){
+            setGender(event.target.value)
+            setFields({...fields, [event.target.name]: event.target.value})
+        }
     }
-    
-    console.log(fields.firstName)
-    console.log(fields.lastName)
-    console.log(fields.dob)
-    
+
+    const handleSubmit = (event) =>{
+        event.preventDefault()
+        if(formIsValid){
+            document.getElementById("otpCtn").classList.remove('hide') //removes the hide class that initially hid the OTP container when the form is valid letting user enter otp
+        }
+    }
 
 
     return (
@@ -54,11 +61,11 @@ export default function MultipleInputs(){
 
             
 
-            <form>
+            <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="label-ctn">
                     <label htmlFor="firstName">First Name</label>
                 </div>
-                <div className='entry-Ctn'>   
+                <div className='entry-Ctn'>     
                     <input className='usrEnt' value={fields.firstName} type="text" autoComplete='off' name="firstName" placeholder='Elon' id="firstName" onChange={e => handleChange(e)}/> 
                 
                 </div>
@@ -82,19 +89,19 @@ export default function MultipleInputs(){
                     <label htmlFor="dob">Gender</label>
                     </div>
                 <div className='entry-Ctn'>   
-                    <div className='gender-container'>
+                    <div className='gender-container' onChange={e => handleGenderChange(e)}>
                         <div className='g-ctn'>
-                            <input type="checkbox" className='gen-chk' name="male" id="maleChk" onChange ={e => handleGenderChange(e)} checked={gender.male}/>
+                            <input type="radio" className='gen-chk' value="male" name="gender" id="Chk" />
                             <label for="male" className='gen-label'> Male</label>
                         </div>
 
                         <div className='g-ctn'>
-                            <input type="checkbox" className='gen-chk' name="female" id="femaleChk"  onChange ={e => handleGenderChange(e)} checked={gender.female}/>
+                            <input type="radio" className='gen-chk' value="female" name="gender" id="Chk"  />
                             <label for="female" className='gen-label'> Female</label>
                         </div>
 
                         <div className='g-ctn'>
-                            <input type="checkbox" className='gen-chk' name="other" id="otherChk"  onChange ={e => handleGenderChange(e)} checked={gender.other}/>
+                            <input type="radio" className='gen-chk' value="other" name="gender" id="Chk"  />
                             <label for="other" className='gen-label'> Other</label>
                         </div>
                     </div>
@@ -102,7 +109,7 @@ export default function MultipleInputs(){
                 </div>    
 
                 <div className='regBtn-ctn'>
-                    <button className='reg-btn'>Sign up</button>
+                    <button type='submit' className='reg-btn'>Sign up</button>
                     <h6 className='existLabel'>Already have an account? <a href="">Log in</a></h6>
                 </div>
                 
@@ -111,8 +118,11 @@ export default function MultipleInputs(){
 
 
             </form>
-
+            
         
+            <div className='OTP-ctn hide' id="otpCtn">
+                <Otp fields={fields} gender={gender}></Otp>
+            </div>
         </div>
     )
 }

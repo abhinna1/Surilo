@@ -26,7 +26,7 @@ export default function MultipleInputs(){
                 <h4>Kindly fill with valid details</h4>
             </div>
 
-            <form>
+            <form className='cred-form'>
                     <div className="label-ctn">
                     <label htmlFor="username">Username</label>
                     </div>
