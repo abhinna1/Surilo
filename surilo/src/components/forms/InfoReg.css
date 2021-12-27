@@ -47,11 +47,15 @@ body{
     border: 0.2px solid rgb(255, 255, 255);
 }
 
-
-.logo-cont img{
+.logo-cont{
     width: 250px;
     height: 56px;
     margin: 0 0 40px 0;
+}
+.logo-cont img{
+    width: 100%;
+    height: inherit;
+    /* background-color: red; */
 }
 
 .slogan h1{

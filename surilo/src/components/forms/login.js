@@ -1,5 +1,5 @@
 import React from 'react';
-import './login.css';
+import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./surilo2.png";
 

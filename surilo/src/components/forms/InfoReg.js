@@ -14,7 +14,7 @@ export default function InfoReg(){
     const fieldData = {
         firstName :"",
         lastName :"",
-        dob :"",
+        dob :""
         }
 
     const [fields,setFields] = useState({fieldData});
@@ -27,13 +27,17 @@ export default function InfoReg(){
     }
 
     const handleGenderChange = (event) =>{
-        setFields({...fields, [event.target.name]: event.target.value})
+        // console.log(event.target.name ,":", event.target.checked)
+        
+        if(event.target.checked){
+            setGender(event.target.value)
+        }
     }
 
     const handleSubmit = (event) =>{
         event.preventDefault()
         if(formIsValid){
-            document.getElementById("otpCtn").classList.remove('hide') //removes the hide class that initially hid the OTP container when the form is valid letting user enter otp
+            document.getElementById("otpCtn").classList.remove('hide') //removes the hide class that initially hid the OTP container when the form is valid letting user enter
         }
     }
 
