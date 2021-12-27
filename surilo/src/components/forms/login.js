@@ -11,7 +11,7 @@ export default function Login(){
 
         <div className='login-container d-flex flex-column justify-content-center align-items-center'>
             
-            <div className='semi-container d-flex flex-column justify-content-evenly align-items-center'>
+            <div className='semi-container d-flex flex-column justify-content-center align-items-center'>
 
             
             <div class="logo-cont">
@@ -27,7 +27,7 @@ export default function Login(){
                 </div>
 
                 <div className='entry-Ctn'>
-                    <input className='usrEnt' type="email" autoComplete='on'  name="email" id="email" />
+                    <input className='usrEnt' type="email" autoComplete='off' placeholder='surilo@email.com' name="email" id="email" />
                 </div>
                 <div className="label-ctn">
                     <label htmlFor="password">Password</label>
@@ -36,7 +36,11 @@ export default function Login(){
                     <input className='usrEnt' type="password" autoComplete='off' name="password" placeholder='********' id="password"/>
                     
                 </div>
-                         <button className='reg-btn'>Login</button>
+                
+                <div className='regBtn-ctn'>
+                    <button className='reg-btn'>Login</button>  
+                    <h6 className='existLabel'>Don't have an account? <a href="">Sign up</a></h6>
+                </div>
 
 
 
