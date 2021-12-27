@@ -9,7 +9,7 @@ export default function Login(){
 
     return (
 
-        <div className='main-container d-flex flex-column justify-content-center align-items-center'>
+        <div className='login-container d-flex flex-column justify-content-center align-items-center'>
             
             <div className='semi-container d-flex flex-column justify-content-evenly align-items-center'>
 

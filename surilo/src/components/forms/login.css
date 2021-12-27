@@ -7,14 +7,14 @@
 }
 
 body{
-    background-color: #1B1C22 !important;
+    background-color: #222831 !important;
 }
 
 .main-container{
     width: 100%;
     height:100vh;
     /* background-color: red; */
-    background-color: #1B1C22;
+    background-color: #222831;
 
     
 }
@@ -22,7 +22,8 @@ body{
 .semi-container{
     width: 500px;
     height: 70vh;
-    background-color: rgb(46, 46, 46);
+    background-color: #202020;
+    box-shadow: 0px 0px 4px 4px #777;
 }
 
 
