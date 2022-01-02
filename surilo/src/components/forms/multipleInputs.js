@@ -3,9 +3,11 @@ import './multipleInputs.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./surilo2.png";
 import next from "./next.png";
+import { Link } from 'react-router-dom';
 
 
 export default function MultipleInputs(){
+
 
     return (
 
@@ -55,10 +57,14 @@ export default function MultipleInputs(){
                     <p className='error-msg' id="err"></p>
                 </div>
 
-                <div className="btn-ctn">
+                {/* <div className="btn-ctn">
                     <button type='submit'> 
                         <img className='next-btn' src={next} alt="" />
+                        
                     </button>
+                </div> */}
+                <div className="btn-ctn">
+                    <Link to= '/signUp2' type='submit'>Signup</Link>
                 </div>
 
 

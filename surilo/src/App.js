@@ -1,4 +1,5 @@
 import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
 import MultipleInputs from './components/forms/multipleInputs';
 import InfoReg from './components/forms/InfoReg';
 import Otp from './components/forms/Otp'
@@ -7,12 +8,26 @@ import Login from './components/forms/Login';
 
 function App() {
   return (
-    <div className="App">
-      {/* <MultipleInputs></MultipleInputs> */}
-      {/* <InfoReg></InfoReg> */}
-      {/* <Otp></Otp> */}
-      <Login></Login>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path ="/">
+            <Login></Login>
+
+          </Route>
+          <Route path ="/signUp1">
+            <MultipleInputs/>
+
+          </Route>
+          <Route path ="/signUp2">
+            <InfoReg/>
+
+          </Route>
+        </Switch>
+      
+      
     </div>
+    </Router>
   );  
 }
 

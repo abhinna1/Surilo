@@ -2,6 +2,7 @@ import React from 'react';
 import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./surilo2.png";
+import { Link } from 'react-router-dom';
 
 
 
@@ -39,7 +40,7 @@ export default function Login(){
                 
                 <div className='regBtn-ctn'>
                     <button className='reg-btn'>Login</button>  
-                    <h6 className='existLabel'>Don't have an account? <a href="">Sign up</a></h6>
+                    <h6 className='existLabel'>Don't have an account? <Link to='/signUp1'>Sign Up</Link></h6>
                 </div>
 
 
