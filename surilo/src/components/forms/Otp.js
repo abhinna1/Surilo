@@ -77,6 +77,7 @@ const Otp = (props) => {
             console.log(`LastName:${fields.lastName}`)
             console.log(`Date of Birth:${fields.dob}`)
             console.log(`Gender:${gender}`)
+            
 
         }else{
             alert("Invalid")

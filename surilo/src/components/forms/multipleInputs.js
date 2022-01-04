@@ -57,16 +57,9 @@ export default function MultipleInputs(){
                     <p className='error-msg' id="err"></p>
                 </div>
 
-                {/* <div className="btn-ctn">
-                    <button type='submit'> 
-                        <img className='next-btn' src={next} alt="" />
-                        
-                    </button>
-                </div> */}
                 <div className="btn-ctn">
-                    <Link to= '/signUp2' type='submit'>Signup</Link>
+                    <Link to= '/signUp2' type='submit'><img className='next-btn' src={next} alt="" /></Link>  
                 </div>
-
 
             </form>
 

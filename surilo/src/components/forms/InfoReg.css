@@ -130,11 +130,6 @@ body{
 }
 
 
-.next-btn{
-    width: inherit;
-    height: 100%;
-}
-
 .error-msg{
     color: red;
     font-size: 12px;

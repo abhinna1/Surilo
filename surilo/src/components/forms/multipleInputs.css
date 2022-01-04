@@ -97,26 +97,35 @@ body{
     padding-bottom: 40px;
 
 }
-
-.btn-ctn button{
+/* 
+.btn-ctn link{
     position: absolute;
     width: 30px;
     height: 40px;
     right: 0;
-    background-color: #1B1C22;
+    background-color: red;
     border: 0;
-}
+} */
 
 
 .next-btn{
-    width: inherit;
-    height: 100%;
+    position: absolute;
+    right: 0;
+    width: 45px;
+    height: 50px;
 }
 
 .error-msg{
     color: red;
     font-size: 12px;
     text-align: right;
+}
+
+.sign-up{
+    text-decoration: none;
+    background-color: #E68415;
+    border-radius: 10px;
+    color: #ffffff;
 }
 /*  
 
