@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./surilo2.png";
 import { useState } from 'react';
 import Otp from './Otp';
+import { Link } from 'react-router-dom';
     
 
 export default function InfoReg(){
@@ -108,7 +109,8 @@ export default function InfoReg(){
 
                 <div className='regBtn-ctn'>
                     <button type='submit' className='reg-btn'>Sign up</button>
-                    <h6 className='existLabel'>Already have an account? <a href="">Log in</a></h6>
+                    
+                    <h6 className='existLabel'>Already have an account? <Link to ='/'>Log in</Link></h6>
                 </div>
                 
 
