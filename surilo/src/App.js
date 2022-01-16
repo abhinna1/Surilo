@@ -4,6 +4,7 @@ import MultipleInputs from './components/forms/multipleInputs';
 import InfoReg from './components/forms/InfoReg';
 import Otp from './components/forms/Otp'
 import Login from './components/forms/Login';
+import Home from './components/home/Home';
 
 
 function App() {
@@ -21,6 +22,10 @@ function App() {
           </Route>
           <Route path ="/signUp2">
             <InfoReg/>
+
+          </Route>
+          <Route path ="/home">
+            <Home/>
 
           </Route>
         </Switch>
