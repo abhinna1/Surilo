@@ -1,12 +1,10 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
-import MultipleInputs from './components/forms/multipleInputs';
-import InfoReg from './components/forms/InfoReg';
-import Otp from './components/forms/Otp'
+import Reg1 from './components/forms/Reg1';
 import Login from './components/forms/Login';
-
-
+import Reg from './components/forms/Reg1';
 function App() {
+
   return (
     <Router>
       <div className="App">
@@ -15,14 +13,15 @@ function App() {
             <Login></Login>
 
           </Route>
-          <Route path ="/signUp1">
-            <MultipleInputs/>
-
+          <Route path ="/register">
+            <Reg/>
           </Route>
-          <Route path ="/signUp2">
-            <InfoReg/>
 
-          </Route>
+          {/* <Route path ="/signUp2">
+            <Reg2/>
+          </Route> */}
+
+
         </Switch>
       
       

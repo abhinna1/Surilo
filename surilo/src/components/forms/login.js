@@ -3,10 +3,21 @@ import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./surilo2.png";
 import { Link } from 'react-router-dom';
-
+import Axios from 'axios';
 
 
 export default function Login(){
+    const postData=()=>{
+        // Axios.get("/User")
+        // .then((res)=>{
+        //   console.log(res["data"]);
+        // })
+        let email = document.getElementById("email").value;
+        let pass = document.getElementById("password").value;
+        Axios.post("/login",{email:email, password:pass})
+          .then(()=>{console.log("posted")})
+      }
+      ;
 
     return (
 
@@ -19,9 +30,6 @@ export default function Login(){
                 <img src={logo} alt="Surilo Logo" />
             </div>
             
-
-            
-
             <form className='login-form'>    
                 <div className="label-ctn">
                     <label htmlFor="email">Email</label>
@@ -39,8 +47,8 @@ export default function Login(){
                 </div>
                 
                 <div className='regBtn-ctn'>
-                    <button className='reg-btn'>Login</button>  
-                    <h6 className='existLabel'>Don't have an account? <Link to='/signUp1'>Sign Up</Link></h6>
+                    <button className='reg-btn' onClick={postData}>Login</button>  
+                    <h6 className='existLabel'>Don't have an account? <Link to='/register'>Sign Up</Link></h6>
                 </div>
 
 
