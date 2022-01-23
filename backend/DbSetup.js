@@ -12,13 +12,19 @@ class DbSetup{
     getConnection(){
         return this.con;
     }
-    insertUser(){
+    insertUser(data){
         this.con.connect((error)=>{
             if(error){
                 console.log("error");
             }
             else{
                 console.log("connected");
+                var sql = "insert into tbl_user(firstName, lastName, dob, gender, username, email, password) values ?";
+                var values=[[data.firstName, data.lastName, data.dob, data.gender, data.username, data.email, data.password]];
+                this.con.query(sql, [values], function (err, result) {
+                    if (err) throw err;
+                    console.log("Number of records inserted: " + result.affectedRows);
+                  });   
             }
         })
     }

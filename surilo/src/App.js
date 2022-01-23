@@ -1,8 +1,7 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
-import Reg1 from './components/forms/Reg1';
 import Login from './components/forms/Login';
-import Reg from './components/forms/Reg1';
+import Reg from './components/forms/Reg';
 function App() {
 
   return (
