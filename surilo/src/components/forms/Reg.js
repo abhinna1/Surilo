@@ -40,7 +40,7 @@ export default function InfoReg(){
         return (
 
             <div className='d-flex flex-column justify-content-center align-items-center'>                    
-            {step===1 && <section>  
+            {step===2 && <section>  
                 <div className="logo-cont">
                     <img src={logo} alt="Surilo Logo" />
                 </div>
@@ -48,7 +48,7 @@ export default function InfoReg(){
                     <h1>Just a bit to go</h1>
                 </div>
                 <hr />  
-                <form onSubmit={(e) => handleSubmit(e)}>
+                <form >
                     <div className="label-ctn">
                         <label htmlFor="firstName">First Name</label>
                     </div>
@@ -96,7 +96,7 @@ export default function InfoReg(){
                     </div>    
 
                     <div className='regBtn-ctn'>
-                        <button type='submit' className='reg-btn' onClick={()=>{setStep(2); alert(fieldData.dob)}}>Sign up</button>
+                        <button type='submit' className='reg-btn' onClick={()=>{axios.post('/login',fieldData)}}>Sign up</button>
                         
                         <h6 className='existLabel'>Already have an account? <Link to ='/'>Log in</Link></h6>
                     </div>
@@ -110,7 +110,7 @@ export default function InfoReg(){
             </section>}
 
 
-        {step===2 &&<section className='d-flex flex-column justify-content-center align-items-center'>
+        {step===1 &&<section className='d-flex flex-column justify-content-center align-items-center'>
                 <div className="logo-cont">
                     <img src={logo} alt="Surilo Logo" />
                 </div>
@@ -155,7 +155,7 @@ export default function InfoReg(){
 
                     <div className="btn-ctn">
                         {/* <Link to= '/signUp2' type='submit'><img className='next-btn' src={next} alt="" /></Link>   */}
-                        <button onClick={()=>{axios.post('/login',fieldData)}}><img className='next-btn' src={next} alt="" /></button>
+                        <button onClick={()=>{setStep(2); alert(fieldData.dob)}}><img className='next-btn' src={next} alt="" /></button>
                     </div>
 
                 </form>
