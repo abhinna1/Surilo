@@ -25,7 +25,18 @@ export default function InfoReg(){
     const[gender, setGender] = useState("");
 
     const [fields,setFields] = useState({fieldData});
+    const [error, setError] = useState("");
 
+    const validate1 = ()=>{
+        if(fieldData.email!="manandharabhinna@gmail.com"){
+            // alert("Wrong email");
+            setError("Invalid Email");
+        }
+        else{
+            setStep(2);
+        }
+        // alert("Correct email!");
+    }
 
     const handleChange = (e) => {
         fieldData[e.target.name] = e.target.value;
@@ -48,7 +59,7 @@ export default function InfoReg(){
                     <h1>Just a bit to go</h1>
                 </div>
                 <hr />  
-                <form >
+                <form method="POST">
                     <div className="label-ctn">
                         <label htmlFor="firstName">First Name</label>
                     </div>
@@ -137,7 +148,9 @@ export default function InfoReg(){
 
                     <div className='entry-Ctn'>
                         <input className='usrEnt' type="email" onChange = {handleChange} autoComplete='off'  name="email" placeholder='temp_mail@email.com' id="email" />
+                        <div className="errormsg">{error}</div>
                     </div>
+
                     <div className="label-ctn">
                         <label htmlFor="password">Password</label>
                         </div> 
@@ -155,7 +168,7 @@ export default function InfoReg(){
 
                     <div className="btn-ctn">
                         {/* <Link to= '/signUp2' type='submit'><img className='next-btn' src={next} alt="" /></Link>   */}
-                        <button onClick={()=>{setStep(2); alert(fieldData.dob)}}><img className='next-btn' src={next} alt="" /></button>
+                        <button type="button" onClick={()=>{validate1()}}><img className='next-btn' src={next} alt="" /></button>
                     </div>
 
                 </form>
