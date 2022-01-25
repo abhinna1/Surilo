@@ -30,7 +30,7 @@ export default function InfoReg(){
     const handleChange = (e) => {
         fieldData[e.target.name] = e.target.value;
     }
-
+    
     const handleSubmit = (event) =>{
         event.preventDefault()
         if(formIsValid){

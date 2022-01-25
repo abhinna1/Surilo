@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 let db = new DbSetup();
 app.use(express.json());
+db.insertUser({});
 
 
 app.post('/login',(req, res)=>{
