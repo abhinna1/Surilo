@@ -1,12 +1,12 @@
 import React from 'react';
 import "./InfoReg.css";
-import './multipleInputs.css';
+import '/Users/sanif/VS_Code/REACT/Surilo/surilo/src/components/Form/multipleInputs.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from "./surilo2.png";
+import logo from "/Users/sanif/VS_Code/REACT/Surilo/surilo/src/components/Form/Registration/images/surilo2.png";
 import { useState } from 'react';
-import Otp from '../Otp';
+import Otp from '/Users/sanif/VS_Code/REACT/Surilo/surilo/src/components/Form/Registration/Otp.js';
 import { Link } from 'react-router-dom';
-import next from "./next.png";
+import next from "/Users/sanif/VS_Code/REACT/Surilo/surilo/src/components/Form/Registration/images/next.png";
 import axios from 'axios';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
 
@@ -28,49 +28,56 @@ export default function InfoReg(){
 
     const [fields,setFields] = useState({fieldData});
 
-    const [error, setError] = useState("");
     const [error1, setError1] = useState("");
     const [error2, setError2] = useState("");
+    const [error3, setError3] = useState("");
+
+    const [error11, setError11] = useState("");
+    const [error22, setError22] = useState("");
+    const [error33, setError33] = useState("");
 
 
 
-<<<<<<< HEAD:surilo/src/components/Form/Registration/Reg.js
- // Username Validation
- const validate2 = ()=>{
-    if(fieldData.username === ""){
-        setError1("Write name plz");
+ // Validation for Page 1
+ function  validate1(){
+    if(fieldData.username === "" && fieldData.username.length() < 3){
+        setError1("Invalid Name");
+    }
+
+    else if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(fieldData.email) == false){
+        // alert("Wrong email");
+        setError2("Invalid Email");
+    }
+    else if (fieldData.password !== fieldData.confirmPassword || fieldData.password == ""){
+        setError3("Password donot match")
     }
     else{
         setStep(2);
     } 
-}   
+} 
 
-// Email Validation
-   const validate1 = ()=>{
-    if(fieldData.email!=="manandharabhinna@gmail.com"){
-    // alert("Wrong email");
-    setError("Invalid Email");
-}
- else {
-     setStep(2);
- }
-   }
-
-   
-// Password Confirm Validation
-    const validate3 = ()=>{ 
-        if (fieldData.password !== fieldData.confirmPassword){
-            setError2("Password donot match")
-=======
-    const validate1 = ()=>{
-        if(fieldData.email!="manandharabhinna@gmail.com"){
-            setError("Invalid Email");
->>>>>>> 98e4c62b141fa3ce6738208fafa550269a48b923:surilo/src/components/forms/Reg.js
-        }
-        else{
-            setStep(2);
-        }
+// Validation for Page 2
+function  validate2(){
+    if(fieldData.firstName === "" && fieldData.firstName.length() < 3){
+        setError1("Invalid First Name");
     }
+
+    else if(fieldData.lastName === "" && fieldData.lastName.length() <= 2){
+        setError1("Invalid Last Name");
+    }
+
+    else if(fieldData.dob === ""){
+        setError1("Invalid Birth Date");
+    }
+
+    else{
+        //setStep(2);
+    } 
+
+}
+
+
+
 
 
     const handleChange = (e) => {
@@ -100,14 +107,14 @@ export default function InfoReg(){
                     </div>
                     <div className='entry-Ctn'>     
                         <input className='usrEnt' onChange = {handleChange} value={fields.firstName} type="text" autoComplete='off' name="firstName" placeholder='Elon' id="firstName"/> 
-                    
+                        <div className="errormsg">{error11}</div>
                     </div>
                     <div className="label-ctn">
                         <label htmlFor="lastName">Last Name</label>
                     </div>
                     <div className='entry-Ctn'>   
                         <input className='usrEnt' onChange = {handleChange} value={fields.lastName} type="text" autoComplete='off' name="lastName" placeholder='Musk' id="lastName"/> 
-                        
+                        <div className="errormsg">{error22}</div>
                     </div>
                     
                     <div className="label-ctn">
@@ -115,7 +122,7 @@ export default function InfoReg(){
                         </div>
                     <div className='entry-Ctn'>   
                         <input className='usrEnt' onChange = {handleChange} value={fields.dob} type="date" autoComplete='off' name="dob" id="dob" /> 
-                        
+                        <div className="errormsg">{error33}</div>
                     </div>      
 
                     <div className="label-ctn">
@@ -176,7 +183,7 @@ export default function InfoReg(){
                         </div>
                     <div className='entry-Ctn'>   
                         <input className='usrEnt' onChange = {handleChange} type="text" autoComplete='off' name="username" placeholder='testuser456' id="username"/>      
-                        <div className="errormsg">{error}</div>
+                        <div className="errormsg">{error1}</div>
                     </div>
                     <div className="label-ctn">
                         <label htmlFor="email">Email</label>
@@ -184,7 +191,7 @@ export default function InfoReg(){
 
                     <div className='entry-Ctn'>
                         <input className='usrEnt' type="email" onChange = {handleChange} autoComplete='off'  name="email" placeholder='temp_mail@email.com' id="email" />
-                        <div className="errormsg">{error1}</div>
+                        <div className="errormsg">{error2}</div>
                     </div>
 
                     <div className="label-ctn">
@@ -199,12 +206,12 @@ export default function InfoReg(){
                     </div> 
                     <div className='entry-Ctn'>
                         <input className='usrEnt' type="password" onChange = {handleChange} autoComplete='off' name="confirmPassword" placeholder='********' id="confirmPassword" />
-                        <div className="errormsg">{error2}</div>
+                        <div className="errormsg">{error3}</div>
                     </div>
 
                     <div className="btn-ctn">
                         {/* <Link to= '/signUp2' type='submit'><img className='next-btn' src={next} alt="" /></Link>   */}
-                        <button type="button" onClick={()=>{validate3() }}><img className='next-btn' src={next} alt="" /></button>
+                        <button type="button" onClick={()=>{validate1() }}><img className='next-btn' src={next} alt="" /></button>
                     </div>
 
                 </form>
@@ -214,6 +221,3 @@ export default function InfoReg(){
         </div>
     )
 }
-
-
-
