@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 class DbSetup{
     constructor(){
         const mysql = require('mysql');
@@ -15,7 +16,7 @@ class DbSetup{
     insertUser(data){
         this.con.connect((error)=>{
             if(error){
-                console.log("error");
+                console.log(error);
             }
             else{
                 console.log("connected");

@@ -8,6 +8,8 @@ import Otp from './Otp';
 import { Link } from 'react-router-dom';
 import next from "./next.png";
 import axios from 'axios';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
+
 
 const fieldData = {
     firstName :"",
@@ -29,13 +31,11 @@ export default function InfoReg(){
 
     const validate1 = ()=>{
         if(fieldData.email!="manandharabhinna@gmail.com"){
-            // alert("Wrong email");
             setError("Invalid Email");
         }
         else{
             setStep(2);
         }
-        // alert("Correct email!");
     }
 
     const handleChange = (e) => {
@@ -59,7 +59,7 @@ export default function InfoReg(){
                     <h1>Just a bit to go</h1>
                 </div>
                 <hr />  
-                <form method="POST">
+                <form method="POST" action="localhost:3000/">
                     <div className="label-ctn">
                         <label htmlFor="firstName">First Name</label>
                     </div>
@@ -107,7 +107,7 @@ export default function InfoReg(){
                     </div>    
 
                     <div className='regBtn-ctn'>
-                        <button type='submit' className='reg-btn' onClick={()=>{axios.post('/login',fieldData)}}>Sign up</button>
+                        <button type='submit' className='reg-btn' onClick={()=>{axios.post('/login',fieldData); <Route path="/"></Route>}}>Sign up</button>
                         
                         <h6 className='existLabel'>Already have an account? <Link to ='/'>Log in</Link></h6>
                     </div>
@@ -135,7 +135,7 @@ export default function InfoReg(){
                     <h4>Kindly fill with valid details</h4>
                 </div>
 
-                <form className='cred-form'>
+                <form className='cred-form' method="POST">
                         <div className="label-ctn">
                         <label htmlFor="username">Username</label>
                         </div>
