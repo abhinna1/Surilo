@@ -1,12 +1,12 @@
 import React from 'react';
 import "./InfoReg.css";
-import '/Users/sanif/VS_Code/REACT/Surilo/surilo/src/components/Form/multipleInputs.css';
+import './multipleInputs.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from "/Users/sanif/VS_Code/REACT/Surilo/surilo/src/components/Form/Registration/images/surilo2.png";
+import logo from "../images/surilo2.png";
 import { useState } from 'react';
-import Otp from '/Users/sanif/VS_Code/REACT/Surilo/surilo/src/components/Form/Registration/Otp.js';
+import Otp from './Otp.js';
 import { Link } from 'react-router-dom';
-import next from "/Users/sanif/VS_Code/REACT/Surilo/surilo/src/components/Form/Registration/images/next.png";
+import next from "../images/next.png";
 import axios from 'axios';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from "/Users/sanif/VS_Code/REACT/Surilo/surilo/src/components/Form/Registration/images/surilo2.png";
+import logo from "../images/surilo2.png";
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
