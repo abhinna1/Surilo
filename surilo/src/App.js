@@ -1,6 +1,6 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
-import Login from './components/forms/Login';
+import Login from './components/forms/Login/Login';
 import Reg from './components/forms/Reg';
 function App() {
 

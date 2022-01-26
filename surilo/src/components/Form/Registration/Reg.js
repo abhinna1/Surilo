@@ -4,7 +4,7 @@ import './multipleInputs.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "./surilo2.png";
 import { useState } from 'react';
-import Otp from './Otp';
+import Otp from '../Otp';
 import { Link } from 'react-router-dom';
 import next from "./next.png";
 import axios from 'axios';
@@ -25,6 +25,44 @@ export default function InfoReg(){
     const[gender, setGender] = useState("");
 
     const [fields,setFields] = useState({fieldData});
+
+    const [error, setError] = useState("");
+    const [error1, setError1] = useState("");
+    const [error2, setError2] = useState("");
+
+
+
+ // Username Validation
+ const validate2 = ()=>{
+    if(fieldData.username === ""){
+        setError1("Write name plz");
+    }
+    else{
+        setStep(2);
+    } 
+}   
+
+// Email Validation
+   const validate1 = ()=>{
+    if(fieldData.email!=="manandharabhinna@gmail.com"){
+    // alert("Wrong email");
+    setError("Invalid Email");
+}
+ else {
+     setStep(2);
+ }
+   }
+
+   
+// Password Confirm Validation
+    const validate3 = ()=>{ 
+        if (fieldData.password !== fieldData.confirmPassword){
+            setError2("Password donot match")
+        }
+        else{
+            setStep(2);
+        }
+    }
 
 
     const handleChange = (e) => {
@@ -48,7 +86,7 @@ export default function InfoReg(){
                     <h1>Just a bit to go</h1>
                 </div>
                 <hr />  
-                <form >
+                <form method="POST">
                     <div className="label-ctn">
                         <label htmlFor="firstName">First Name</label>
                     </div>
@@ -130,6 +168,7 @@ export default function InfoReg(){
                         </div>
                     <div className='entry-Ctn'>   
                         <input className='usrEnt' onChange = {handleChange} type="text" autoComplete='off' name="username" placeholder='testuser456' id="username"/>      
+                        <div className="errormsg">{error}</div>
                     </div>
                     <div className="label-ctn">
                         <label htmlFor="email">Email</label>
@@ -137,7 +176,9 @@ export default function InfoReg(){
 
                     <div className='entry-Ctn'>
                         <input className='usrEnt' type="email" onChange = {handleChange} autoComplete='off'  name="email" placeholder='temp_mail@email.com' id="email" />
+                        <div className="errormsg">{error1}</div>
                     </div>
+
                     <div className="label-ctn">
                         <label htmlFor="password">Password</label>
                         </div> 
@@ -150,17 +191,17 @@ export default function InfoReg(){
                     </div> 
                     <div className='entry-Ctn'>
                         <input className='usrEnt' type="password" onChange = {handleChange} autoComplete='off' name="confirmPassword" placeholder='********' id="confirmPassword" />
-                        <p className='error-msg' id="err"></p>
+                        <div className="errormsg">{error2}</div>
                     </div>
 
                     <div className="btn-ctn">
                         {/* <Link to= '/signUp2' type='submit'><img className='next-btn' src={next} alt="" /></Link>   */}
-                        <button onClick={()=>{setStep(2); alert(fieldData.dob)}}><img className='next-btn' src={next} alt="" /></button>
+                        <button type="button" onClick={()=>{validate3() }}><img className='next-btn' src={next} alt="" /></button>
                     </div>
 
                 </form>
 
-            
+        
             </section>}
         </div>
     )

@@ -5,7 +5,12 @@
     margin: 0;
     padding: 0;
 }
-
+.errormsg{
+    color:red !important;
+    text-align: right;
+    margin-bottom:20px;
+    font-size: 13px;
+}
 body{
     background-color: #1B1C22 !important;
 }
