@@ -8,6 +8,8 @@ import Otp from '../Otp';
 import { Link } from 'react-router-dom';
 import next from "./next.png";
 import axios from 'axios';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
+
 
 const fieldData = {
     firstName :"",
@@ -32,6 +34,7 @@ export default function InfoReg(){
 
 
 
+<<<<<<< HEAD:surilo/src/components/Form/Registration/Reg.js
  // Username Validation
  const validate2 = ()=>{
     if(fieldData.username === ""){
@@ -58,6 +61,11 @@ export default function InfoReg(){
     const validate3 = ()=>{ 
         if (fieldData.password !== fieldData.confirmPassword){
             setError2("Password donot match")
+=======
+    const validate1 = ()=>{
+        if(fieldData.email!="manandharabhinna@gmail.com"){
+            setError("Invalid Email");
+>>>>>>> 98e4c62b141fa3ce6738208fafa550269a48b923:surilo/src/components/forms/Reg.js
         }
         else{
             setStep(2);
@@ -86,7 +94,7 @@ export default function InfoReg(){
                     <h1>Just a bit to go</h1>
                 </div>
                 <hr />  
-                <form method="POST">
+                <form method="POST" action="localhost:3000/">
                     <div className="label-ctn">
                         <label htmlFor="firstName">First Name</label>
                     </div>
@@ -134,7 +142,7 @@ export default function InfoReg(){
                     </div>    
 
                     <div className='regBtn-ctn'>
-                        <button type='submit' className='reg-btn' onClick={()=>{axios.post('/login',fieldData)}}>Sign up</button>
+                        <button type='submit' className='reg-btn' onClick={()=>{axios.post('/login',fieldData); <Route path="/"></Route>}}>Sign up</button>
                         
                         <h6 className='existLabel'>Already have an account? <Link to ='/'>Log in</Link></h6>
                     </div>
@@ -162,7 +170,7 @@ export default function InfoReg(){
                     <h4>Kindly fill with valid details</h4>
                 </div>
 
-                <form className='cred-form'>
+                <form className='cred-form' method="POST">
                         <div className="label-ctn">
                         <label htmlFor="username">Username</label>
                         </div>

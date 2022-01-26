@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 class DbSetup{
     constructor(){
         const mysql = require('mysql');
