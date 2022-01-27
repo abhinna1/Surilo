@@ -4,6 +4,7 @@ import './MainDisplay.css';
 import yabesh from '../img/yabesh.jpg'
 import LeftSidebar from '../home/LeftSidebar';
 import playBtn from '../img/playBtn.png'
+import MusicBar from '../musicBar/MusicBar'
 
 const MainDisplay = () => {
     return (
@@ -40,6 +41,8 @@ const MainDisplay = () => {
                             
                     </div>
                     </div>
+
+                    <MusicBar></MusicBar>
         </div>
 
         </div>

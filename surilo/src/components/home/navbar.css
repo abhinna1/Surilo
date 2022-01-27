@@ -8,8 +8,9 @@
     height: 80px;
     /* background-color: #0660e7; */
     z-index: 99999999999;
-    padding-right: 50px; 
+    padding-right: 50px !important; 
 }
+
 
 .search-control{
     background: var(--white) url("../img/search.png")  right no-repeat;

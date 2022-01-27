@@ -4,6 +4,7 @@ import PopularArtist from './playlist/PopularArtist';
 import './homeStyle.css';
 import LeftSidebar from './LeftSidebar';
 import yabesh from '../img/yabesh.jpg'
+import MusicBar from '../musicBar/MusicBar'
 
 const Home = () => {
     const artistDb =[
@@ -59,7 +60,9 @@ const Home = () => {
                         {getData(artistDb)}
                         </div>
                     </div>
-                    </div>    
+                    <MusicBar></MusicBar> 
+                    </div>   
+
 
                 </div>
 

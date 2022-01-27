@@ -2,6 +2,7 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
 import Login from './components/forms/Login';
 import Reg from './components/forms/Reg';
+
 import Home from './components/home/Home';
 import MainDisplay from './components/artistPage/MainDisplay';
 
@@ -22,7 +23,7 @@ function App() {
           </Route>
 
           <Route path ="/home">
-            <Home/>
+            <Home/> 
           </Route>
 
           <Route path="/artistDisplay">
@@ -31,9 +32,10 @@ function App() {
         
         </Switch>
       
-      
+
     </div>
     </Router>
+    
   );  
 }
 
