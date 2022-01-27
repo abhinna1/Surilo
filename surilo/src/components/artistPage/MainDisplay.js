@@ -14,7 +14,7 @@ const MainDisplay = () => {
                 </div>
                 <div className='contentContainer d-flex flex-column'>
 
-                    <div>
+                <div className="row padding-nav">
                     <Navbar></Navbar>
                     </div>
                     <div className='artistCtn'>

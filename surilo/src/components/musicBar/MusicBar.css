@@ -13,7 +13,6 @@
   display: flex;
   align-items: center;
   flex: 2;
-  background-color: rgb(247, 247, 247);
 }
 .songArt img{
   width: 80px;
