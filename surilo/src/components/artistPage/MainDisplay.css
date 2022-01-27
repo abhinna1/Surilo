@@ -1,0 +1,204 @@
+.artistCtn{
+    width: 100%;
+    height: 100vh;
+    /* margin-top: -20px; */
+    /* background-color: yellow; */
+    overflow: auto;
+}
+.artistPrf{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 450px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom,#910101, rgba(15, 15, 15, 0));
+    background-color: #191B1E;
+}
+.one{
+    flex: 1;
+    /* background-color: teal; */
+    display: flex;
+    align-items: center;
+    z-index: 9999;
+    
+}
+
+.two{
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    flex: 2;
+    /* background-color: wheat; */
+    /* height: 250px; */
+
+}
+.artistTitle{
+    height: 50px;
+    width: 70%;
+    margin-bottom: 10px;
+    /* background-color: rgb(224, 64, 117); */
+    color: #fff;
+}
+.artistDesc{
+    display: flex;
+    align-items: center;
+    height: 150px;
+    width: 70%;
+    color: #fff;
+    text-align: justify;
+    /* background-color: rgb(64, 101, 224); */
+}
+.artistAction{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    width: 70%;
+    /* background-color: rgb(109, 224, 64); */
+}
+
+
+.artistImage{
+    z-index: 999999;
+    width: 250px;
+    height: 250px;
+    /* background-color: blue; */
+    margin: 0 auto;
+    border-radius: 100%;
+}
+.artistImage img{
+    z-index: 999999;
+    width: 250px;
+    height: 250px;
+    /* background-color: blue; */
+    margin: 0 auto;
+    border-radius: 100%;
+}
+
+/* CSS */
+.followBtn {
+  align-items: center;
+  appearance: none;
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+  background-size: calc(100% + 20px) calc(100% + 20px);
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: CircularStd,sans-serif;
+  font-size: 0.8rem;
+  width: 100px;
+  height: 38px;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 6px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color .2s,background-position .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+  margin-right: 10px;
+}
+.playall{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: #fab535;
+    background-image: linear-gradient(1deg, #f3ad15, #f37514 99%);
+}
+
+.playAllBtn{
+    width: 20px;
+    height: 20px;
+    margin-left:3px;
+}
+
+.followBtn:active,
+.followBtn:focus {
+  outline: none;
+}
+
+.followBtn:hover {
+  background-position: -20px -20px;
+}
+
+.followBtn:focus:not(:active) {
+  box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
+}
+
+
+.artistMusicCtn {
+    width: 100%;
+    height:1255px;
+    /* box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);  */
+    /* border-radius: 5px; */
+    position: relative;
+    z-index: 1;
+    background: inherit;
+    overflow: hidden;
+  }
+  
+  .artistMusicCtn:before {
+    content: "";
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 2000px rgb(43, 43, 43);
+    filter: blur(10px);
+    margin: -20px;
+  }
+
+
+@media screen and (max-width: 971px) {
+    .one{
+        margin-top: 30px;
+    }
+    .two{
+        align-items: center;
+        padding: 20px;
+    }    
+    .artistTitle{
+        width: 100%
+    }
+    .artistDesc{
+        width: 100%
+    }
+    .artistAction{
+        width: 100%
+    }
+}
+@media screen and (max-width: 554px) {
+    .artistPrf{
+        height: auto;
+    }
+    .artistMusicCtn{
+        margin-top: 10px;
+    }
+
+    .artistImage{
+        width: 150px;
+        height: 150px;
+    }
+    .artistImage img{
+        width: 150px;
+        height: 150px;
+    }
+}

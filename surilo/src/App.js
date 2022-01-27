@@ -3,12 +3,14 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './components/forms/Login';
 import Reg from './components/forms/Reg';
 import Home from './components/home/Home';
+import MainDisplay from './components/artistPage/MainDisplay';
 
 
 function App() {
 
   return (
     <Router>
+
       <div className="App">
         <Switch>
           <Route exact path ="/">
@@ -19,15 +21,14 @@ function App() {
             <Reg/>
           </Route>
 
-          {/* <Route path ="/signUp2">
-            <Reg2/>
-          </Route> */}
-
-
           <Route path ="/home">
             <Home/>
-
           </Route>
+
+          <Route path="/artistDisplay">
+            <MainDisplay/>
+          </Route>
+        
         </Switch>
       
       
