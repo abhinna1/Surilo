@@ -86,7 +86,7 @@ body{
 }
 
 .regBtn-ctn{
-    padding-top: 30px ;
+    padding-top: 20px ;
     text-align: center;
 }
 
@@ -101,4 +101,11 @@ body{
 .existLabel a{
     text-decoration: none;
     color: #E68415;
+}
+
+.or{
+    color:#fff;
+    font-size: 14px;
+    font-family: 'Poppins';
+    margin-top: 10px;
 }

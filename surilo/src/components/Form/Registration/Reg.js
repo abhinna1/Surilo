@@ -88,7 +88,8 @@ export default function InfoReg(){
             er.genderEr = "Select a gender.";
             formIsValid = false;
         }
-        else{
+        if(formIsValid){
+            axios.post('/register',fieldData);
             alert("Valid");
         }
         setErrors(er);
