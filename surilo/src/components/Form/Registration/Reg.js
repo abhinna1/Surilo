@@ -31,7 +31,7 @@ export default function InfoReg(){
     const [fields,setFields] = useState({fieldData});
     const [errors, setErrors] = useState({firstEr:"error"});
 
-    function validateForm1(){
+    async function validateForm1(){
         const er = {usernameEr:"", emailEr:"", passwordEr:"", confirmpasswordEr:""};
         if(fieldData.username.length<4){
             er.usernameEr="Username is too short.";
@@ -41,22 +41,32 @@ export default function InfoReg(){
             er.emailEr="Invalid Email";
             formIsValid = false;
         }
+        else{
+            await axios.post(`/emailValidate`, {email: fieldData.email})
+            .then(async res=>{
+                if(await res.data===true){
+                    er.emailEr = "Email already exist.";
+                    formIsValid = false;
+                }
+            })
+        }
         if(/^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,20}$/.test(fieldData.password) == false){
            if(fieldData.password.length<8){
             er.passwordEr="Password too short."
             formIsValid = false;
-          }
-           else if(fieldData.password.length>80){
-            er.passwordEr="Password too long."
-            formIsValid = false;
-        }
+            }
 
-        else{
-            er.passwordEr="Invalid Password Pattern"
-            formIsValid = false;
-        }
+            else if(fieldData.password.length>80){
+                er.passwordEr="Password too long."
+                formIsValid = false;
+            }
+
+            // else{
+            //     er.passwordEr="Invalid Password Pattern"
+            //     formIsValid = false;
+            // }
     
-    }
+        }
         if(!(fieldData.password===fieldData.confirmpassword)){
             er.confirmpasswordEr="Passwords did not match."
             formIsValid = false;
@@ -69,7 +79,7 @@ export default function InfoReg(){
 
     }
 
-    function validateform2(){
+    async function validateform2(){
         formIsValid = true;
         const er = {};
         if(fieldData.firstName.length<1){
@@ -88,8 +98,9 @@ export default function InfoReg(){
             er.genderEr = "Select a gender.";
             formIsValid = false;
         }
+
         if(formIsValid){
-            axios.post('/register',fieldData);
+            axios.post('/register',fieldData).then(response=>{console.log(response.data)});
             alert("Valid");
         }
         setErrors(er);

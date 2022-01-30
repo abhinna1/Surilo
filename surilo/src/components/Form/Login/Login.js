@@ -21,10 +21,10 @@ export default function Login(){
             password : password,
         }).then((response) =>{
             if (response.data.message){
-                console.log(response.data.message);
+                console.log(response);
             }
             else {
-                console.log(response.data[0].email);
+                console.log(response.data);
             }
         });
 
@@ -110,7 +110,7 @@ export default function Login(){
                 </div>
                 
                 <div className='regBtn-ctn'>
-                    <button className='reg-btn' onClick={postData}>Login</button>  
+                    <button className='reg-btn' type="button" onClick={postData}>Login</button>  
 
                     <h4 className='or'> or </h4>
 
