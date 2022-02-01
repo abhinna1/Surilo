@@ -21,6 +21,7 @@ const fieldData = {
     password: "",
     confirmpassword :""
     }
+    
 export default function InfoReg(){
     let formIsValid = true;
     const [step, setStep] = useState(1);
@@ -52,7 +53,7 @@ export default function InfoReg(){
 
             <div className='d-flex flex-column justify-content-center align-items-center'>                    
             {step===2 && <section>  
-                <div className="logo-cont">
+                <div className="logo-contForLogo">
                     <img src={logo} alt="Surilo Logo" />
                 </div>
                 <div className="slogan text-center">
@@ -122,7 +123,7 @@ export default function InfoReg(){
 
 
         {step===1 &&<section className='d-flex flex-column justify-content-center align-items-center'>
-                <div className="logo-cont">
+                <div className="logo-contForLogo">
                     <img src={logo} alt="Surilo Logo" />
                 </div>
                 <div className="slogan text-center">

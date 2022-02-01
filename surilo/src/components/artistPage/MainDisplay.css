@@ -168,19 +168,11 @@
 }
 
 
-.artistMusicCtn {
-    width: 100%;
-    height:400px;
-    /* box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);  */
-    /* background-color: red; */
-    overflow: hidden;
-}
-
-
 
 @media screen and (max-width: 971px) {
     .one{
         margin-top: 30px;
+        padding: 20px;
     }
     .two{
         align-items: center;

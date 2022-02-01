@@ -7,7 +7,7 @@ import repeat from '../img/repeat.png'
 import lakhau from '../img/lakhau.jpg'
 
 const MusicBar = () => {
-
+  
     return (
       <div className='c-containter'>
         <div className='songArt'>

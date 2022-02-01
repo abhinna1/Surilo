@@ -26,7 +26,7 @@ export default function Login(){
             <div className='semi-container d-flex flex-column justify-content-center align-items-center'>
 
             
-            <div class="logo-cont">
+            <div class="logo-contForLogo">
                 <img src={logo} alt="Surilo Logo" />
             </div>
             

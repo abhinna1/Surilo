@@ -5,6 +5,9 @@ import './homeStyle.css';
 import LeftSidebar from './LeftSidebar';
 import yabesh from '../img/yabesh.jpg'
 import MusicBar from '../musicBar/MusicBar'
+import SongDisplay from '../songDisplay/SongDisplay';
+
+import PlaylistCarousel from './playlistCarousel';
 
 const Home = () => {
     const artistDb =[
@@ -12,8 +15,7 @@ const Home = () => {
             id:2,
             name:"Yabesh Thapa",
             cover: <img src={yabesh}/>
-        }
-        
+        }        
     ]
 
     const getData=(artistDb)=>{
@@ -49,18 +51,34 @@ const Home = () => {
                     <LeftSidebar></LeftSidebar>
                 </div>
                 <div className='contentContainer d-flex flex-column'>
-
                     <div className="row padding-nav">
                     <Navbar></Navbar>
                     </div>
-
-                    <div className="playlist row">
-                    <h6 className='playListTitle'>Popular Artist</h6>
-                        <div className='album d-flex'>
-                        {getData(artistDb)}
+                    <div className='innerContent'> 
+                        <div className="playlist row">
+                        <h6 className='playListTitle'>Popular Artist</h6>
+                            <div className='album d-flex'>
+                            {getData(artistDb)}
+                            </div>
+                        </div>
+                        <div className="playlist p-3 d-flex flex-wrap">
+                            <div className='CarouselCtn'>
+                                <PlaylistCarousel></PlaylistCarousel>
+                            </div>
+                            <div className='TrendingTracksCtn'>
+                            <h6 className='playListTitle'>Trending this week</h6>
+                            <SongDisplay></SongDisplay>
+                            </div>
+                            
+                        </div>
+                        <div className="playlist row">
+                        <h6 className='playListTitle'>Popular Artist</h6>
+                            <div className='album d-flex'>
+                            {getData(artistDb)}
+                            </div>
                         </div>
                     </div>
-                    <MusicBar></MusicBar> 
+                        <MusicBar></MusicBar> 
                     </div>   
 
 

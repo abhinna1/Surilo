@@ -6,6 +6,9 @@ import LeftSidebar from '../home/LeftSidebar';
 import playBtn from '../img/playBtn.png'
 import MusicBar from '../musicBar/MusicBar'
 
+import SongDisplay from '../songDisplay/SongDisplay';
+import Header from '../songDisplay/Header';
+
 const MainDisplay = () => {
     return (
         <div className='homeContainer'>
@@ -36,10 +39,11 @@ const MainDisplay = () => {
                                 </div>
                             </div>
                         </div>
-                    <div className="artistMusicCtn">
-                        
-                            
-                    </div>
+                        <Header></Header>
+                        <div className='songDisplayCtn'>
+
+                        <SongDisplay></SongDisplay>
+                        </div>
                     </div>
 
                     <MusicBar></MusicBar>

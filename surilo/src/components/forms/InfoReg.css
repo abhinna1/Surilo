@@ -52,12 +52,14 @@ body{
     border: 0.2px solid rgb(255, 255, 255);
 }
 
-.logo-cont{
+.logo-contForLogo{
+    display: flex;
+    justify-content: center;
     width: 250px;
     height: 56px;
     margin: 0 0 40px 0;
 }
-.logo-cont img{
+.logo-contForLogo img{
     width: 100%;
     height: inherit;
     /* background-color: red; */
