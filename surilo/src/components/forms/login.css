@@ -1,25 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-body{
+body {
     background-color: #191B1E !important;
 }
 
-.login-container{
+.login-container {
     width: 100%;
-    height:100vh;
+    height: 100vh;
     /* background-color: red; */
     background-color: #191B1E;
 
-    
+
 }
 
-.semi-container{
+.semi-container {
     width: 450px;
     height: 70vh;
     background-color: #1B1C22;
@@ -27,31 +27,33 @@ body{
     border-radius: 10px;
 }
 
-.logo-contForLogo{
+.logo-contForLogo {
     display: flex;
     justify-content: center;
     width: 250px;
     height: 56px;
     margin: 0 0 40px 0;
 }
-.logo-contForLogo img{
+
+.logo-contForLogo img {
     width: 100%;
     height: inherit;
     /* background-color: red; */
 }
 
-.label-ctn{
+.label-ctn {
     margin: 0 auto;
-    width:20em;
+    width: 20em;
     text-align: left;
 }
-.label-ctn label{
+
+.label-ctn label {
     color: #fff;
     font-size: 14px;
     font-family: 'Poppins';
 }
 
-.entry-Ctn{
+.entry-Ctn {
     margin: 0 auto;
     width: 20em;
     height: 45px;
@@ -59,7 +61,7 @@ body{
     /* background-color: blue; */
 }
 
-.usrEnt{
+.usrEnt {
     width: 100%;
     height: 45px;
     margin-top: 5px;
@@ -71,7 +73,8 @@ body{
     font-size: 14px;
     font-family: 'Poppins';
 }
-.reg-btn{
+
+.reg-btn {
     width: 150px;
     height: 55px;
     border-radius: 50px;
@@ -84,25 +87,25 @@ body{
     /* margin: 0 auto; */
 }
 
-.login-form{
+.login-form {
     margin: 0;
 
 }
 
-.regBtn-ctn{
-    padding-top: 30px ;
+.regBtn-ctn {
+    padding-top: 30px;
     text-align: center;
 }
 
 
-.existLabel{
-    color:#fff;
+.existLabel {
+    color: #fff;
     font-size: 14px;
     font-family: 'Poppins';
     margin-top: 10px;
 }
 
-.existLabel a{
+.existLabel a {
     text-decoration: none;
     color: #E68415;
 }
