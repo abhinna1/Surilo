@@ -20,9 +20,8 @@ const fieldData = {
     email: "",
     password: "",
     confirmpassword :""
-}
-
-
+    }
+    
 export default function InfoReg(){
     let formIsValid = true;
     const [step, setStep] = useState(1);
@@ -178,7 +177,7 @@ export default function InfoReg(){
             </section>}
                            
             {step===2 && <section>  
-                <div className="logo-cont">
+                <div className="logo-contForLogo">
                     <img src={logo} alt="Surilo Logo" />
                 </div>
                 <div className="slogan text-center">
@@ -247,7 +246,60 @@ export default function InfoReg(){
             </section>}
 
 
-        
+        {step===1 &&<section className='d-flex flex-column justify-content-center align-items-center'>
+                <div className="logo-contForLogo">
+                    <img src={logo} alt="Surilo Logo" />
+                </div>
+                <div className="slogan text-center">
+                    <h1>Sign up to discover your favorite artists</h1>
+                </div>
+
+                <hr className='hor'/>
+
+                <div className="info m-2">
+                    <h4>Kindly fill with valid details</h4>
+                </div>
+
+                <form className='cred-form' method="POST">
+                        <div className="label-ctn">
+                        <label htmlFor="username">Username</label>
+                        </div>
+                    <div className='entry-Ctn'>   
+                        <input className='usrEnt' onChange = {handleChange} type="text" autoComplete='off' name="username" placeholder='testuser456' id="username"/>      
+                    </div>
+                    <div className="label-ctn">
+                        <label htmlFor="email">Email</label>
+                    </div>
+
+                    <div className='entry-Ctn'>
+                        <input className='usrEnt' type="email" onChange = {handleChange} autoComplete='off'  name="email" placeholder='temp_mail@email.com' id="email" />
+                        <div className="errormsg">{error}</div>
+                    </div>
+
+                    <div className="label-ctn">
+                        <label htmlFor="password">Password</label>
+                        </div> 
+                    <div className='entry-Ctn'>
+                        <input className='usrEnt' type="password" onChange = {handleChange} autoComplete='off' name="password" placeholder='********' id="password"/>
+                        
+                    </div>
+                    <div className="label-ctn">
+                        <label htmlFor="confirmPassword">Confirm Password</label>
+                    </div> 
+                    <div className='entry-Ctn'>
+                        <input className='usrEnt' type="password" onChange = {handleChange} autoComplete='off' name="confirmPassword" placeholder='********' id="confirmPassword" />
+                        <p className='error-msg' id="err"></p>
+                    </div>
+
+                    <div className="btn-ctn">
+                        {/* <Link to= '/signUp2' type='submit'><img className='next-btn' src={next} alt="" /></Link>   */}
+                        <button type="button" onClick={()=>{validate1()}}><img className='next-btn' src={next} alt="" /></button>
+                    </div>
+
+                </form>
+
+            
+            </section>}
         </div>
     )
 }

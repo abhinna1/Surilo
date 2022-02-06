@@ -1,4 +1,5 @@
 // import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const PopularArtist = (props) => {
 
@@ -8,7 +9,7 @@ const PopularArtist = (props) => {
     return ( 
         <div className="artistDisplay d-flex flex-column">
             <div className="coverArt">
-                {artists.cover}
+            <Link to='/artistDisplay'>{artists.cover}</Link>
             </div>
             <div className="artistName">
                 <h6>{artists.name}</h6>
