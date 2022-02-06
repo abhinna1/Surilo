@@ -11,7 +11,7 @@ const Navbar = () => {
 
             <div className='link-container'>
                 <button className='artistBtn'>Become an artist</button>
-                <a href="" className='login-link'>Log in</a>
+                <a href="/" className='login-link'>Log in</a>
             </div>
         </div>
      );

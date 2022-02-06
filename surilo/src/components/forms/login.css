@@ -106,3 +106,7 @@ body{
     text-decoration: none;
     color: #E68415;
 }
+
+#musicBar{
+    display:none;
+}

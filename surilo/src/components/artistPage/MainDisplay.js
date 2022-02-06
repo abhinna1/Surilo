@@ -1,8 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from '../home/Navbar';
+import Navbar from '../Home/Navbar';
 import './MainDisplay.css';
 import yabesh from '../img/yabesh.jpg'
-import LeftSidebar from '../home/LeftSidebar';
+import LeftSidebar from '../Home/LeftSidebar';
 import playBtn from '../img/playBtn.png'
 import MusicBar from '../musicBar/MusicBar'
 
@@ -45,8 +45,6 @@ const MainDisplay = () => {
                         <SongDisplay></SongDisplay>
                         </div>
                     </div>
-
-                    <MusicBar></MusicBar>
         </div>
 
         </div>

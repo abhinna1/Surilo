@@ -6,6 +6,7 @@ import LeftSidebar from './LeftSidebar';
 import yabesh from '../img/yabesh.jpg'
 import MusicBar from '../musicBar/MusicBar'
 import SongDisplay from '../songDisplay/SongDisplay';
+import { useState } from 'react';
 
 import PlaylistCarousel from './playlistCarousel';
 
@@ -17,6 +18,7 @@ const Home = () => {
             cover: <img src={yabesh}/>
         }        
     ]
+
 
     const getData=(artistDb)=>{
 
@@ -78,7 +80,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                        <MusicBar></MusicBar> 
+                        
                     </div>   
 
 
