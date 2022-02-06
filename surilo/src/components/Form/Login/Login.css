@@ -27,18 +27,14 @@ body{
     border-radius: 10px;
 }
 
-.logo-contForLogo{
-    display: flex;
-    justify-content: center;
+
+
+.logo-cont{
     width: 250px;
     height: 56px;
-    margin: 0 0 40px 0;
+
 }
-.logo-contForLogo img{
-    width: 100%;
-    height: inherit;
-    /* background-color: red; */
-}
+
 
 .label-ctn{
     margin: 0 auto;
@@ -112,7 +108,4 @@ body{
     font-size: 14px;
     font-family: 'Poppins';
     margin-top: 10px;
-}
-#musicBar{
-    display:none;
 }

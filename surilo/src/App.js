@@ -1,7 +1,7 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
-import Login from './components/forms/Login';
-import Reg from './components/forms/Reg';
+import Login from './components/Form/Login/Login';
+import Reg from './components/Form/Registration/Reg';
 
 import Home from './components/Home/Home';
 import MainDisplay from './components/artistPage/MainDisplay';
