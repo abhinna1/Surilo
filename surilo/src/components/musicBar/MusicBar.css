@@ -57,6 +57,22 @@
   width: 15px;
   height: 15px;
 }
+
+.volumeControl{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  justify-self: end;
+  margin-right: 60px;
+  margin-bottom:15px;
+}
+
+.volumeControl img {
+  width: 25px;
+  height: 25px;
+
+}
 .songInfo{
   width: 250px;
   display: flex;  
@@ -122,6 +138,10 @@ color: rgb(39, 39, 39);
     font-size: 13px;
     font-weight: 300;
   }
+  .volumebar{
+    width: 75%;
+  
+  }
 }
 @media screen and (max-width: 769px) {
   #timeline1 {
@@ -140,6 +160,11 @@ color: rgb(39, 39, 39);
     display: block;
   }
 
+.volumebar{
+  width: 50%;
+
+}
+
 }
 
 @media screen and (max-width: 426px) {
@@ -148,6 +173,9 @@ color: rgb(39, 39, 39);
 }
 .musicControlCtn{
   padding: 10px 10px 10px 10px;
+}
+.volumeControl{
+  margin-right: 30px;
 }
 
 

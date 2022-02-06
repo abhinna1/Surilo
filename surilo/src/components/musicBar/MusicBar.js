@@ -1,5 +1,7 @@
 import './MusicBar.css'
 import pause from '../img/pause.png'
+import volumeup from '../img/high-volume.png'
+import volumedown from '../img/volume-down.png'
 import next from '../img/next.png'
 import prev from '../img/prev.png'
 import shuffle from '../img/shuffle.png'
@@ -9,11 +11,13 @@ import React, {useRef, useState} from 'react'
 import song1 from '../music/song1.mp3'
 import song2 from '../music/song2.mp3'
 
+
 export default function MusicBar(){
     const [current, setCurrent] = useState([{title:'Pretty Girl', artist:'Nirvish', file: song1}, {title:'Kho Gaye Hum Kahan?', artist:'Prateek Kuhad', file: song2}]);
     const[index, setIndex] = useState(0);
     const [playing, setPlaying] = useState(false);
     const [percent, setPercent] = useState(0);
+    const [volume, setVolume] = useState(50);
     const audioRef = useRef();
     console.log(index)
 
@@ -61,6 +65,14 @@ export default function MusicBar(){
       audio.play();
     }
   }
+
+ // volume function
+  function adjustVolume(e){
+    const audio = audioRef.current;
+    audio.volume = e.target.value;
+
+  }
+
   function seek(e){
     const audio = audioRef.current;
     audio.currentTime = (audio.duration / 100) * e.target.value
@@ -104,6 +116,21 @@ export default function MusicBar(){
               <button onClick={onNext}><img src={next} alt="" /></button>
             </div>
         </div>
+      </div>
+      
+      <div className="volumeControl">
+
+        <input 
+         className="volumebar"
+         type="range" 
+         value ={vol}
+         onChange={() =>adjustVolume()}
+         min={0} 
+         max={1}
+         />
+          <img onClick={()=> vol < 1 && adjustVolume(vol + 0.1)} src={volumeup} alt=""/>
+        
+        
       </div>
       <div className='songAction'>
         <img src={shuffle} alt=""/>
