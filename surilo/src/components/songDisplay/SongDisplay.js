@@ -29,9 +29,9 @@ const SongDisplay = () => {
                     2:59
                 </h5>
             </div>
-        <div className='favCtn'>
+        {/* <div className='favCtn'>
             <img className='playTrackImg' src={love} alt="" />
-        </div>
+        </div> */}
         <div className='playCtn'><h5 className='headerTitle'>45,695</h5></div>
         <div className='shareCtn'><img src={shareIco} alt="" /></div>
         <div className='threeDotCtn'>
@@ -53,9 +53,9 @@ const SongDisplay = () => {
                     2:59
                 </h5>
             </div>
-        <div className='favCtn'>
+        {/* <div className='favCtn'>
             <img className='playTrackImg' src={love} alt="" />
-        </div>
+        </div> */}
         <div className='playCtn'><h5 className='headerTitle'>45,695</h5></div>
         <div className='shareCtn'><img src={shareIco} alt="" /></div>
         <div className='threeDotCtn'>
@@ -77,9 +77,9 @@ const SongDisplay = () => {
                     2:59
                 </h5>
             </div>
-        <div className='favCtn'>
+        {/* <div className='favCtn'>
             <img className='playTrackImg' src={love} alt="" />
-        </div>
+        </div> */}
         <div className='playCtn'><h5 className='headerTitle'>45,695</h5></div>
         <div className='shareCtn'><img src={shareIco} alt="" /></div>
         <div className='threeDotCtn'>
@@ -101,9 +101,9 @@ const SongDisplay = () => {
                     2:59
                 </h5>
             </div>
-        <div className='favCtn'>
+        {/* <div className='favCtn'>
             <img className='playTrackImg' src={love} alt="" />
-        </div>
+        </div> */}
         <div className='playCtn'><h5 className='headerTitle'>45,695</h5></div>
         <div className='shareCtn'><img src={shareIco} alt="" /></div>
         <div className='threeDotCtn'>
