@@ -63,14 +63,31 @@ app.post('/addAlbum', async (req, res)=>{
 
 })
 
-app.post('/addMusic', (req, res)=>{
+app.get('/getalbum/:id', (req, res)=>{
     let con = db.getConnection();
-    let artistId = 1;
-    con.query(`SELECT * FROM tbl_album where artist_id = ${artistId}`, function (err, result, fields) {
+
+    con.query(`SELECT * FROM tbl_album WHERE album_name="${req.params.id}";`, function (err, result, fields) {
         if (err) throw err;
         if(result) res.send(result);
-        else res.send("No Data");
+        else res.send({});
       });
+})
+
+app.post('/addMusic', async (req, res)=>{
+    try{
+        fs.createReadStream( './album_images' )
+        const file = req.files.file;
+        const dir = '../surilo/src/components/Music/Music_Uploads/'
+        const file_name = Math.random() + file.name;
+        const file_location = dir + file_name;
+        await file.mv(file_location, (er)=>{if(er)res.send(er); else res.send('uploaded')});
+
+        const data = {title:req.body.title, genre_id:req.body.genre_id, album_id:req.body.album_id, file:file_name}
+        db.insertMusic(data);
+    }
+    catch(e){
+        console.log(e)
+    }
 })
 
 // listening for email validation.

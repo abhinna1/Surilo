@@ -47,6 +47,14 @@ class DbSetup{
         })
     }
     
+    insertMusic(data){
+        const sql = `insert into tbl_music (title, genre_id, album_id, file) values ("${data.title}", ${data.genre_id}, '${data.album_id}', '${data.file}');`;
+        console.log(sql);
+        this.con.query(sql, (err, result)=>{
+            if(err) console.log(err);
+            else console.log("Music Added.");
+        })
+    }
     
 } 
 
