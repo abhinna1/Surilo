@@ -1,10 +1,17 @@
 const express = require('express');
 const DbSetup = require('./DbSetup');
 const bcrypt = require('bcrypt');
-
+const cors = require('cors');
+const fileUpload = require('express-fileupload');
 const app = express();
 const db = new DbSetup();
-app.use(express.json()); // Accept JSON format.
+const bodyParser = require('body-parser')
+const fs = require('fs');
+const { off } = require('process');
+
+app.use(cors());
+app.use(bodyParser.json()); // Accept JSON format.
+app.use(fileUpload()); 
 
 // Password Hashing Algorithm
 async function getHash(password, saltRounds = 10){
@@ -19,23 +26,52 @@ async function getHash(password, saltRounds = 10){
 };
 
 // listening for registering
-app.post('/register', async (req, res)=>{
+app.post('/register',async (req, res)=>{
     req.body.password = await getHash(req.body.password);
     db.insertUser(req.body);
 });
 
+// listening for login
 app.post('/login', async(req, res)=>{
     let con = db.getConnection();
-    // req.body.password = await getHash(req.body.password);
     con.query(`SELECT email, password FROM tbl_user where email = '${req.body.email}';`, async function (err, result, fields) {
         if (err) throw err;
         const val = result[0];
-        if(req.body.email==val.email && await bcrypt.compare(req.body.password, val.password))res.send(true);
-        else res.send(false);
-        // if(result[0]) res.send(true);
-        // else res.send(false);
+        if(req.body.email==val.email && await bcrypt.compare(req.body.password, val.password)){
+            res.send(true);
+        }
+        else {res.send(false)};
     });
 });
+
+// Listening for creating albums.
+app.post('/addAlbum', async (req, res)=>{
+    try{
+        fs.createReadStream( './album_images' )
+        const file = req.files.file;
+        const dir = '../surilo/src/components/Album/album_covers/'
+        const file_name = Math.random() + file.name;
+        const file_location = dir + file_name;
+        await file.mv(file_location, (er)=>{if(er)res.send(er); else res.send('uploaded')});
+
+        const data = {album_name:req.body.title, artist_id:req.body.artist, cover_image:file_name}
+        db.insertAlbum(data);
+    }
+    catch(e){
+        console.log(e)
+    }
+
+})
+
+app.post('/addMusic', (req, res)=>{
+    let con = db.getConnection();
+    let artistId = 1;
+    con.query(`SELECT * FROM tbl_album where artist_id = ${artistId}`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) res.send(result);
+        else res.send("No Data");
+      });
+})
 
 // listening for email validation.
 app.post('/emailvalidate', (req, res)=>{
