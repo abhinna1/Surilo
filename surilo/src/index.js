@@ -6,6 +6,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css";
 
+const jwt =require('jwstoken');
+
+
+
 
 ReactDOM.render(
   <React.StrictMode>
