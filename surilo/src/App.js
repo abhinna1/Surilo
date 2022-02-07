@@ -7,6 +7,8 @@ import Home from './components/Home/Home';
 import MainDisplay from './components/artistPage/MainDisplay';
 import React from 'react';
 import MusicBar from './components/musicBar/MusicBar';
+import AlbumForm from './components/Album/albumform';
+import MusicForm from './components/Music/Musicform';
 class App extends React.Component {
 
   render(){
@@ -14,7 +16,7 @@ class App extends React.Component {
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path ="/">
+          <Route exact path ="/login">
             <Login></Login>
 
           </Route>
@@ -22,10 +24,21 @@ class App extends React.Component {
             <Reg/>
           </Route>
 
-          <Route path ="/home">
+          <Route path ="/albumForm">
+            <AlbumForm/> 
+            <MusicBar/> 
+          </Route>
+
+          <Route path ="/musicform">
+            <MusicForm/> 
+            {/* <MusicBar/>  */}
+          </Route>
+
+          <Route path ="/">
             <Home/> 
             <MusicBar/> 
           </Route>
+          
 
           <Route path="/artistDisplay">
             <MainDisplay/>

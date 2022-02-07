@@ -6,8 +6,8 @@ import shuffle from '../img/shuffle.png'
 import repeat from '../img/repeat.png'
 import lakhau from '../img/lakhau.jpg'
 import React, {useRef, useState} from 'react'
-import song1 from '../music/song1.mp3'
-import song2 from '../music/song2.mp3'
+import song1 from '../songs/song1.mp3'
+import song2 from '../songs/song2.mp3'
 
 export default function MusicBar(){
     const [current, setCurrent] = useState([{title:'Pretty Girl', artist:'Nirvish', file: song1}, {title:'Kho Gaye Hum Kahan?', artist:'Prateek Kuhad', file: song2}]);
