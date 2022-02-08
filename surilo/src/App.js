@@ -7,6 +7,7 @@ import Home from './components/Home/Home';
 import MainDisplay from './components/artistPage/MainDisplay';
 import React from 'react';
 import MusicBar from './components/musicBar/MusicBar';
+import AboutUs from './components/About Us/AboutUs.js'
 class App extends React.Component {
 
   render(){
@@ -30,7 +31,12 @@ class App extends React.Component {
           <Route path="/artistDisplay">
             <MainDisplay/>
             <MusicBar/> 
+          </Route>
 
+
+          <Route path="/aboutUs">
+            <AboutUs/>
+            <MusicBar/> 
           </Route>
 
         </Switch>

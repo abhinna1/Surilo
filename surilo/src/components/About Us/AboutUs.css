@@ -1,0 +1,230 @@
+.head h1{
+
+    color: #E68415;
+    margin-left: 30px;
+    text-align: center;
+    margin-right: 30px;
+
+}
+
+.text h4{
+    margin-top:5px;
+    color: #fff;
+    margin-left: 30px;
+    text-align: left;
+    margin-right: 30px;
+   
+}
+.aboutUs{
+    overflow-y: scroll;
+}
+
+.text p {
+    margin-top:15px;
+    color: #fff;
+    margin-left: 30px;
+    text-align: justify;
+    text-justify: inter-word;
+    margin-right: 30px;
+}
+
+
+.aboutSurilo  {
+    /* background-color: aquamarine; */
+    margin-top: 5%;
+    display: flex;
+    align-items: right;
+}
+
+.aboutSurilo img {
+    height:300px;
+    width:300px;
+    margin-left:30px;
+   
+}
+
+
+.connectToUs h2{
+
+    color: #E68415;
+    text-align: center;
+    margin-top: 30px;
+
+}
+
+.icon{
+    display: flex;
+    margin-top:30px;
+    justify-content: center;
+    
+    align-items: center;
+}
+
+.icon img {
+
+    height:100px;
+    width:100px;
+    margin-top: 20px;
+    margin-right: 60px;
+    margin-left: 60px;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;   
+}
+
+.icon img:hover{
+    top: -10px;
+    
+}
+
+
+
+@media screen and (max-width: 971px) {
+    .head h1{
+
+        color: #E68415;
+        margin-left: 30px;
+        text-align: center;
+        
+    
+    }
+    .aboutUs{
+        overflow-y: scroll;
+    }
+
+    .aboutSurilo img{
+        height:300px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 300px;
+        
+    }
+
+    .text h4{
+        font-size: 1.7em;
+        margin-top:30px;
+        text-align: center;
+        color: #fff;
+        margin-left: 30px;
+        
+        
+       
+    }
+
+    .aboutSurilo{
+        display: inline-block;
+        align-items: center;
+       
+    }
+
+    .connectToUs{
+        color: #E68415;
+        text-align: center;
+        margin-top: 30px;
+        
+    }
+
+    .icon{
+        display: flex;
+        margin-top:30px;
+        justify-content: center;
+        
+        align-items: center;
+    }
+
+    .icon img{
+
+    height:50px;
+    width:50px;
+    margin: 0px 30px 30px 30px;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+    
+}
+
+    .icon img:hover{
+    top: -10px;
+}
+
+
+
+
+}
+
+@media screen and (max-width: 554px) {
+
+    .head h1{
+
+        color: #E68415;
+        margin-left: 30px;
+        text-align: center;
+        
+    
+    }
+
+    .aboutSurilo img{
+        display:block;
+        height:300px;
+        width:300px;
+        margin-left: auto;
+        margin-right: auto;
+
+        
+    }
+
+    .aboutSurilo{
+        display: inline-block;
+        align-items: center;
+        
+        
+    }
+
+    .text h4{
+        margin-top:15px;
+        text-align: center;
+        color: #fff;
+        margin-left: 30px;
+        
+        
+       
+    }
+    .aboutUs{
+        overflow-y: scroll;
+    }
+
+    .connectToUs{
+        color: #E68415;
+        text-align: center;
+        margin-top: 30px;
+        
+        
+    }
+
+    .icon{
+        display: flex;
+        margin-top:30px;
+        justify-content: center;
+        
+        align-items: center;
+    }
+
+    .icon img {
+
+    height:40px;
+    width:40px;
+    margin: 0px 10px 10px 10px;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+    
+}
+
+    .icon img:hover{
+    top: -10px;
+    
+}
+
+}
+

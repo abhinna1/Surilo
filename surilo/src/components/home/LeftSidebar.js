@@ -3,6 +3,7 @@ import home from '../img/home.png'
 import love from '../img/love.png'
 import smallLogo from '../img/smallLogo.png'
 import playlist from '../img/playlist.png'
+import aboutus from '../img/aboutuslogo.png'
 import './homeStyle.css'
 import { Link } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ const LeftSidebar = () => {
             <div className='link d-flex'><Link to="/home"><img src={home} alt="" /> <h6>Home </h6></Link></div>
             <div className='link d-flex'><Link to="/home"><img src={playlist} alt=""/><h6>Playlist</h6></Link></div>
             <div className='link d-flex'><Link to="/home"><img src={love} alt="" /><h6>Favourite</h6></Link></div>
+            <div className='link d-flex'><Link to="/aboutUs"><img src={aboutus} alt="" /><h6>About Us</h6></Link></div>
 
         </div>
 
