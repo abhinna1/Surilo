@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Login from './components/forms/Login';
 import Reg from './components/forms/Reg';
 
-import Home from './components/home/Home';
+import Home from './components/Home/Home';
 import MainDisplay from './components/artistPage/MainDisplay';
 
 
