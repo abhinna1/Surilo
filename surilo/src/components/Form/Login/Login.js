@@ -10,7 +10,6 @@ import { useState } from 'react';
 
 export default function Login(){
 
-
     const [email,setemail] = useState("");
     const [password,setpassword] =useState("");
 
@@ -20,67 +19,18 @@ export default function Login(){
             email : email,
             password : password,
         }).then((response) =>{
-            if (response.data.message){
-                console.log(response);
+            console.log(response.data)
+            if (response.data.found==true){
+                localStorage.setItem('user', JSON.stringify(response.data.data))
             }
             else {
-                console.log(response.data);
+                localStorage.clear();
             }
         });
 
     }
 
     
-
-
-    // const postData=()=>{
-    //     // Axios.get("/User")
-    //     // .then((res)=>{
-    //     //   console.log(res["data"]);
-    //     // })
-    //     let email = document.getElementById("email").value;
-    //     let pass = document.getElementById("password").value;
-    //     Axios.post("/login",{email:email, password:pass})
-    //       .then(()=>{console.log("posted")})
-    //   }
-    //   ;
-
-
-
-
- 
-      // Google Login
-
-    //   const [loginData, setLoginData] = useState(
-    //     localStorage.getItem('loginData')
-    //       ? JSON.parse(localStorage.getItem('loginData'))
-    //       : null
-    //   );
-    
-      const handleFailure = (result) => {
-        alert(result);
-      };
-    
-      const handleLogin = async (googleData) => {
-
-        console.log(googleData);
-      }
-
-    //    // const res = await fetch('/api/google-login', {
-    //       method: 'POST',
-    //       body: JSON.stringify({
-    //         token: googleData.tokenId,
-    //       }),
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //     });
-
-    //   const data = await res.json();
-    //   setLoginData(data);
-    //   localStorage.setItem('loginData', JSON.stringify(data));
-    // };
-       
 
     return (
 
@@ -113,18 +63,6 @@ export default function Login(){
                     <button className='reg-btn' type="button" onClick={postData}>Login</button>  
 
                     <h4 className='or'> or </h4>
-
-                    <div>
-                        <GoogleLogin
-                    clientId="570589698753-g28a852qp3gr9cgrli2g7p4cotj7p89n.apps.googleusercontent.com"
-                    buttonText ="Login with Google"
-                    onSuccess ={handleLogin}
-                    onFailure={handleFailure}
-                   cookiePolicy={'single_host_origin'}
-                    >
-                    </GoogleLogin>
-    
-                    </div>
 
                     <h6 className='existLabel'>Don't have an account? <Link to='/register'>Sign Up</Link></h6>
                 </div>

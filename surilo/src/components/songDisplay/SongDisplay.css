@@ -1,3 +1,10 @@
+
+
+.playBtn{
+    background-color: black;
+    border:0;
+}
+
 .artistMusicCtn {
     width: 100%;
     height:auto;

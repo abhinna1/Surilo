@@ -43,7 +43,6 @@ class App extends React.Component {
           <Route path="/artistDisplay">
             <MainDisplay/>
             <MusicBar/> 
-
           </Route>
 
         </Switch>

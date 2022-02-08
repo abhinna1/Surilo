@@ -6,18 +6,29 @@ import LeftSidebar from './LeftSidebar';
 import yabesh from '../img/yabesh.jpg'
 import MusicBar from '../musicBar/MusicBar'
 import SongDisplay from '../songDisplay/SongDisplay';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import PlaylistCarousel from './playlistCarousel';
+import axios from 'axios';
+import { data } from 'jquery';
 
 const Home = () => {
-    const artistDb =[
-        {
-            id:2,
-            name:"Yabesh Thapa",
-            cover: <img src={yabesh}/>
-        }        
-    ]
+    
+    const [artistDb, setArtistDb] = useState([]);
+
+    const[weeklyHits, setWeeklyHits] = useState([]);
+
+
+    useEffect(async ()=>{
+        const user = JSON.parse(localStorage.getItem('user'));
+        console.log(user.id)
+        let fetchedData = await axios.get(`/getpopularartist`)
+        setArtistDb(fetchedData.data)
+
+        let fetchWeeklyHits = await axios.get(`/getweeklyhits`)
+        setWeeklyHits(fetchWeeklyHits.data)
+        console.log(weeklyHits)
+    }, [])
 
 
     const getData=(artistDb)=>{
@@ -39,10 +50,31 @@ const Home = () => {
 
         // Loop popular artists compnent till array length
         let data = []
-        for (let i = 0; i < artistDb.length; i++) {
-            data.push(<PopularArtist artists = {artistDb[i]}></PopularArtist>)
-          }
-          return data;
+
+        artistDb.map((i)=>data.push(<PopularArtist artists = {i}></PopularArtist>))
+        return data;
+    }
+
+    const getWeeklyHits = ()=>{
+        let currentIndex = weeklyHits.length,  randomIndex;
+      
+        // While there remain elements to shuffle...
+        while (currentIndex != 0) {
+      
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+      
+          // And swap it with the current element.
+          [weeklyHits[currentIndex], weeklyHits[randomIndex]] = [
+            weeklyHits[randomIndex], weeklyHits[currentIndex]];
+        }
+
+        // Loop popular artists compnent till array length
+        let data = []
+
+        weeklyHits.map((i)=>data.push(<SongDisplay hits = {i}></SongDisplay>))
+        return data;
     }
 
 
@@ -59,9 +91,11 @@ const Home = () => {
                     <div className='innerContent'> 
                         <div className="playlist row">
                         <h6 className='playListTitle'>Popular Artist</h6>
-                            <div className='album d-flex'>
+                        <div className='album d-flex'>
+
                             {getData(artistDb)}
                             </div>
+
                         </div>
                         <div className="playlist p-3 d-flex flex-wrap">
                             <div className='CarouselCtn'>
@@ -69,7 +103,9 @@ const Home = () => {
                             </div>
                             <div className='TrendingTracksCtn'>
                             <h6 className='playListTitle'>Trending this week</h6>
-                            <SongDisplay></SongDisplay>
+                            <div className="trendList">
+                                {getWeeklyHits(weeklyHits)}
+                            </div>
                             </div>
                             
                         </div>
