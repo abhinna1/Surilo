@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+:root{
+    --sdColor:#dadada;
+    --white:#fff;
+    --navbar:#11131B;
+}
+
+.login-btn{
+    background-color: var(--navbar);
+    border:0;
+}
+
+.navCtn{
+    position: fixed;
+    width: 85%;
+    height: 80px;
+    right: 0;
+    background-color: var(--navbar);
+    z-index: 99999999999;
+    padding-right: 20px !important; 
+    padding-left: 20px !important;
+}
+
+
+.search-control{
+    background: var(--white) url("../img/search.png")  right no-repeat;
+    background-origin: content-box;
+    background-size: 20px;
+    width: 430px;
+    height: 35px;
+    border-radius: 50px;
+    font-size: 16px;
+    border: 0;
+    padding: 10px;
+}
+.search-control:focus{
+    outline: none !important;
+    box-shadow: 0 0 8px var(--sdColor);
+}
+.link-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: auto;
+    /* background-color: red; */
+}
+
+.login-link{
+    text-align: end;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--white);
+    font-size: 18px;
+    font-family: 'Poppins';
+}
+.artistBtn{
+    border-radius: 50px;
+    border: 0;
+    font-family: 'Poppins';
+    font-weight: 700;
+    width: 160px;
+    height: 35px;
+    /* padding: 10px;+- */
+    font-size: 14px;
+}
+.artistBtn:hover{
+    transition: 0.3s;
+    box-shadow: 0 0 8px var(--sdColor);
+}
+
+.accountUser{
+    background-color: #11131b00;
+    border: 0;
+}.accountUser img{
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+@media screen and (max-width: 1054px) {
+    .link-container{
+        display: none !important;
+        /* background-color: rgb(72, 255, 0); */
+    }
+    .navbar{
+        padding: 0;
+    }
+    .form-inline{
+        margin: 0 auto;
+    }
+    .search-control{
+        margin: 0 auto;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 578px) {
+    .navbar{
+        padding: 10px;
+    }
+    .form-inline{
+        width: 100%;
+    }
+    .search-control{
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+@media screen and (max-width: 476px) {
+    .navbar{
+        padding-right: 10px !important; 
+        padding-left: 10px !important;
+    }
+    .form-inline{
+        width: 100%;
+    }
+    .search-control{
+        margin: 0 auto;
+        width: 100%;
+    }
+}
