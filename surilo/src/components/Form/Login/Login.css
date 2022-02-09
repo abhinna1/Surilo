@@ -20,8 +20,8 @@ body{
 }
 
 .semi-container{
-    width: 450px;
-    height: 70vh;
+    width: 430px !important;
+    height: 70vh !important;
     background-color: #1B1C22;
     box-shadow: 0px 0px 4px 4px #777;
     border-radius: 10px;
@@ -62,8 +62,8 @@ body{
     font-family: 'Poppins';
 }
 .reg-btn{
-    width: 150px;
-    height: 55px;
+    width: 130px !important;
+    height: 45px !important;
     border-radius: 50px;
     background-color: #E68415;
     color: white;
