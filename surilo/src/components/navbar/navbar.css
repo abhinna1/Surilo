@@ -10,13 +10,15 @@
     border:0;
 }
 
-.navbar{
-    width: 100%;
+.navCtn{
+    position: fixed;
+    width: 85%;
     height: 80px;
+    right: 0;
     background-color: var(--navbar);
     z-index: 99999999999;
-    padding-right: 50px !important; 
-    padding-left: 50px !important;
+    padding-right: 20px !important; 
+    padding-left: 20px !important;
 }
 
 
@@ -57,13 +59,23 @@
     border: 0;
     font-family: 'Poppins';
     font-weight: 700;
-    width: 180px;
-    padding: 10px;
-    font-size: 16px;
+    width: 160px;
+    height: 35px;
+    /* padding: 10px;+- */
+    font-size: 14px;
 }
 .artistBtn:hover{
     transition: 0.3s;
     box-shadow: 0 0 8px var(--sdColor);
+}
+
+.accountUser{
+    background-color: #11131b00;
+    border: 0;
+}.accountUser img{
+    position: relative;
+    width: 30px;
+    height: 30px;
 }
 
 @media screen and (max-width: 1054px) {
@@ -97,8 +109,8 @@
 }
 @media screen and (max-width: 476px) {
     .navbar{
-        padding-right: 25px !important; 
-        padding-left: 25px !important;
+        padding-right: 10px !important; 
+        padding-left: 10px !important;
     }
     .form-inline{
         width: 100%;

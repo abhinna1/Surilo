@@ -52,15 +52,16 @@ body{
     border: 0.2px solid rgb(255, 255, 255);
 }
 
-.logo-cont{
+.logo-contL{
     width: 250px;
     height: 56px;
     margin: 0 0 40px 0;
 }
-.logo-cont img{
+.logo-contL img{
     width: 100%;
     height: inherit;
     /* background-color: red; */
+    margin: 0 auto;
 }
 
 .slogan h1{
@@ -144,6 +145,10 @@ body{
 .regBtn-ctn{
     padding-top: 30px ;
     text-align: center;
+}
+.btn-ctn button{
+    border: 0;
+
 }
 
 .reg-btn{

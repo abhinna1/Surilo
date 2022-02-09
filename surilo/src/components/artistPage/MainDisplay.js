@@ -1,8 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from '../Home/Navbar';
+import Navbar from '../navbar/Navbar';
 import './MainDisplay.css';
 import yabesh from '../img/yabesh.jpg'
-import LeftSidebar from '../Home/LeftSidebar';
+import LeftSidebar from '../leftSidebar/LeftSidebar';
 import playBtn from '../img/playBtn.png'
 import MusicBar from '../musicBar/MusicBar'
 

@@ -29,12 +29,6 @@ body{
 
 
 
-.logo-cont{
-    width: 250px;
-    height: 56px;
-
-}
-
 
 .label-ctn{
     margin: 0 auto;
@@ -88,6 +82,9 @@ body{
 .regBtn-ctn{
     padding-top: 20px ;
     text-align: center;
+}
+.regBtn-ctn button{
+    border: 0 !important;
 }
 
 

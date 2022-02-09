@@ -122,7 +122,7 @@ export default function InfoReg(){
 
             <div className='d-flex flex-column justify-content-center align-items-center'>     
             {step===1 &&<section className='d-flex flex-column justify-content-center align-items-center'>
-                <div className="logo-cont">
+                <div className="logo-contL">
                     <img src={logo} alt="Surilo Logo" />
                 </div>
                 <div className="slogan text-center">
@@ -178,7 +178,7 @@ export default function InfoReg(){
             </section>}
                            
             {step===2 && <section>  
-                <div className="logo-cont">
+                <div className="logo-contL">
                     <img src={logo} alt="Surilo Logo" />
                 </div>
                 <div className="slogan text-center">
