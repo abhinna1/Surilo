@@ -1,5 +1,6 @@
 import './MusicBar.css'
 import pause from '../img/pause.png'
+import playIco from '../img/playIco.png'
 import next from '../img/next.png'
 import prev from '../img/prev.png'
 import shuffle from '../img/shuffle.png'
@@ -8,6 +9,11 @@ import lakhau from '../img/lakhau.jpg'
 import React, {useRef, useState} from 'react'
 import song1 from '../songs/song1.mp3'
 import song2 from '../songs/song2.mp3'
+import VolumeSlider from '../VolumeSlider/VolumeSlider'
+
+const playBtn = require('../img/playIco.png')
+const pauseBtn = require('../img/pause.png')
+const actBtn = { playBtn, pauseBtn }
 
 export default function MusicBar(){
     const [current, setCurrent] = useState([{title:'Pretty Girl', artist:'Nirvish', file: song1}, {title:'Kho Gaye Hum Kahan?', artist:'Prateek Kuhad', file: song2}]);
@@ -15,6 +21,8 @@ export default function MusicBar(){
     const [playing, setPlaying] = useState(false);
     const [percent, setPercent] = useState(0);
     const audioRef = useRef();
+
+    const [ppbtn,setPpbutton] = useState(actBtn.playBtn)
     console.log(index)
 
 
@@ -25,10 +33,12 @@ export default function MusicBar(){
     if(!playing){
       audio.play()
       setPlaying(true);
+      setPpbutton(actBtn.pauseBtn)
     }
     else{
       audio.pause();
       setPlaying(false);
+      setPpbutton(actBtn.playBtn)
     }
     
   }
@@ -100,10 +110,13 @@ export default function MusicBar(){
             <audio ref={audioRef} src={current[index].file}onTimeUpdate={onChange} name={current[index].title}></audio>
             <div className="musicControl">
               <button onClick={onPrev}><img src={prev} alt="" /></button>
-              <button onClick={()=>togglePlay()}><img src={pause} alt="" /></button>
+              <button onClick={()=>togglePlay()}><img src={ppbtn} alt="" /></button>
               <button onClick={onNext}><img src={next} alt="" /></button>
             </div>
         </div>
+      </div>
+      <div>
+        <VolumeSlider></VolumeSlider>
       </div>
       <div className='songAction'>
         <img src={shuffle} alt=""/>
