@@ -31,7 +31,7 @@ class App extends React.Component {
 
           <Route path ="/musicform">
             <MusicForm/> 
-            {/* <MusicBar/>  */}
+            <MusicBar/> 
           </Route>
 
           <Route path ="/">

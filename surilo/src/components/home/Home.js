@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../navbar/Navbar'
-import PopularArtist from './playlist/PopularArtist';
-import './homeStyle.css';
 import LeftSidebar from '../leftSidebar/LeftSidebar';
-import yabesh from '../img/yabesh.jpg'
-import MusicBar from '../musicBar/MusicBar'
+import PopularArtist from './playlist/PopularArtist';
 import SongDisplay from '../songDisplay/SongDisplay';
+import MusicBar from '../musicBar/MusicBar'
+import './homeStyle.css';
+import yabesh from '../img/yabesh.jpg'
 import { useState, useEffect } from 'react';
 
 import PlaylistCarousel from './playlistCarousel';

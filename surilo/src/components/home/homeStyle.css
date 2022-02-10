@@ -41,18 +41,22 @@
   }
 
 .homeContainer{
+    width: 100%;
+    height: 100vh;
     overflow-x: hidden;
     display: flex;
     justify-content: space-between;
+    /* background-color: RED; */
 }
 .contentContainer{
     width: 85%;
-
+    height: auto;
     background-color: var(--mainBg);
     /* height: 100vh; */
 }
 .innerContainer{
     width: 100%;
+    height: auto;
     padding-top: 80px;
     padding-bottom: 70px;
     /* background-color: red; */
