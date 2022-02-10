@@ -3,12 +3,13 @@ import home from '../img/home.png'
 import love from '../img/love.png'
 import smallLogo from '../img/smallLogo.png'
 import playlist from '../img/playlist.png'
-import './homeStyle.css'
+// import './homeStyle.css'
+import './leftSidebar.css'
 import { Link } from 'react-router-dom';
 
 const LeftSidebar = () => {
     return ( 
-        <div className="d-flex flex-column justify-content-start pt-3">
+        <div className="leftSidebar d-flex flex-column justify-content-start pt-3">
         <div className="logo-cont">
         <Link className='bigLogo' to="/home"><img src={logo} alt="" /></Link> 
         <Link className='smallLogo' to="/home"><img src={smallLogo} alt="" /></Link> 

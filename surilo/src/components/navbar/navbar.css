@@ -10,13 +10,14 @@
     border:0;
 }
 
-.navbar{
-    width: 100%;
+.navCtn{
+    position: fixed;
+    width: 85%;
     height: 80px;
+    right: 0;
     background-color: var(--navbar);
     z-index: 99999999999;
-    padding-right: 50px !important; 
-    padding-left: 50px !important;
+
 }
 
 
@@ -30,6 +31,7 @@
     font-size: 16px;
     border: 0;
     padding: 10px;
+    margin-left: 20px;
 }
 .search-control:focus{
     outline: none !important;
@@ -58,16 +60,26 @@
     border: 0;
     font-family: 'Poppins';
     font-weight: 700;
-    width: 180px;
-    padding: 10px;
-    font-size: 16px;
+    width: 160px;
+    height: 35px;
+    /* padding: 10px;+- */
+    font-size: 14px;
 }
 .artistBtn:hover{
     transition: 0.3s;
     box-shadow: 0 0 8px var(--sdColor);
 }
 
-@media screen and (max-width: 1054px) {
+.accountUser{
+    background-color: #11131b00;
+    border: 0;
+}.accountUser img{
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+@media screen and (max-width: 598px) {
     .link-container{
         display: none !important;
         /* background-color: rgb(72, 255, 0); */
@@ -85,27 +97,25 @@
 }
 
 @media screen and (max-width: 578px) {
-    .navbar{
-        padding: 10px;
-    }
+
     .form-inline{
         width: 100%;
     }
     .search-control{
         margin: 0 auto;
-        width: 100%;
+        width: 90%;
     }
 }
 @media screen and (max-width: 476px) {
     .navbar{
-        padding-right: 25px !important; 
-        padding-left: 25px !important;
+        padding-right: 20px !important; 
+        padding-left: 20px !important;
     }
     .form-inline{
         width: 100%;
     }
     .search-control{
         margin: 0 auto;
-        width: 100%;
+        width:90%;
     }
 }

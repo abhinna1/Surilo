@@ -35,6 +35,7 @@ const App = ()=>{
 
           <Route path ="/musicform">
             <MusicForm/> 
+            <MusicBar/> 
           </Route>
 
           <Route path ="/">

@@ -1,5 +1,6 @@
 import './MusicBar.css'
 import pause from '../img/pause.png'
+import playIco from '../img/playIco.png'
 import next from '../img/next.png'
 import prev from '../img/prev.png'
 import shuffle from '../img/shuffle.png'
@@ -7,6 +8,12 @@ import repeatimg from '../img/repeat.png'
 import lakhau from '../img/lakhau.jpg'
 import React, {useState, useRef, useContext, useEffect} from 'react'
 import playerContext from '../PlayerContext/playerContext'
+import VolumeSlider from '../VolumeSlider/VolumeSlider'
+import volume from '../img/volume.png'
+
+const playBtn = require('../img/playIco.png')
+const pauseBtn = require('../img/pause.png')
+const actBtn = { playBtn, pauseBtn }
 
 export default function MusicBar(){
 
@@ -29,7 +36,25 @@ export default function MusicBar(){
     const [percent, setPercent] = useState(0);
     const audioRef = useRef();
 
+    const [ppbtn,setPpbutton] = useState(actBtn.playBtn)
 
+
+  // Toggle pause and play
+  function togglePlay(e){
+    const audio = audioRef.current;
+    // audio.currentTime=260;
+    if(!playing){
+      audio.play()
+      togglePlay();
+      setPpbutton(actBtn.pauseBtn)
+    }
+    else{
+      audio.pause();
+      togglePlay();
+      setPpbutton(actBtn.playBtn)
+    }
+    
+  }
 
   function onChange(e){
     const percent = ((e.currentTarget.currentTime / e.currentTarget.duration) * 100).toFixed(2)
@@ -103,20 +128,28 @@ export default function MusicBar(){
               <audio ref={audioRef} src={`./Music_Uploads/${songslist[currentSong].file}`} paused='true' onLoad={()=>{console.log('loaded')}} onTimeUpdate={onChange} onEnded={handleNext}></audio>
               <div className="musicControl">
                 <button onClick={handlePrev}><img src={prev} alt="" /></button>
-                <button onClick={handlePlay}><img src={pause} alt="" /></button>
+                <button onClick={()=>togglePlay()}><img src={handlePlay} alt="" /></button>
                 <button onClick={handleNext}><img src={next} alt="" /></button>
               </div>
           </div>
         </div>
-        <div className='songAction'>
-          <img src={shuffle} alt=""/>
-          <img src={repeatimg} alt="" />
-        </div>
-        
-        
+
+
+      <div className='volumeCtn d-flex align-items-center justify-content-center'>
+        <img src={volume} alt="" />
+
       </div>
-    )
-  
+        <div className='SliderCtn'>
+          <VolumeSlider></VolumeSlider>
+        </div>
+      <div className='songAction'>
+        <img src={shuffle} alt=""/>
+        <img src={repeatimg} alt="" />
+      </div>
+      
+      
+    </div>
+  )
 }
 
 

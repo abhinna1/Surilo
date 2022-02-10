@@ -1,0 +1,213 @@
+.pageTitle{
+    color: #fff;
+    margin: 0;
+    padding-left: 20px;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    text-align: center;
+    width: 120px;
+    height: 35px;
+    background-color: #fff;
+    border: 0;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.file-uploaded {
+    text-align: center;
+    width: 140px;
+    height: 35px;
+    background-color: rgb(172, 172, 172);
+    color: #000;
+    border: 0;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+
+.hide{
+    display: none!important;
+}
+
+.form-container form{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    text-align: left;
+    width: 50%;
+    height: auto;
+    padding: 20px;
+
+    /* background-color: red; */
+}
+
+.importMusic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #fff;
+    border-style: dashed;
+}
+.WelcomeCtn{
+    color: #fff;
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* background-color: yellow; */
+    height: 300px;
+}
+.WelcomeCtn h3{
+    font-weight: 500;
+}
+.MusicInfo{
+    display: flex;
+    width: 100%;
+
+    height: 250px;
+    /* background-color: pink; */
+}
+
+.coverMusicCtn{
+    padding: 5px;
+    flex: 1;
+    /* background-color: red; */
+}
+.coverMusic{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+.coverBtnHolder{
+    position: absolute;
+    width: 100%;
+    background-color: black;
+    border-radius:  0 0 10px 10px;
+    height: 45px;
+    bottom: 0;
+}
+
+.trackInfoCtn{
+    padding-top: 30px;
+    flex:2;
+}
+.trackInfoCtn h4{
+    margin-bottom: 20px;
+}
+.trackInfoCtn div{
+    margin-bottom: 20px;
+}
+.musicTitleInp{
+    width: 100%;
+    height:45px;
+    border-radius: 5px;
+    border: 0;
+
+    color: rgb(0, 0, 0);
+    padding: 0 10px;
+}
+
+.GenreAlbumCtn{
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.GenreAlbumCtn div{
+    flex:1;
+}
+.selectInp div{
+    height:45px;
+}
+.uploadTitleCtn{
+    width: 100%;
+    border-radius: 5px;
+    color: rgb(206, 206, 206);
+    font-size: 14px;
+    background-color: rgb(62, 63, 63);
+    height: 45px;
+}
+.uploadTitle{
+    margin-left: 10px;
+}
+.closeBtn{
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: rgba(255, 0, 0, 0.0);
+}
+.closeBtn img{
+    width: 20px;
+    height: 20px;
+}
+.Uploadbutton {
+    width: 130px;
+    height: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-top: 20px;
+    font-weight: 600;
+    }
+  
+  .Uploadbutton:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+
+@media screen and (max-width: 769px) {
+    .form-container form{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 567px) {
+    .WelcomeCtn h5{
+        font-size: 16px
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .form-container form{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 320px) {
+    .WelcomeCtn h5{
+        font-size: 12px
+    }
+}
+
+

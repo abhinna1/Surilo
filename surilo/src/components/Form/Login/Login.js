@@ -2,10 +2,11 @@ import React from 'react';
 import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "../images/surilo2.png";
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Axios from 'axios';
 import { GoogleLogin } from 'react-google-login';
 import { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 
 export default function Login(){
@@ -14,6 +15,7 @@ export default function Login(){
     const [password,setpassword] =useState("");
 
 
+    const history = useHistory();
     const postData = () => {
         Axios.post("/login",{
             email : email,
@@ -22,6 +24,7 @@ export default function Login(){
             console.log(response.data)
             if (response.data.found==true){
                 localStorage.setItem('user', JSON.stringify(response.data.data))
+                history.push("/");
             }
             else {
                 localStorage.clear();
@@ -39,7 +42,7 @@ export default function Login(){
             <div className='semi-container d-flex flex-column justify-content-center align-items-center'>
 
             
-            <div class="logo-cont">
+            <div class="logo-contL">
                 <img src={logo} alt="Surilo Logo" />
             </div>
             

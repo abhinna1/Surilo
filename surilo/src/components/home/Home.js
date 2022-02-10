@@ -1,13 +1,13 @@
 import React from 'react';
 import { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './Navbar'
+import Navbar from '../navbar/Navbar'
+import LeftSidebar from '../leftSidebar/LeftSidebar';
 import PopularArtist from './playlist/PopularArtist';
-import './homeStyle.css';
-import LeftSidebar from './LeftSidebar';
-import yabesh from '../img/yabesh.jpg'
-import MusicBar from '../musicBar/MusicBar'
 import SongDisplay from '../songDisplay/SongDisplay';
+import MusicBar from '../musicBar/MusicBar'
+import './homeStyle.css';
+import yabesh from '../img/yabesh.jpg'
 import { useState, useEffect } from 'react';
 import playerContext from '../PlayerContext/playerContext' 
 import PlaylistCarousel from './playlistCarousel';
@@ -80,14 +80,13 @@ const Home = () => {
     return ( 
 
        <div className='homeContainer'>
-                <div className='leftSidebar d-flex justify-content-center'>
-                    <LeftSidebar></LeftSidebar>
-                </div>
+           <div>
+               <LeftSidebar></LeftSidebar>
+           </div>
                 <div className='contentContainer d-flex flex-column'>
-                    <div className="row padding-nav">
                     <Navbar></Navbar>
-                    </div>
-                    <div className='innerContent'> 
+                    <div className="innerContainer">
+
                         <div className="playlist row">
                         <h6 className='playListTitle'>Popular Artist</h6>
                         <div className='album d-flex'>
@@ -101,7 +100,7 @@ const Home = () => {
                                 <PlaylistCarousel></PlaylistCarousel>
                             </div>
                             <div className='TrendingTracksCtn'>
-                            <h6 className='playListTitle'>Trending this week</h6>
+                            <h6 className='playListTitle l-padding'>Trending this week</h6>
                             <div className="trendList">
                                 {getWeeklyHits(weeklyHits)}
                             </div>
@@ -115,11 +114,11 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
+
+                    </div>
                         
                     </div>   
 
-
-                </div>
 
            
      );
