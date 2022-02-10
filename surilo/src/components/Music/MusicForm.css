@@ -105,14 +105,14 @@ input[type="file"] {
     bottom: 0;
 }
 
-.trackInfo{
+.trackInfoCtn{
     padding-top: 30px;
     flex:2;
 }
-.trackInfo h4{
+.trackInfoCtn h4{
     margin-bottom: 20px;
 }
-.trackInfo div{
+.trackInfoCtn div{
     margin-bottom: 20px;
 }
 .musicTitleInp{

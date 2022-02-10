@@ -10,6 +10,7 @@ import React, {useRef, useState} from 'react'
 import song1 from '../songs/song1.mp3'
 import song2 from '../songs/song2.mp3'
 import VolumeSlider from '../VolumeSlider/VolumeSlider'
+import volume from '../img/volume.png'
 
 const playBtn = require('../img/playIco.png')
 const pauseBtn = require('../img/pause.png')
@@ -115,9 +116,13 @@ export default function MusicBar(){
             </div>
         </div>
       </div>
-      <div>
-        <VolumeSlider></VolumeSlider>
+      <div className='volumeCtn d-flex align-items-center justify-content-center'>
+        <img src={volume} alt="" />
+
       </div>
+        <div className='SliderCtn'>
+          <VolumeSlider></VolumeSlider>
+        </div>
       <div className='songAction'>
         <img src={shuffle} alt=""/>
         <img src={repeat} alt="" />

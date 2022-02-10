@@ -7,7 +7,7 @@
     padding: 10px;
     border-radius: 5px;
     background-color: #010c16;
-    box-shadow: rgba(218, 218, 218, 0.481) 0px 1px 1px, rgba(218, 218, 218, 0.481) 0px 2px 2px, rgba(218, 218, 218, 0.481) 0px 4px 4px, rgba(218, 218, 218, 0.481) 0px 8px 8px, rgba(218, 218, 218, 0.481) 0px 8px 8px;
+
 }
 
 .accountDropdown h6{
@@ -34,6 +34,7 @@
     background-color: rgb(255, 255, 255);
     color: #010c16;
     border-radius: 5px;
+    padding-left: 10px;
   }
 
   .accountDropdown a:last-child{
@@ -56,4 +57,5 @@
     background-color: rgb(255, 255, 255);
     color: #010c16;
     border-radius: 5px;
+    padding-left: 0;
   }

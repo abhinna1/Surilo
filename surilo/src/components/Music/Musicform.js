@@ -104,7 +104,7 @@ export default function MusicForm(){
                 {getSongName()}
                 
                 {fileuploaded?<div className="MusicInfo">
-                    <div className="trackInfo">
+                    <div className="trackInfoCtn">
                     <h4>Song Description</h4>
 
                     <div>
