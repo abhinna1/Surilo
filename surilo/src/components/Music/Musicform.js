@@ -23,6 +23,7 @@ export default function MusicForm(){
     }
     function handleFile(e){
         setFile(e.target.files[0]);
+        console.log(file)
     }
 
     async function loadOptions(inputText, callback){

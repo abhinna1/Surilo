@@ -1,3 +1,5 @@
+import React from 'react';
+import { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './Navbar'
 import PopularArtist from './playlist/PopularArtist';
@@ -7,10 +9,13 @@ import yabesh from '../img/yabesh.jpg'
 import MusicBar from '../musicBar/MusicBar'
 import SongDisplay from '../songDisplay/SongDisplay';
 import { useState, useEffect } from 'react';
-
+import playerContext from '../PlayerContext/playerContext' 
 import PlaylistCarousel from './playlistCarousel';
 import axios from 'axios';
 import { data } from 'jquery';
+
+
+
 
 const Home = () => {
     
@@ -18,16 +23,24 @@ const Home = () => {
 
     const[weeklyHits, setWeeklyHits] = useState([]);
 
+    const { songs_list, currentSong, setCurrent } = useContext(playerContext)
+
+    function getBar(){
+        if(songs_list.length>0){
+            return 
+        }
+    }
 
     useEffect(async ()=>{
+        const music = await axios.get(`/getmusic/9`)
+        console.log();
+        // localStorage.setItem('queue', JSON.stringify([]))
         const user = JSON.parse(localStorage.getItem('user'));
-        console.log(user.id)
         let fetchedData = await axios.get(`/getpopularartist`)
         setArtistDb(fetchedData.data)
 
         let fetchWeeklyHits = await axios.get(`/getweeklyhits`)
         setWeeklyHits(fetchWeeklyHits.data)
-        console.log(weeklyHits)
     }, [])
 
 
@@ -56,21 +69,7 @@ const Home = () => {
     }
 
     const getWeeklyHits = ()=>{
-        let currentIndex = weeklyHits.length,  randomIndex;
-      
-        // While there remain elements to shuffle...
-        while (currentIndex != 0) {
-      
-          // Pick a remaining element...
-          randomIndex = Math.floor(Math.random() * currentIndex);
-          currentIndex--;
-      
-          // And swap it with the current element.
-          [weeklyHits[currentIndex], weeklyHits[randomIndex]] = [
-            weeklyHits[randomIndex], weeklyHits[currentIndex]];
-        }
 
-        // Loop popular artists compnent till array length
         let data = []
 
         weeklyHits.map((i)=>data.push(<SongDisplay hits = {i}></SongDisplay>))

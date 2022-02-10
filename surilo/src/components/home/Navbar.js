@@ -1,5 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './navbar.css';
+import BecomeArtist from '../artistPage/BecomeArtist';
+import { useState } from 'react';
+
+
 
 
 function logout(){
@@ -22,14 +26,43 @@ function getButtons(){
 }
 
 const Navbar = () => {
+    const [buttonPopup, setButtonPopup]= useState(false);
+    
     return ( 
         <div className="navbar d-flex">
 
             <input className="search-control" type="search" placeholder="Songs, podcasts, genre, artists" aria-label="Search"/>
 
             <div className='link-container'>
-                <button className='artistBtn'>Become an artist</button>
                 {getButtons()}
+                <button className='artistBtn' onClick={() => setButtonPopup(true)}>Become an artist</button>
+
+
+                <BecomeArtist trigger={buttonPopup} setTrigger={setButtonPopup}>
+                    <form action="">
+                        <div className='artist-detail'>
+                            <label htmlFor="artistName">Artist Name</label><br />
+                            <input type="text" autocomplete ="off" name="artistname" id="artistName" placeholder='Mister Artist' />
+
+                        </div>
+
+                        <div className='artist-detail'>
+                            <label htmlFor="phoneNumber">Phone Number</label><br />
+                            <input type="tel"name="phoneNumber" autocomplete ="off" placeholder="98********" id="phoneNumber" />
+
+                        </div>
+
+                        <div className='artist-detail'>
+                            <label htmlFor="document">Document</label><br />
+                            <input type="file" accept="image/*" name="document" autocomplete ="off" placeholder='Driving Lisence, Passport or Citizenship' id="document" />
+
+                        </div>
+
+                        <button type="submit" className='sub-btn'> Submit </button>
+
+
+                    </form>
+                </BecomeArtist>
             </div>
         </div>
      );
