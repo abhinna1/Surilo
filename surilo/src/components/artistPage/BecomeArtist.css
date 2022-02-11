@@ -1,0 +1,78 @@
+.becomeArtist {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.801);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.becomeArtist-inner {
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 640px;
+    background-color: #191B1E;
+
+}
+
+.becomeArtist-inner .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+}
+.close-btn{
+
+    width:40px;
+    height: 45px;
+    border-radius: 50px;
+    background-color: #00000000;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    border: 0;
+    margin-top: 0px;
+
+}
+.artist-detail{
+    position: relative;
+    background-color: #00000000;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    border: 0;
+    margin-top: 0px;
+
+
+}
+
+.artist-detail input{
+    width: 50%;
+    height: 45px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #1B1C22;
+    border: 1px solid white;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Poppins';
+
+}
+.sub-btn{
+
+    width: 100px;
+    height: 55px;
+    border-radius: 50px;
+    background-color: #E68415;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    border: 0;
+    margin-top: 30px;
+}

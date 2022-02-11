@@ -34,24 +34,30 @@ app.post('/register',async (req, res)=>{
 // listening for login
 app.post('/login', async(req, res)=>{
     let con = db.getConnection();
+    console.log(req.body)
     con.query(`SELECT * FROM tbl_user where email = '${req.body.email}';`, async function (err, result, fields) {
-        console.log(result[0])
         if (err) throw err;
         const val = result[0];
+        try{
         if((req.body.email==val.email) && (await bcrypt.compare(req.body.password, val.password))){
             res.send({found:true, data:{id:val.UID, username: val.username, email: val.email}});
         }
         else { res.send({found:false, data:{}})};
-    });
+        }
+        catch(e){
+            res.send({found:false, data:{}});
+        }
+    }
+    
+    );
 });
 
 // Listening for creating albums.
 app.post('/addAlbum', async (req, res)=>{
     try{
-        fs.createReadStream( './album_images' )
         const file = req.files.file;
-        const dir = '../surilo/public/album_covers/'
-        const file_name = Math.random() + file.name;
+        const dir = './album_covers/'
+        const file_name = Math.random() + file.name.replace(/\s/g, '');
         const file_location = dir + file_name;
         await file.mv(file_location, (er)=>{if(er)res.send(er); else res.send('uploaded')});
 
@@ -70,6 +76,25 @@ app.get('/getalbum/:id', (req, res)=>{
     con.query(`SELECT * FROM tbl_album WHERE album_name="${req.params.id}";`, function (err, result, fields) {
         if (err) throw err;
         if(result) res.send(result);
+        else res.send({});
+      });
+})
+
+app.get('/getalbummusic/:id', (req, res)=>{
+    let con = db.getConnection();
+    con.query(`SELECT * FROM tbl_album as a, tbl_music as m where a.album_id = m.album_id where album_id=${req.params.id};`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result[0]); res.send(result);}
+        else res.send({});
+      });
+})
+
+app.get('/getmusic/:id', (req, res)=>{
+    let con = db.getConnection();
+
+    con.query(`SELECT file FROM tbl_music WHERE music_id=${req.params.id};`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result[0]); res.send(result);}
         else res.send({});
       });
 })
@@ -95,13 +120,12 @@ app.get('/getweeklyhits', (req, res)=>{
 
 app.post('/addMusic', async (req, res)=>{
     try{
-        fs.createReadStream( './album_images' )
         const file = req.files.file;
         const dir = '../surilo/public/Music_Uploads/'
-        const file_name = Math.random() + file.name;
+        const file_name = Math.random() + file.name.replace(/\s/g, '');
         const file_location = dir + file_name;
+        console.log(file_location)
         await file.mv(file_location, (er)=>{if(er)res.send(er); else res.send('uploaded')});
-
         const data = {title:req.body.title, genre_id:req.body.genre_id, album_id:req.body.album_id, file:file_name}
         db.insertMusic(data);
     }
