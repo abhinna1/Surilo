@@ -9,7 +9,7 @@ const PopularArtist = (props) => {
     return ( 
         <div className="artistDisplay d-flex flex-column">
             <div className="coverArt">
-            <Link to='/artistDisplay'><img src={`./artist_profiles/abhinna.png`} alt="" /></Link>
+            <Link to={`/artistDisplay?artist=${artists.artist_id}`}><img src={`./artist_profiles/abhinna.png`} alt="" /></Link>
             </div>
             <div className="artistName">
                 <h6>{artists.artist_name}</h6>

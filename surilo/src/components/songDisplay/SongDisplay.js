@@ -3,7 +3,8 @@ import playTrack from '../img/playTrack.png'
 import threeDot from '../img/threeDot.png'
 import './SongDisplay.css'
 import playerContext from '../PlayerContext/playerContext' 
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+import { data } from 'jquery'
 
 
 function popDropdown(){
@@ -15,6 +16,8 @@ function popDropdown(){
 
 const SongDisplay = (props) => {
     const hits = props.hits;
+    
+    const [dur, setDur] = useState(new Audio(`./Music_Uploads/${hits.file}`));
 
     const { songslist, currentSong, setCurrent, setSong} = useContext(playerContext)
 
@@ -37,7 +40,7 @@ const SongDisplay = (props) => {
             </div>
             <div className='durationCtn'>
                 <h5 className='headerTitle'>
-                    2:59
+                    {dur.duration}
                 </h5>
             </div>
         {/* <div className='favCtn'>

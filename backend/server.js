@@ -94,7 +94,29 @@ app.get('/getmusic/:id', (req, res)=>{
 
     con.query(`SELECT file FROM tbl_music WHERE music_id=${req.params.id};`, function (err, result, fields) {
         if (err) throw err;
-        if(result) {console.log(result[0]); res.send(result);}
+        if(result) {console.log(result); res.send(result);}
+        else res.send({});
+      });
+})
+
+
+app.get('/getartistdata/:id', (req, res)=>{
+    let con = db.getConnection();
+
+    con.query(`SELECT * FROM tbl_artist WHERE artist_id=${req.params.id};`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result); res.send(result);}
+        else res.send({});
+      });
+})
+
+
+app.get('/getArtistMusics/:id', (req, res)=>{
+    let con = db.getConnection();
+
+    con.query(`SELECT * FROM tbl_music as m, tbl_album as a WHERE a.album_id = m.album_id and a.artist_id=${req.params.id};`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result); res.send(result);}
         else res.send({});
       });
 })

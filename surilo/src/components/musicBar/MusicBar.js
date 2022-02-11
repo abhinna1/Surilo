@@ -78,6 +78,7 @@ export default function MusicBar(){
   }
 
   async function handleNext(){
+    setPercent(0)
     if(currentSong<songslist.length-1){
       audioRef.current.pause();
       setCurrent(currentSong+1);
@@ -90,6 +91,7 @@ export default function MusicBar(){
   }
 
   async function handlePrev(){
+    setPercent(0)
     if(currentSong!=0){
       audioRef.current.pause();
       setCurrent(currentSong-1);
@@ -123,7 +125,7 @@ export default function MusicBar(){
           <h6 className='songTitleSm'>{}</h6>
           <div id="seekObjContainer">
               <div id="timeline1">
-                  <input type="range" id="seekObj1" step='0.01' onChange={seek}/>
+                  <input type="range" id="seekObj1" step='0.01' onChange={seek} value={percent}/>
               </div>
               
               <audio ref={audioRef} src={`./Music_Uploads/${songslist[currentSong].file}`} paused='true' onLoad={()=>{console.log('loaded')}} onTimeUpdate={onChange} onEnded={handleNext}></audio>

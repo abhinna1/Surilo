@@ -35,7 +35,6 @@ const Home = () => {
         const music = await axios.get(`/getmusic/9`)
         console.log();
         // localStorage.setItem('queue', JSON.stringify([]))
-        const user = JSON.parse(localStorage.getItem('user'));
         let fetchedData = await axios.get(`/getpopularartist`)
         setArtistDb(fetchedData.data)
 
@@ -84,7 +83,7 @@ const Home = () => {
                <LeftSidebar></LeftSidebar>
            </div>
                 <div className='contentContainer d-flex flex-column'>
-                    <Navbar></Navbar>
+                    
                     <div className="innerContainer">
 
                         <div className="playlist row">
