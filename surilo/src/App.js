@@ -12,6 +12,12 @@ import MusicForm from './components/Music/Musicform';
 import PlayerState from './components/PlayerContext/playerState';
 import playerContext from './components/PlayerContext/playerContext';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Dashboard from './AdminPanel/components/Dashboard/Dashboard'
+import MusicPanel from './AdminPanel/components/MusicPanel/MusicPanel'
+import ArtistPanel from './AdminPanel/components/ArtistPanel/ArtistPanel'
+
 
 const App = ()=>{
 
@@ -48,6 +54,18 @@ const App = ()=>{
               <MusicBar/> 
             </Route>
 
+
+            <Route path="/admin/dashboard">
+              <Dashboard/>
+            </Route>
+
+            <Route path="/admin/artistpanel">
+              <ArtistPanel/>
+            </Route>
+
+            <Route path="/admin/songpanel">
+              <MusicPanel/>
+            </Route>
         </Switch>
       </PlayerState>
     </div>

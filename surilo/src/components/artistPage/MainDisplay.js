@@ -56,7 +56,9 @@ const MainDisplay = () => {
                                 </div>
     
                             <div className="two">
-                                <div className="artistTitle"></div>
+                                <div className="artistTitle">
+                                    <h1>Yabesh Thapa</h1>
+                                </div>
                                 <div className="artistDesc">
                                     <p> Nulla ultricies a leo sed aliquet. Proin pellentesque sapien nec faucibus tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare lacinia mi in suscipit.</p>
                                 </div>
@@ -67,7 +69,9 @@ const MainDisplay = () => {
                             </div>
                         </div>
                     </div>
-                    <Header></Header>
+                    <div className='Tableheader'>
+                        <Header></Header>
+                    </div>
                       <div className='songDisplayCtn'>
                           {getArtistMusic()}
                       {/* <SongDisplay></SongDisplay> */}

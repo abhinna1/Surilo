@@ -16,6 +16,7 @@ const pauseBtn = require('../img/pause.png')
 const actBtn = { playBtn, pauseBtn }
 
 export default function MusicBar(){
+  const [isShown, setIsShown] = useState(false);
 
   const{
     currentSong,
@@ -122,11 +123,12 @@ export default function MusicBar(){
           </div>
         </div>
         <div className='musicControlCtn'>
-          <h6 className='songTitleSm'>{}</h6>
           <div id="seekObjContainer">
               <div id="timeline1">
                   <input type="range" id="seekObj1" step='0.01' onChange={seek} value={percent}/>
               </div>
+              </div>
+          <h6 className='songTitleSm'>{songslist[currentSong].title}</h6>
               
               <audio ref={audioRef} src={`./Music_Uploads/${songslist[currentSong].file}`} paused='true' onLoad={()=>{console.log('loaded')}} onTimeUpdate={onChange} onEnded={handleNext}></audio>
               <div className="musicControl">
@@ -134,17 +136,21 @@ export default function MusicBar(){
                 <button onClick={()=>handlePlay()}><img src={ppbtn} alt="" /></button>
                 <button onClick={handleNext}><img src={next} alt="" /></button>
               </div>
-          </div>
+        
         </div>
 
 
       <div className='volumeCtn d-flex align-items-center justify-content-center'>
-        <img src={volume} alt="" />
+        <button onClick={()=>setIsShown(!isShown)} >
+          <img src={volume} alt="" />
+        </button>
 
       </div>
+      {isShown && (
         <div className='SliderCtn'>
           <VolumeSlider></VolumeSlider>
         </div>
+      )}
       <div className='songAction'>
         <img src={shuffle} alt=""/>
         <img src={repeatimg} alt="" />

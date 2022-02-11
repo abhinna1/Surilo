@@ -165,6 +165,10 @@
 .followBtn:focus:not(:active) {
   box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 .125em;
 }
+.songDisplayCtn{
+    background-color: #10131B;
+    padding-left: 20px;
+}
 
 
 
@@ -202,5 +206,8 @@
     .artistImage img{
         width: 150px;
         height: 150px;
+    }
+    .Tableheader{
+        display: none;
     }
 }

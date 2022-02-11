@@ -1,4 +1,11 @@
+.sliderCtn{
+    width: 30px;
+    height: 120px;
+
+}
+
 .VolumeSlider{
     height: 3px;
+    margin-left: -50px;
     transform: rotate(270deg);
 }

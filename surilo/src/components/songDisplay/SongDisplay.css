@@ -161,10 +161,13 @@
     }
 
     .trackInfo h6:first-child{
-        font-size: 13px;
+        width: 130%;
+        font-size: 12px;
         font-weight: 700;
+        /* background-color: red; */
     }
     .trackInfo h6:nth-child(2){
+        
         font-size: 9px;
     }
     .trackInfo h6:nth-child(3){
@@ -174,6 +177,7 @@
     }
 
     .playCtn .headerTitle{
+        display: none;
         font-size: 12px;
         font-weight: 300;
     }

@@ -83,7 +83,7 @@ const Home = () => {
                <LeftSidebar></LeftSidebar>
            </div>
                 <div className='contentContainer d-flex flex-column'>
-                    
+                    <Navbar></Navbar>
                     <div className="innerContainer">
 
                         <div className="playlist row">
