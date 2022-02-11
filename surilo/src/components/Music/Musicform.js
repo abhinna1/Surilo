@@ -36,7 +36,6 @@ export default function MusicForm(){
 
     async function onAlbumChange(e){
         setAlbum(e.value);
-
     }
 
      async function handleFile(e){
