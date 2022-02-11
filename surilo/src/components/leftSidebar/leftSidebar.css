@@ -60,6 +60,9 @@
 .Navlink h6:hover{
     color: rgb(255, 255, 255);
 }
+.smallLogo{
+    display: none;
+}
 
   @media screen and (max-width: 980px) {
       .logo-cont{
