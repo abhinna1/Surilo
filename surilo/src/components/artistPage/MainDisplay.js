@@ -11,15 +11,14 @@ import Header from '../songDisplay/Header';
 
 const MainDisplay = () => {
     return (
-        <div className='homeContainer'>
-                <div className='leftSidebar d-flex justify-content-center'>
-                    <LeftSidebar></LeftSidebar>
-                </div>
+       <div className='homeContainer'>
+           <div>
+               <LeftSidebar></LeftSidebar>
+           </div>
                 <div className='contentContainer d-flex flex-column'>
-
-                <div className="row padding-nav">
                     <Navbar></Navbar>
-                    </div>
+                    <div className="innerContainer">
+
                     <div className='artistCtn'>
                             <div className="artistPrf">
                                 <div className="one">
@@ -39,15 +38,18 @@ const MainDisplay = () => {
                                 </div>
                             </div>
                         </div>
-                        <Header></Header>
-                        <div className='songDisplayCtn'>
-
-                        <SongDisplay></SongDisplay>
-                        </div>
                     </div>
-        </div>
+                    <Header></Header>
+                      <div className='songDisplayCtn'>
 
-        </div>
+                      <SongDisplay></SongDisplay>
+                      </div>
+
+                    </div>
+                    </div>
+                        
+                    </div>   
+
     )
 }
 

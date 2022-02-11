@@ -38,7 +38,7 @@ const App = ()=>{
             <MusicBar/> 
           </Route>
 
-          <Route path ="/">
+          <Route path ="/home">
             <Home/>
             <MusicBar/> 
 
