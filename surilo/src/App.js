@@ -45,7 +45,6 @@ const App = ()=>{
           </Route>
             <Route path="/artistDisplay">
               <MainDisplay/>
-              
               <MusicBar/> 
             </Route>
 

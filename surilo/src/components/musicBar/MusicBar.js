@@ -46,12 +46,11 @@ export default function MusicBar(){
     if(!playing){
       audio.play()
       togglePlay();
-      setPpbutton(actBtn.pauseBtn)
     }
     else{
       audio.pause();
       togglePlay();
-      setPpbutton(actBtn.playBtn)
+     
     }
     
   }
@@ -69,9 +68,11 @@ export default function MusicBar(){
 
     if(audioRef.current.paused){
       audioRef.current.play()
+      setPpbutton(actBtn.pauseBtn)
     }
     else{
       audioRef.current.pause()
+      setPpbutton(actBtn.playBtn)
     }
     togglePlaying();  
   }
@@ -128,7 +129,7 @@ export default function MusicBar(){
               <audio ref={audioRef} src={`./Music_Uploads/${songslist[currentSong].file}`} paused='true' onLoad={()=>{console.log('loaded')}} onTimeUpdate={onChange} onEnded={handleNext}></audio>
               <div className="musicControl">
                 <button onClick={handlePrev}><img src={prev} alt="" /></button>
-                <button onClick={()=>togglePlay()}><img src={handlePlay} alt="" /></button>
+                <button onClick={()=>handlePlay()}><img src={ppbtn} alt="" /></button>
                 <button onClick={handleNext}><img src={next} alt="" /></button>
               </div>
           </div>
