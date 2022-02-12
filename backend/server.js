@@ -121,6 +121,43 @@ app.get('/getArtistMusics/:id', (req, res)=>{
       });
 })
 
+app.get('/getUserData', (req, res)=>{
+    let con = db.getConnection();
+
+    con.query(`SELECT * FROM tbl_user;`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result); res.send(result);}
+        else res.send({});
+      });
+})
+app.get('/getArtistData', (req, res)=>{
+    let con = db.getConnection();
+
+    con.query(`SELECT * FROM tbl_artist;`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result); res.send(result);}
+        else res.send({});
+      });
+})
+app.get('/getMusicData', (req, res)=>{
+    let con = db.getConnection();
+    // , tbl_genre as g where m.genre_id= g.genre_id
+    con.query(`SELECT * FROM tbl_music as m , tbl_album as a where m.album_id= a.album_id;`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result); res.send(result);}
+        else res.send({});
+      });
+})
+app.get('/getAlbumData', (req, res)=>{
+    let con = db.getConnection();
+    // , tbl_genre as g where m.genre_id= g.genre_id
+    con.query(`SELECT * FROM tbl_album as m , tbl_artist as a where m.artist_id= a.artist_id;`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result); res.send(result);}
+        else res.send({});
+      });
+})
+
 app.get('/getpopularartist', (req, res)=>{
     let con = db.getConnection();
 

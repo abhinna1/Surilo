@@ -5,10 +5,10 @@ import yabesh from '../img/yabesh.jpg'
 import LeftSidebar from '../leftSidebar/LeftSidebar';
 import playBtn from '../img/playBtn.png'
 import MusicBar from '../musicBar/MusicBar'
-import axios from 'axios';
 
 import SongDisplay from '../songDisplay/SongDisplay';
 import Header from '../songDisplay/Header';
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 const MainDisplay = () => {
