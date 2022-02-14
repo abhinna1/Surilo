@@ -32,17 +32,19 @@ export default function MusicBar(){
     toggleRandom,
     toggleRepeat,
     handleEnd,
+    setRef
+
   } = useContext(playerContext);
-
     const [percent, setPercent] = useState(0);
-    const audioRef = useRef();
-
+    const audioRef = audio;
     const [ppbtn,setPpbutton] = useState(actBtn.playBtn)
+    
 
 
   // Toggle pause and play
   function togglePlay(e){
     const audio = audioRef.current;
+    
     // audio.currentTime=260;
     if(!playing){
       audio.play()

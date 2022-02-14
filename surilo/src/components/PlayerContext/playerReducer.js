@@ -26,6 +26,16 @@ let playerReducer = (state, action) =>{
                 ...state,
                 playing:action.data,
             }
+        case 'SET_REF':
+            return{
+                ...state,
+                audio: action.data,
+        }
+        case 'TOGGLE_REF':
+            return{
+                ...state,
+                audio: action.data,
+        }
         default:
             return state;
         

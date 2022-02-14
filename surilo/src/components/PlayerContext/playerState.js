@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useRef } from 'react';
 import playerReducer from './playerReducer';
 import playerContext from './playerContext';
 
@@ -16,6 +16,7 @@ const PlayerState = (props)=>{
         repeat: false,
         random: false,
         playing: false,
+        audio: useRef()
     }
     const [state, dispatch] = useReducer(playerReducer, initialState)
 
@@ -25,6 +26,8 @@ const PlayerState = (props)=>{
 
     // set playing state
     const togglePlaying = ()=> dispatch({type:'TOGGLE_PLAYING', data: state.playing ? false: true})
+
+    const setRef = (ref)=>{dispatch({type:'SET_REF', data: state.audio})}
 
     const prevSong = () =>{
         if (state.currentSong === 0){

@@ -19,11 +19,15 @@ const SongDisplay = (props) => {
     
     const [dur, setDur] = useState(new Audio(`./Music_Uploads/${hits.file}`));
 
-    const { songslist, currentSong, setCurrent, setSong} = useContext(playerContext)
+    const { songslist, currentSong, setCurrent, setSong, audio} = useContext(playerContext)
 
-    function handlePlay(){
+    async function handlePlay(){
         setSong(hits);
         setCurrent(currentSong+1)
+        audio.current.pause();
+        setCurrent(currentSong+1);
+        await audio.current.load();
+        audio.current.play();
     }
     
     return( 
