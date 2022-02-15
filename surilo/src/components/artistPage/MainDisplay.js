@@ -19,14 +19,14 @@ const MainDisplay = () => {
     const [artistMusic, setArtistMusic] = useState([]);
 
     const [artistData, setArtistData] = useState([]);
-    const [name, setName] = useState('');
+    const [artistname, setArtistName] = useState('');
     useEffect(()=>{
         async function getDatas(){
             let fetchedData = await axios.get(`/getArtistMusics/${artistId}`)
             setArtistMusic(fetchedData.data)
 
             let fetchedArtistData = await axios.get(`/getArtistData/${artistId}`)
-            setName(fetchedArtistData)
+            setArtistData(fetchedArtistData.data)
         }
         getDatas();
     }, [])
@@ -37,6 +37,11 @@ const MainDisplay = () => {
         return data;
     }
 
+    const getArtistName = ()=>{
+        let data = []
+        artistData.map((i)=>data.push(<h1>{i['artist_name']}</h1>))
+        return data;
+    }
 
     return (
        <div className='homeContainer'>
@@ -57,7 +62,7 @@ const MainDisplay = () => {
     
                             <div className="two">
                                 <div className="artistTitle">
-                                    <h1>Yabesh Thapa</h1>
+                                    <h1>{getArtistName()}</h1>
                                 </div>
                                 <div className="artistDesc">
                                     <p> Nulla ultricies a leo sed aliquet. Proin pellentesque sapien nec faucibus tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare lacinia mi in suscipit.</p>
