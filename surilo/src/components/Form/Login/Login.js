@@ -33,6 +33,8 @@ export default function Login(){
 
     }
 
+   
+
     
 
     return (
@@ -63,7 +65,7 @@ export default function Login(){
                 </div>
                 
                 <div className='regBtn-ctn'>
-                    <button className='reg-btn' type="button" onClick={postData}>Login</button>  
+                    <button className='reg-btn' title="loginButton"type="button" onClick={postData}>Login</button>  
 
                     <h4 className='or'> or </h4>
 
@@ -76,5 +78,8 @@ export default function Login(){
         </div>
     )   
 }
+// export const multiply =(val1,val2) => {
+//     return val1*val2;
+// }
 
 
