@@ -17,6 +17,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from './AdminPanel/components/Dashboard/Dashboard'
 import MusicPanel from './AdminPanel/components/MusicPanel/MusicPanel'
 import ArtistPanel from './AdminPanel/components/ArtistPanel/ArtistPanel'
+import PlaylistPage from './components/PlaylistPage/PlaylistPage';
+import PlaylistTracks from './components/PlaylistPage/PlaylistTracks';
 
 
 const App = ()=>{
@@ -38,6 +40,15 @@ const App = ()=>{
             <AlbumForm/> 
             <MusicBar/> 
           </Route>
+
+          <Route path="/playlist">
+              <PlaylistPage/>
+              <MusicBar/> 
+            </Route>
+            <Route path="/playlistTrack">
+              <PlaylistTracks/>
+              <MusicBar/> 
+            </Route>
 
           <Route path ="/musicform">
             <MusicForm/> 
