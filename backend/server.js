@@ -34,7 +34,6 @@ app.post('/register',async (req, res)=>{
 // listening for login
 app.post('/login', async(req, res)=>{
     let con = db.getConnection();
-    console.log(req.body)
     con.query(`SELECT * FROM tbl_user where email = '${req.body.email}';`, async function (err, result, fields) {
         if (err) throw err;
         const val = result[0];
