@@ -40,7 +40,7 @@ app.post('/login', async(req, res)=>{
         const val = result[0];
         try{
         if((req.body.email==val.email) && (await bcrypt.compare(req.body.password, val.password))){
-            res.send({found:true, data:{id:val.UID, username: val.username, email: val.email}});
+            res.send({found:true, data:{id:val.UID, username: val.username, email: val.email, firstname: val.firstName, lastName: val.lastName, dob: val.dob, profilepic: val.profile_picture}});
         }
         else { res.send({found:false, data:{}})};
         }

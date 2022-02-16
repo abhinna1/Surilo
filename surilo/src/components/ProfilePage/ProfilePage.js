@@ -6,12 +6,14 @@ import react,{useState} from 'react';
 import close from '../img/close.png'
 
 import './ProfilePage.css'
+import { Redirect } from 'react-router';
 
 function ProfilePage(){
     
     let [editClick, setEditClick] = useState(false)
     let [editClose, setEditClose] = useState(false)
     let [previewImg, setPreviewImg] = useState(yabesh)
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
     function openEditfrm(){
         if (editClick == false){
             document.getElementsByClassName("EditPrfForm")[0].style.height = "400px"
@@ -39,6 +41,7 @@ function ProfilePage(){
         const url = URL.createObjectURL(file);
         setPreviewImg(url)
     }
+    if(user){
     return (
         <div className='homeContainer'>
             <div>
@@ -90,26 +93,27 @@ function ProfilePage(){
                                 
                                 <tr>
                                 <th scope="row">Username</th>
-                                <td>utsavprz</td>
+                                <td> {user['username']}</td>
                                 </tr>
                                 <tr>
+
                                 <th scope="row">First Name</th>
-                                <td>Utsav</td>
+                                <td>{user['firstname']}</td>
                                 </tr>
 
                                 <tr>
                                 <th scope="row">Last Name</th>
-                                <td>Prajapati</td>
+                                <td>{user['lastName']}</td>
                                 </tr>
 
                                 <tr>
-                                <th scope="row">Date of birth</th>
-                                <td>March 7, 2002</td>
-                                </tr>   
+                                <th scope="row">DOB</th>
+                                <td>{user['dob']}</td>
+                                </tr>
 
                                 <tr>
                                 <th scope="row">Email</th>
-                                <td>utsavprajapati17@gmail.com</td>
+                                <td>{user['email']}</td>
                                 </tr>
 
 
@@ -152,6 +156,10 @@ function ProfilePage(){
                      </div>
                          
                      </div>   
+    )
+    }
+    return (
+        <Redirect to='/login'/>
     )
 }
 
