@@ -5,6 +5,24 @@
     --navbar:#11131B;
 }
 
+.doctype-input{
+    background: transparent;
+    border: 0;
+}
+.type-option{
+    background: transparent;
+    border: 0;
+}
+
+.user-name{
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.user-image{
+    display:inline-block;
+}
+
 .login-btn{
     background-color: var(--navbar);
     border:0;

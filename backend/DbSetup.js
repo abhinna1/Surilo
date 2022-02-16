@@ -55,6 +55,22 @@ class DbSetup{
             else console.log("Music Added.");
         })
     }
+
+    insertArtist(data){
+        const sql = `insert into tbl_artist (UID, artist_name, document_type, document_image, phone, is_verified) values (?);`;
+        const values = [data.user, data.name, data.doctype, data.file, data.phone, 0]
+        console.log(sql);
+        this.con.query(sql, [values], (err, result)=>{
+            if(err) console.log(err);
+            else console.log("Album Created.");
+        })
+        const updateUserQuery = `update tbl_user set is_artist=1 where UID = ${data.user}`;
+        this.con.query(updateUserQuery, (err, result)=>{
+            if(err) console.log(err);
+            else console.log("Album Created.");
+        })
+        console.log('user table updated');
+    }
     
 } 
 

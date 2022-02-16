@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../navbar/Navbar'
 import LeftSidebar from '../leftSidebar/LeftSidebar';
-import yabesh from '../img/yabesh.jpg'
 import react,{useState} from 'react';
 import close from '../img/close.png'
 
@@ -12,7 +11,7 @@ function ProfilePage(){
     
     let [editClick, setEditClick] = useState(false)
     let [editClose, setEditClose] = useState(false)
-    let [previewImg, setPreviewImg] = useState(yabesh)
+    let [previewImg, setPreviewImg] = useState(null)
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
     function openEditfrm(){
         if (editClick == false){
@@ -36,6 +35,7 @@ function ProfilePage(){
         }
     }
     function handlePreview(e){
+        console.log(e.target.value)
         const file = e.target.files[0];  
         if (!file) return;
         const url = URL.createObjectURL(file);
@@ -67,7 +67,7 @@ function ProfilePage(){
                                 <form className='editFormProfile' action="">
 
                                 <div className='img-col-edit'>
-                                    <img src={previewImg} alt="" />
+                                <img src={`./artist_profiles/${user.profilepic}`} alt="" />
                                     <label id="upldMusic" className="chngImg">
                                     <input
                                      type="file"
@@ -85,7 +85,7 @@ function ProfilePage(){
                              </div>
 
                                 <div className='img-col'>
-                                    <img src={`./artist_profiles/abhinna.png`} alt="" />
+                                    <img src={`./artist_profiles/default_profile.png`} alt="" />
                                 </div>
                             <table className="userInfoTbl table">
                            

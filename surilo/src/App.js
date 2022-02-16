@@ -82,6 +82,7 @@ const App = ()=>{
             <Route path="/account/profile">
               <ProfilePage/>
             </Route>
+            
         </Switch>
       </PlayerState>
     </div>

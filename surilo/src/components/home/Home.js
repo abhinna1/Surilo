@@ -5,24 +5,18 @@ import Navbar from '../navbar/Navbar'
 import LeftSidebar from '../leftSidebar/LeftSidebar';
 import PopularArtist from './playlist/PopularArtist';
 import SongDisplay from '../songDisplay/SongDisplay';
-import MusicBar from '../musicBar/MusicBar'
 import './homeStyle.css';
-import yabesh from '../img/yabesh.jpg'
 import { useState, useEffect } from 'react';
 import playerContext from '../PlayerContext/playerContext' 
 import PlaylistCarousel from './playlistCarousel';
 import axios from 'axios';
-import { data } from 'jquery';
-
-
-
 
 const Home = () => {
     
     const [artistDb, setArtistDb] = useState([]);
 
     const[weeklyHits, setWeeklyHits] = useState([]);
-
+    
     const { songs_list, currentSong, setCurrent } = useContext(playerContext)
 
     useEffect(async ()=>{

@@ -39,7 +39,7 @@ app.post('/login', async(req, res)=>{
         const val = result[0];
         try{
         if((req.body.email==val.email) && (await bcrypt.compare(req.body.password, val.password))){
-            res.send({found:true, data:{id:val.UID, username: val.username, email: val.email, firstname: val.firstName, lastName: val.lastName, dob: val.dob, profilepic: val.profile_picture}});
+            res.send({found:true, data:{id:val.UID, username: val.username, email: val.email, firstname: val.firstName, lastName: val.lastName, dob: val.dob, profilepic: val.profile_picture, is_artist: val.is_artist}});
         }
         else { res.send({found:false, data:{}})};
         }
@@ -196,6 +196,23 @@ app.post('/emailvalidate', (req, res)=>{
       });
 })
 
+// Listening for creating albums.
+app.post('/submitalbumform', async (req, res)=>{
+    try{
+        const file = req.files.file;
+        const dir = './artist_documents/'
+        const file_name = Math.random() + file.name.replace(/\s/g, '');
+        const file_location = dir + file_name;
+        await file.mv(file_location, (er)=>{if(er)res.send(er); else res.send('uploaded')});
+
+        const data = {name:req.body.name, phone:req.body.phone, doctype:req.body.doctype, file: file_name, user:req.body.user}
+        db.insertArtist(data);
+    }
+    catch(e){
+        res.send(e);
+    }
+
+})
 
 
 app.listen(process.env.PORT, (err)=>{if(err)console.log(err); else console.log(`Successfully connected to port ${process.env.PORT}.`)});
