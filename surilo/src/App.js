@@ -19,6 +19,7 @@ import MusicPanel from './AdminPanel/components/MusicPanel/MusicPanel'
 import ArtistPanel from './AdminPanel/components/ArtistPanel/ArtistPanel'
 import PlaylistPage from './components/PlaylistPage/PlaylistPage';
 import PlaylistTracks from './components/PlaylistPage/PlaylistTracks';
+import ProfilePage from './components/ProfilePage/ProfilePage';
 
 
 const App = ()=>{
@@ -76,6 +77,10 @@ const App = ()=>{
 
             <Route path="/admin/songpanel">
               <MusicPanel/>
+            </Route>
+
+            <Route path="/account/profile">
+              <ProfilePage/>
             </Route>
         </Switch>
       </PlayerState>

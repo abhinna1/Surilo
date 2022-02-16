@@ -1,4 +1,5 @@
 import './AccDropdown.css'
+import { Link } from 'react-router-dom';
 
 function logout(){
     localStorage.clear();
@@ -12,10 +13,7 @@ function AccDropdown(props){
 
     <div className='accountDropdown'>
         <h6>{AccUsername}</h6>
-        <a href="{% url 'profile' %}">Account</a>
-        <a href="{% url 'wishlist' %}">Wishlist</a>
-        <a href="{% url 'myOrder' %}">My Order</a>
-        <a href="#">Cancelled Order</a>
+        <Link to="/account/profile">Account</Link>
 
             <button onClick={logout} className='login-btn'><a href="/login" className='login-link'>Logout</a></button>
 
