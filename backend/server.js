@@ -20,7 +20,7 @@ async function getHash(password, saltRounds = 10){
         return await bcrypt.hash(password, salt);
     
     } catch (error) {
-        console.log(error);
+        res.send(error);
     }
     return null;
 };
@@ -34,7 +34,6 @@ app.post('/register',async (req, res)=>{
 // listening for login
 app.post('/login', async(req, res)=>{
     let con = db.getConnection();
-    console.log(req.body)
     con.query(`SELECT * FROM tbl_user where email = '${req.body.email}';`, async function (err, result, fields) {
         if (err) throw err;
         const val = result[0];
@@ -65,7 +64,7 @@ app.post('/addAlbum', async (req, res)=>{
         db.insertAlbum(data);
     }
     catch(e){
-        console.log(e)
+        res.send(e);
     }
 
 })
@@ -84,7 +83,7 @@ app.get('/getalbummusic/:id', (req, res)=>{
     let con = db.getConnection();
     con.query(`SELECT * FROM tbl_album as a, tbl_music as m where a.album_id = m.album_id where album_id=${req.params.id};`, function (err, result, fields) {
         if (err) throw err;
-        if(result) {console.log(result[0]); res.send(result);}
+        if(result) {res.send(result);}
         else res.send({});
       });
 })
@@ -94,7 +93,7 @@ app.get('/getmusic/:id', (req, res)=>{
 
     con.query(`SELECT file FROM tbl_music WHERE music_id=${req.params.id};`, function (err, result, fields) {
         if (err) throw err;
-        if(result) {console.log(result); res.send(result);}
+        if(result) {res.send(result);}
         else res.send({});
       });
 })
@@ -105,7 +104,7 @@ app.get('/getartistdata/:id', (req, res)=>{
 
     con.query(`SELECT * FROM tbl_artist WHERE artist_id=${req.params.id};`, function (err, result, fields) {
         if (err) throw err;
-        if(result) {console.log(result); res.send(result);}
+        if(result) { res.send(result);}
         else res.send({});
       });
 })
@@ -116,10 +115,40 @@ app.get('/getArtistMusics/:id', (req, res)=>{
 
     con.query(`SELECT * FROM tbl_music as m, tbl_album as a WHERE a.album_id = m.album_id and a.artist_id=${req.params.id};`, function (err, result, fields) {
         if (err) throw err;
+        if(result) { res.send(result);}
+        else res.send({});
+      });
+})
+
+app.post('/getplaylists', (req, res)=>{
+    let con = db.getConnection();
+    con.query(`SELECT * from tbl_playlist as p where p.UID = ${req.body.user}`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) { res.send(result);}
+        else res.send({});
+      });
+})
+
+app.get('/getplaylistmusics/:playlist', (req, res)=>{
+    let con = db.getConnection();
+    console.log(`SELECT * FROM tbl_music as m, tbl_playlist as p, playlist_music as pm, tbl_album as a WHERE m.music_id = pm.music_id and p.playlist_id = pm.playlist_id and a.album_id = m.album_id and pm.playlist_id = ${req.params.playlist}`)
+    con.query(`SELECT * FROM tbl_music as m, tbl_playlist as p, playlist_music as pm, tbl_album as a WHERE m.music_id = pm.music_id and p.playlist_id = pm.playlist_id and a.album_id = m.album_id and pm.playlist_id = ${req.params.playlist}`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {res.send(result);}
+        else res.send({});
+      });
+})
+
+app.get('/getplaylistdata/:id', (req, res)=>{
+    let con = db.getConnection();
+
+    con.query(`SELECT * FROM tbl_playlist WHERE playlist_id=${req.params.id};`, function (err, result, fields) {
+        if (err) throw err;
         if(result) {console.log(result); res.send(result);}
         else res.send({});
       });
 })
+
 
 app.get('/getpopularartist', (req, res)=>{
     let con = db.getConnection();
@@ -146,13 +175,12 @@ app.post('/addMusic', async (req, res)=>{
         const dir = '../surilo/public/Music_Uploads/'
         const file_name = Math.random() + file.name.replace(/\s/g, '');
         const file_location = dir + file_name;
-        console.log(file_location)
         await file.mv(file_location, (er)=>{if(er)res.send(er); else res.send('uploaded')});
         const data = {title:req.body.title, genre_id:req.body.genre_id, album_id:req.body.album_id, file:file_name}
         db.insertMusic(data);
     }
     catch(e){
-        console.log(e)
+        res.send(e)
     }
 })
 

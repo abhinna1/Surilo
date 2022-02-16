@@ -25,16 +25,7 @@ const Home = () => {
 
     const { songs_list, currentSong, setCurrent } = useContext(playerContext)
 
-    function getBar(){
-        if(songs_list.length>0){
-            return 
-        }
-    }
-
     useEffect(async ()=>{
-        const music = await axios.get(`/getmusic/9`)
-        console.log();
-        // localStorage.setItem('queue', JSON.stringify([]))
         let fetchedData = await axios.get(`/getpopularartist`)
         setArtistDb(fetchedData.data)
 

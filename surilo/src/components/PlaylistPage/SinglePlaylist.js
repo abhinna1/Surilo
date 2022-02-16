@@ -7,11 +7,11 @@ function SinglePlaylist(props){
     return (
     <div className='singlePlaylist d-flex flex-column'>
         <div className='playlistCov'>
-            <Link className='plink' to='/playlistTrack'>{playlists.cover}</Link>
+            <Link className='plink' to={`/playlistTrack?playlist=${playlists.playlist_id}`}><img src={`./playlist_covers/${playlists.playlist_cover}`} alt="" /></Link>
         </div>
 
 
-        <h6>{playlists.name}</h6>
+        <h6>{playlists.playlist_name}</h6>
 
     </div>
 
