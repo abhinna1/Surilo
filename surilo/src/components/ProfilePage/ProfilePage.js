@@ -85,7 +85,7 @@ function ProfilePage(){
                              </div>
 
                                 <div className='img-col'>
-                                    <img src={yabesh} alt="" />
+                                    <img src={`./artist_profiles/abhinna.png`} alt="" />
                                 </div>
                             <table className="userInfoTbl table">
                            

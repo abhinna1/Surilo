@@ -102,7 +102,7 @@ app.get('/getmusic/:id', (req, res)=>{
 app.get('/getartistdata/:id', (req, res)=>{
     let con = db.getConnection();
 
-    con.query(`SELECT * FROM tbl_artist WHERE artist_id=${req.params.id};`, function (err, result, fields) {
+    con.query(`SELECT * FROM tbl_artist as a, tbl_user as u  WHERE u.UID = a.UID and a.artist_id=${req.params.id};`, function (err, result, fields) {
         if (err) throw err;
         if(result) { res.send(result);}
         else res.send({});
@@ -153,7 +153,7 @@ app.get('/getplaylistdata/:id', (req, res)=>{
 app.get('/getpopularartist', (req, res)=>{
     let con = db.getConnection();
 
-    con.query(`SELECT * FROM tbl_artist;`, function (err, result, fields) {
+    con.query(`SELECT * FROM tbl_artist as a, tbl_user as u where a.UID = u.UID;`, function (err, result, fields) {
         if (err) throw err;
         if(result) res.send(result);
         else res.send({});

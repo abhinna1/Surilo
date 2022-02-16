@@ -43,7 +43,11 @@ const MainDisplay = () => {
         return data;
     }
 
-    
+    const getProfilePic = ()=>{
+        let data = []
+        artistData.map((i)=>data.push(<img src={`./artist_profiles/${i['profile_picture']}`} alt="" />))
+        return data;
+    }
 
     return (
        <div className='homeContainer'>
@@ -58,7 +62,7 @@ const MainDisplay = () => {
                             <div className="artistPrf">
                                 <div className="one">
                                 <div className="artistImage">
-                                    <img src={yabesh} alt="" />
+                                    {getProfilePic()}
                                 </div>
                                 </div>
     
