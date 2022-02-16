@@ -6,7 +6,7 @@ import { useState } from "react";
 import { post } from "jquery";
 export default function AlbumForm(){
     const[title, setTitle] = useState('');
-    const[artist, setArtist] = useState(1);
+    const[artist, setArtist] = useState(JSON.parse(localStorage.getItem('user')).id);
     const[file, setFile] = useState(null);
     const[hasFile, setHasFile] = useState(false);
 
@@ -33,16 +33,13 @@ export default function AlbumForm(){
         axios.post('/addAlbum', formData)
     }
 
-
-    
-
     return(
         <div>
             <form  onSubmit={(e)=>{handleSubmit(e)}} method="POST" >
                 <h3 style={{color:'white'}}>Album name</h3>
                 <input type="text" name="albumName" onChange={(e)=>{handleChange(e);}}/>
                 <h3 style={{color:'white'}}>Cover Image</h3>
-                <input type="file" name="file" accept=".png, .jpg, .jpeg" onChange={(e)=>{handleFile(e)}} />
+                <input type="file" name="file" accept="image/*" onChange={(e)=>{handleFile(e)}} />
                 <button type='submit'>Create Album</button>
             </form>
         </div>

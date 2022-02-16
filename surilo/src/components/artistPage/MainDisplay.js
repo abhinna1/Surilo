@@ -43,6 +43,8 @@ const MainDisplay = () => {
         return data;
     }
 
+    
+
     return (
        <div className='homeContainer'>
            <div>

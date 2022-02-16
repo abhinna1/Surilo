@@ -17,21 +17,47 @@ function PlaylistTracks(){
 
     const [playlistTracks, setPlaylistTracks] = useState([]);
 
+    const [playlistData, setPlaylistData] = useState([]);
 
-    // useEffect(()=>{
-    //     async function getDatas(){
-    //         let fetchedData = await axios.get(`/getArtistMusics/1`)
-    //         setPlaylistTracks(fetchedData.data)
-    //     }
-    //     getDatas();
-    // }, [])
+    const queryParams = new URLSearchParams(window.location.search)
+
+    const playlistid = `${queryParams.get('playlist')}`;
+
+    
+
+    useEffect(()=>{
+        console.log('playlistId: ', playlistid)
+        async function getDatas(){
+            console.log('fetching')
+            let fetchedData = await axios.get(`/getplaylistmusics/${playlistid}`)
+            setPlaylistTracks(fetchedData.data)
+            
+
+            let fetchedPlaylistData = await axios.get(`/getplaylistdata/${playlistid}`)
+            setPlaylistData(fetchedPlaylistData.data)
+            console.log('fetched data: ', fetchedPlaylistData.data)
+            console.log('in variable: ', playlistData)
+        }
+        getDatas();
+    }, [])
     
     const getPlaylistTrack = ()=>{
         let data = []
-        playlistTracks.map((i)=>data.push(<SongDisplay tracks = {i}></SongDisplay>))
+        playlistTracks.map((i)=>data.push(<SongDisplay hits = {i}></SongDisplay>))
         return data;
     }
 
+    const getPlaylistName = ()=>{
+        let data = []
+        playlistData.map((i)=>data.push(<h1>{i['playlist_name']}</h1>))
+        return data;
+    }
+
+    const getPlaylistCover = ()=>{
+        let data = []
+        playlistData.map((i)=>data.push(<img src={`./playlist_covers/${i['playlist_cover']}`} alt="" />))
+        return data;
+    }
     return (
         <div className='homeContainer'>
             <div>
@@ -45,14 +71,14 @@ function PlaylistTracks(){
                              <div className="playlistPrf">
                                  <div className="playlistOne">
                                  <div className="playlistImage">
-                                     <img src={driving} alt="" />
+                                     {getPlaylistCover()}
                                  </div>
                                  </div>
      
                              <div className="playlistTwo">
                                  <div className="playlistTitle">
-                                     <h1>Driving Playlist</h1>
-                                     <h6>23 Songs</h6>
+                                     {getPlaylistName()}
+                                     <h6>{playlistTracks.length} Songs</h6>
                                  </div>
                                 
                                  <div className="artistAction">

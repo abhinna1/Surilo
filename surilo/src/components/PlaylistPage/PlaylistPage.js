@@ -3,7 +3,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../navbar/Navbar'
 import LeftSidebar from '../leftSidebar/LeftSidebar';
-
+import axios from 'axios';
 import './SinglePlaylist.css'
 
 import { useState, useEffect } from 'react';
@@ -14,24 +14,28 @@ import lofi from '../img/lofi.jpg'
 
 
 
+
+
 function PlaylistPage(){
-    const [playlistDb, setPlaylistDb] = useState([
-        {
-        p_id:1,
-        name:"Driving",
-        cover: <img src={driving}/>
-    },
-    {
-        p_id:2,
-        name:"Love",
-        cover: <img src={romance}/>
-    },
-    {
-        p_id:3,
-        name:"Lo-fi",
-        cover: <img src={lofi}/>
-    }
- ]);
+    const queryParams = new URLSearchParams(window.location.search)
+    const playlistId = `${queryParams.get('playlist')}`;
+
+    const [playlistDb, setPlaylistDb] = useState([]);
+
+    useEffect(async ()=>{
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        if(user!=null){
+            console.log('ye')
+            let fetchedData = await axios.post(`/getplaylists`, {user: user.id})
+            setPlaylistDb(fetchedData.data)
+            console.log(playlistDb)
+        }
+        else{
+            console.log('login first!')
+        }
+
+    }, [])
 
     const getPlaylistData=(playlistDb)=>{
 
