@@ -72,6 +72,28 @@ class DbSetup{
         console.log('user table updated');
     }
     
-} 
+    toggleartistVerify(data){
+        if(data.is_verified===0){
+            const updateUserQuery = `update tbl_artist set is_verified=1 where artist_id = ${data.id}`;
+            this.con.query(updateUserQuery, (err, result)=>{
+                if(err) console.log(err);
+            })
+        }
+        else{
+            const updateUserQuery = `update tbl_artist set is_verified=0 where artist_id = ${data.id}`;
+            this.con.query(updateUserQuery, (err, result)=>{
+                if(err) console.log(err);
+            })
+        }
+    }
+
+    updateUser(data){
+        const updateUserQuery = `update tbl_user set email = '${data.email}', username = '${data.username}', profile_picture = '${data.file}' where UID = ${data.id}`;
+        this.con.query(updateUserQuery, (err, result)=>{
+            if(err) console.log(err);
+        })
+    }
+}
+
 
 module.exports = DbSetup;

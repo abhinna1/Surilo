@@ -1,21 +1,84 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../navbar/Navbar'
 import LeftSidebar from '../leftSidebar/LeftSidebar';
-import react,{useState} from 'react';
+import react,{useState, useEffect} from 'react';
 import close from '../img/close.png'
+
 
 import './ProfilePage.css'
 import { Redirect } from 'react-router';
+import axios from 'axios';
 
 function ProfilePage(){
     
-    let [editClick, setEditClick] = useState(false)
-    let [editClose, setEditClose] = useState(false)
-    let [previewImg, setPreviewImg] = useState(null)
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+    let [editClick, setEditClick] = useState(false);
+    let [editClose, setEditClose] = useState(false);
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+    let [previewImg, setPreviewImg] = useState(`../artist_profiles/${user['profilepic']}`)
+
+    const [artistName, setArtistname] = useState('xyz');
+    
+    const [email, setEmail] = useState(user['email']);
+    const [username, setUsername] = useState(user['username']);
+    const [file, setFile] = useState(null);
+    const handleEmailChange = (e)=>{
+        setEmail(e.target.value);
+    }
+    
+    const handleUsernameChange = (e)=>{
+        setUsername(e.target.value)
+    }
+
+    function handleSubmit(e){
+        e.preventDefault()
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('file', file);
+        formData.append('email', email);
+        formData.append('id', user.id)
+        axios.post('/updateUser', formData)
+        alert('updated');
+    }
+
+    const getArtistPart = ()=>{
+        if(user['is_artist']===1){
+            return(
+            <div className='artistInfoPrf'>
+            {/* If artist True display the table */}
+            <h5 style={{marginBottom:'0px', marginTop:'0px'}}>Artist Profile</h5>
+
+            <table className="userInfoTbl table">
+
+            <tbody>
+
+                <th scope="row">Artist Name</th>
+                <td><input value={artistName} className='edit-input' onChange={(e)=>{setArtistname(e.target.value)}}/></td>
+            
+                
+                
+                </tbody>
+            </table>
+            </div>
+            )
+        }
+              
+        else{
+            {/* If artist false display this */}
+            return(
+            <div className='artistInfoPrf'>
+                <div className='d-none'>
+                    <h2 className='noArtistYet'>You are not an artist yet</h2>
+                    <h5 className='becomeArtist'>Unleash your talent. Become an artist on Surilo</h5>
+                </div>    
+            </div> 
+            )
+        }
+    }
+    
+
     function openEditfrm(){
         if (editClick == false){
-            document.getElementsByClassName("EditPrfForm")[0].style.height = "400px"
+            document.getElementsByClassName("EditPrfForm")[0].style.height = "450px"
             document.getElementsByClassName("userInfoTbl")[0].style.display ="none"
             document.getElementsByClassName("img-col")[0].style.display ="none"
             setEditClick(true)
@@ -36,8 +99,9 @@ function ProfilePage(){
     }
     function handlePreview(e){
         console.log(e.target.value)
-        const file = e.target.files[0];  
+        const file = e.target.files[0];
         if (!file) return;
+        setFile(file)
         const url = URL.createObjectURL(file);
         setPreviewImg(url)
     }
@@ -64,10 +128,10 @@ function ProfilePage(){
 
                              <div className='EditPrfForm'>
                                 <h5>Edit Profile</h5>
-                                <form className='editFormProfile' action="">
+                            <form className='editFormProfile' onSubmit={async(e)=>{await handleSubmit(e)}}>
 
                                 <div className='img-col-edit'>
-                                <img src={`./artist_profiles/${user.profilepic}`} alt="" />
+                                <img src={previewImg} alt="" />
                                     <label id="upldMusic" className="chngImg">
                                     <input
                                      type="file"
@@ -75,17 +139,37 @@ function ProfilePage(){
                                        accept="image/*"
                                         onChange={(e)=>handlePreview(e)}
                                         />
-                                    <i id="uploadSongLabel" className='btnTextPic'></i> Change Picture
+                                    <i id="uploadSongLabel" className='btnTextPic'>  Change Picture</i>
 
                                 </label>
-                                </div>
-                                <button className='updateUsrBtn'>Update</button>
-                                </form>
 
+                                <table className="table">
+                           
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <th scope="row">Username</th>
+                                            <td> <input className='edit-input' type="text" value={username} name="username" onChange={handleUsernameChange}/></td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <th scope="row">Email</th>
+                                            <td><input className='edit-input' type="text" value={email} name="" onChange={handleEmailChange}/></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                        
+                        </div>
+
+                        
+                        <button className='updateUsrBtn'>Update</button>
+                    </form>
                              </div>
 
                                 <div className='img-col'>
-                                    <img src={`./artist_profiles/default_profile.png`} alt="" />
+                                    <img src={previewImg} alt="" />
                                 </div>
                             <table className="userInfoTbl table">
                            
@@ -116,42 +200,14 @@ function ProfilePage(){
                                 <td>{user['email']}</td>
                                 </tr>
 
+                                
 
                             </tbody>
                             </table>
                         
                         {/* <button className='editPrf'>Edit Profile</button> */}
-                        </div> 
-                        <div className='artistInfoPrf'>
-                             <div className='userPrfheader d-flex justify-content-between align-items-center'>
-
-                                <h5>Artist Profile</h5>
-                                {/* <button className='editPrf'>Edit Profile</button> */}
-                             </div>
-
-
-
-                                {/* If artist True display the table */}
-                            <table className="userInfoTbl table">
-                           
-                            <tbody>
-                                
-                                <tr>
-                                <th scope="row">Artist Name</th>
-                                <td>Assmaster69</td>
-                                </tr>
-                                
-                            </tbody>
-                            </table>
-                            
-                            {/* If artist false display this */}
-                            <div className='d-none'>
-                            <h2 className='noArtistYet'>You are not an artist yet</h2>
-                            <h5 className='becomeArtist'>Unleash your talent. Become an artist on Surilo</h5>
-                            </div>
-                        
-            
-                        </div> 
+                        </div>
+                            {getArtistPart()}
                      </div>
                      </div>
                          

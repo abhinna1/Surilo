@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "../images/surilo2.png";
 import { Link, Redirect } from 'react-router-dom';
 import Axios from 'axios';
-import { GoogleLogin } from 'react-google-login';
 import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 

@@ -61,7 +61,9 @@ export default function MusicForm(){
     console.log(fileuploaded)
     
     async function loadOptions(inputText, callback){
-        const request = await axios.get(`/getalbum/${inputText}`)
+        let currentartist = await axios.get(`/getartistfromusedid/${JSON.parse(localStorage.getItem('user')).id}`)
+        let artist_id= currentartist.data[0].artist_id;
+        const request = await axios.get(`/getalbum/${inputText}/${artist_id}`)
         console.log(request)
         let json = request.data;
         callback(json.map(i=>({label: i.album_name, value:i.album_id})))
@@ -74,6 +76,7 @@ export default function MusicForm(){
         formData.append('genre_id', genre)
         formData.append('album_id', album)
         formData.append('file', fileze)
+        
 
         axios.post('/addMusic', formData)
     }

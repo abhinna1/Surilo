@@ -4,7 +4,7 @@ import threeDot from '../img/threeDot.png'
 import './SongDisplay.css'
 import playerContext from '../PlayerContext/playerContext' 
 import { useContext, useState } from 'react'
-import { data } from 'jquery'
+
 
 
 function popDropdown(){
@@ -50,10 +50,11 @@ const SongDisplay = (props) => {
         {/* <div className='favCtn'>
             <img className='playTrackImg' src={love} alt="" />
         </div> */}
-        <div className='playCtn'><h5 className='headerTitle'>45,695</h5></div>
-        <div className='shareCtn'><img src={shareIco} alt="" /></div>
-        <div className='threeDotCtn'>
-            <img onClick ={() => popDropdown()} src={threeDot} alt="" />
+        
+        <div className='shareCtn'>
+            <button className = 'threeDot'onClick ={() => popDropdown()}>
+                    <img src={threeDot} alt="" />
+            </button>
         </div>
     </div>
     

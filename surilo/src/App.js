@@ -20,6 +20,8 @@ import ArtistPanel from './AdminPanel/components/ArtistPanel/ArtistPanel'
 import PlaylistPage from './components/PlaylistPage/PlaylistPage';
 import PlaylistTracks from './components/PlaylistPage/PlaylistTracks';
 import ProfilePage from './components/ProfilePage/ProfilePage';
+import UserPanel from './AdminPanel/components/UserPanel/UserPanel';
+import AlbumPanel from './AdminPanel/components/AlbumPanel/AlbumPanel';
 
 
 const App = ()=>{
@@ -83,6 +85,12 @@ const App = ()=>{
               <ProfilePage/>
             </Route>
             
+            <Route path="/admin/users">
+              <UserPanel/>
+            </Route>
+            <Route path="/admin/albumpanel">
+              <AlbumPanel/>
+            </Route>
         </Switch>
       </PlayerState>
     </div>

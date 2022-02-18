@@ -39,7 +39,7 @@ app.post('/login', async(req, res)=>{
         const val = result[0];
         try{
         if((req.body.email==val.email) && (await bcrypt.compare(req.body.password, val.password))){
-            res.send({found:true, data:{id:val.UID, username: val.username, email: val.email, firstname: val.firstName, lastName: val.lastName, dob: val.dob, profilepic: val.profile_picture, is_artist: val.is_artist}});
+            res.send({found:true, data:{id:val.UID, username: val.username, email: val.email, firstname: val.firstName, lastName: val.lastName, dob: val.dob, profilepic: val.profile_picture, is_artist: val.is_artist, is_admin: val.is_admin}});
         }
         else { res.send({found:false, data:{}})};
         }
@@ -55,7 +55,7 @@ app.post('/login', async(req, res)=>{
 app.post('/addAlbum', async (req, res)=>{
     try{
         const file = req.files.file;
-        const dir = './album_covers/'
+        const dir = '../surilo/public/album_covers/'
         const file_name = Math.random() + file.name.replace(/\s/g, '');
         const file_location = dir + file_name;
         await file.mv(file_location, (er)=>{if(er)res.send(er); else res.send('uploaded')});
@@ -69,10 +69,10 @@ app.post('/addAlbum', async (req, res)=>{
 
 })
 
-app.get('/getalbum/:id', (req, res)=>{
+app.get('/getalbum/:id/:artist', (req, res)=>{
     let con = db.getConnection();
-
-    con.query(`SELECT * FROM tbl_album WHERE album_name="${req.params.id}";`, function (err, result, fields) {
+    let artistid = parseInt(req.params.artist) 
+    con.query(`SELECT * FROM tbl_album WHERE album_name="${req.params.id}" and artist_id = ${artistid};`, function (err, result, fields) {
         if (err) throw err;
         if(result) res.send(result);
         else res.send({});
@@ -91,12 +91,33 @@ app.get('/getalbummusic/:id', (req, res)=>{
 app.get('/getmusic/:id', (req, res)=>{
     let con = db.getConnection();
 
-    con.query(`SELECT file FROM tbl_music WHERE music_id=${req.params.id};`, function (err, result, fields) {
+    con.query(`SELECT file FROM tbl_music WHERE music_id=${req.params.id};`, function (err, result) {
         if (err) throw err;
         if(result) {res.send(result);}
         else res.send({});
       });
 })
+
+app.get('/gethitmusic/:id', (req, res)=>{
+    let con = db.getConnection();
+
+    con.query(`SELECT * FROM weekly_hits as h, tbl_music as m WHERE h.music_id=m.music_id AND m.music_id=${req.params.id} ;`, function (err, result) {
+        if (err) throw err;
+        if(result) {res.send(result);}
+        else res.send({});
+      });
+})
+
+app.get('/addtohits/:id', (req, res)=>{
+    let con = db.getConnection();
+
+    con.query(`insert into weekly_hits(music_id) values(${req.params.id});`, function (err, result) {
+        if (err) throw err;
+        if(result) {res.send(result);}
+        else res.send({});
+      });
+})
+
 
 
 app.get('/getartistdata/:id', (req, res)=>{
@@ -108,6 +129,17 @@ app.get('/getartistdata/:id', (req, res)=>{
         else res.send({});
       });
 })
+
+app.get('/getartistfromusedid/:id', (req, res)=>{
+    let con = db.getConnection();
+
+    con.query(`SELECT artist_id FROM tbl_artist as a, tbl_user as u  WHERE u.UID = a.UID and a.UID=${req.params.id};`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) { res.send(result);}
+        else res.send({});
+      });
+})
+
 
 
 app.get('/getArtistMusics/:id', (req, res)=>{
@@ -149,6 +181,42 @@ app.get('/getplaylistdata/:id', (req, res)=>{
       });
 })
 
+app.get('/getUserData', (req, res)=>{
+    let con = db.getConnection();
+
+    con.query(`SELECT * FROM tbl_user;`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result); res.send(result);}
+        else res.send({});
+      });
+})
+app.get('/getArtistData', (req, res)=>{
+    let con = db.getConnection();
+
+    con.query(`SELECT * FROM tbl_artist;`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result); res.send(result);}
+        else res.send({});
+      });
+})
+app.get('/getMusicData', (req, res)=>{
+    let con = db.getConnection();
+    // , tbl_genre as g where m.genre_id= g.genre_id
+    con.query(`SELECT * FROM tbl_music as m , tbl_album as a where m.album_id= a.album_id;`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result); res.send(result);}
+        else res.send({});
+      });
+})
+app.get('/getAlbumData', (req, res)=>{
+    let con = db.getConnection();
+    // , tbl_genre as g where m.genre_id= g.genre_id
+    con.query(`SELECT * FROM tbl_album as m , tbl_artist as a where m.artist_id= a.artist_id;`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) {console.log(result); res.send(result);}
+        else res.send({});
+      });
+})
 
 app.get('/getpopularartist', (req, res)=>{
     let con = db.getConnection();
@@ -196,8 +264,16 @@ app.post('/emailvalidate', (req, res)=>{
       });
 })
 
+app.post('/setartistverifiedstate', (req, res)=>{
+    console.log('got request')
+    let id = req.body.artist_id;
+    let is_verified = req.body.is_verified;
+    db.toggleartistVerify({id:id, is_verified:is_verified});
+    res.redirect('/admin/artistpanel');
+})
+
 // Listening for creating albums.
-app.post('/submitalbumform', async (req, res)=>{
+app.post('/submitalbumform', async(req, res)=>{
     try{
         const file = req.files.file;
         const dir = './artist_documents/'
@@ -214,6 +290,21 @@ app.post('/submitalbumform', async (req, res)=>{
 
 })
 
+app.post('/updateUser', async(req, res)=>{
+    try{
+        const file = req.files.file;
+        const dir = '../surilo/public/artist_profiles/'
+        const file_name = Math.random() + file.name.replace(/\s/g, '');
+        const file_location = dir + file_name;
+        await file.mv(file_location, (er)=>{if(er)res.send(er); else res.send('uploaded')});
+
+        const data = {id: req.body.id, username:req.body.username, email: req.body.email, file: file_name}
+        db.updateUser(data);
+    }
+    catch(e){
+        res.send(e);
+    }
+})
 
 app.listen(process.env.PORT, (err)=>{if(err)console.log(err); else console.log(`Successfully connected to port ${process.env.PORT}.`)});
 
