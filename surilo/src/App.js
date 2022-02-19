@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'; 
 import Login from './components/Form/Login/Login';
 import Reg from './components/Form/Registration/Reg';
 
@@ -96,6 +96,9 @@ const App = ()=>{
             <Route path="/admin/albumpanel">
               <AlbumPanel/>
             </Route>
+            <Redirect from="/" to="home" />
+
+
         </Switch>
       </PlayerState>
     </div>
