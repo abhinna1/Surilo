@@ -304,7 +304,32 @@ app.post('/updateUser', async(req, res)=>{
     catch(e){
         res.send(e);
     }
+    
 })
+
+
+app.get('/searchartist/:tag', (req, res)=>{
+    let con = db.getConnection();
+    con.query(`SELECT * FROM tbl_artist as a, tbl_user as u WHERE artist_name like "${req.params.tag}%" and a.UID = u.UID;`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) res.send(result);
+        else res.send({});
+      });
+})
+
+app.get('/searchmusic/:tag', (req, res)=>{
+    let con = db.getConnection();
+    console.log(`SELECT * FROM tbl_music as m, tbl_album as a WHERE title like "${req.params.tag}%" and m.album_id = a.album_id`);
+    con.query(`SELECT * FROM tbl_music as m, tbl_album as a WHERE title like "${req.params.tag}%" and m.album_id = a.album_id`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) res.send(result);
+        else res.send({});
+      });
+})
+
+
+
+
 
 app.listen(process.env.PORT, (err)=>{if(err)console.log(err); else console.log(`Successfully connected to port ${process.env.PORT}.`)});
 

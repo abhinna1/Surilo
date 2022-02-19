@@ -55,6 +55,7 @@
     border: 0;
     padding: 10px;
     margin-left: 20px;
+    color:#000;
 }
 .search-control:focus{
     outline: none !important;
@@ -93,6 +94,13 @@
     box-shadow: 0 0 8px var(--sdColor);
 }
 
+.searchForm{
+    width:0 !important;
+    margin-top: 0px !important;
+    color: black !important;
+
+}
+
 .accountUser{
     background-color: #11131b00;
     border: 0;
@@ -116,6 +124,8 @@
     .search-control{
         margin: 0 auto;
         width: 90%;
+        color: black !important;
+
     }
 }
 

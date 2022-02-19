@@ -7,10 +7,7 @@ import { useContext, useState } from 'react'
 
 
 
-function popDropdown(){
-    alert("hoi")
-}
- 
+
 
 
 
@@ -39,20 +36,11 @@ const SongDisplay = (props) => {
             <div className='trackInfo'>
                 <h6>{hits.title}</h6>
                 <h6>{hits.album_name}</h6>
-                <h6>2:59</h6>
             </div>
             </div>
-            <div className='durationCtn'>
-                <h5 className='headerTitle'>
-                    {dur.duration}
-                </h5>
-            </div>
-        {/* <div className='favCtn'>
-            <img className='playTrackImg' src={love} alt="" />
-        </div> */}
-        
+
         <div className='shareCtn'>
-            <button className='threeDot' onClick={() => popDropdown()}>
+            <button className='threeDot'>
                     <img src={threeDot} alt="" />
             </button>
         </div>

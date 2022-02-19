@@ -3,12 +3,11 @@ import { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from '../navbar/Navbar'
 import LeftSidebar from '../leftSidebar/LeftSidebar';
-import PopularArtist from './playlist/PopularArtist';
+import PopularArtist from '../Home/playlist/PopularArtist';
 import SongDisplay from '../songDisplay/SongDisplay';
-import './homeStyle.css';
+import '../Home/homeStyle.css';
 import { useState, useEffect } from 'react';
 import playerContext from '../PlayerContext/playerContext' 
-import PlaylistCarousel from './playlistCarousel';
 import axios from 'axios';
 
 const Home = () => {
@@ -20,12 +19,17 @@ const Home = () => {
     const { songs_list, currentSong, setCurrent } = useContext(playerContext)
 
     useEffect(async ()=>{
-        let fetchedData = await axios.get(`/getpopularartist`)
+        const queryParams = new URLSearchParams(window.location.search)
+        const tag = `${queryParams.get('tag')}`;
+
+        let fetchedData = await axios.get(`/searchartist/${tag}`)
         setArtistDb(fetchedData.data)
 
-        let fetchWeeklyHits = await axios.get(`/getweeklyhits`)
+        let fetchWeeklyHits = await axios.get(`/searchmusic/${tag}`)
         setWeeklyHits(fetchWeeklyHits.data)
     }, [])
+
+
 
 
     const getData=(artistDb)=>{
@@ -38,7 +42,12 @@ const Home = () => {
         let data = []
 
         artistDb.map((i)=>data.push(<PopularArtist artists = {i}></PopularArtist>))
-        return data;
+        if(data.length){
+            return data;
+        }
+        else{
+            return <p>No artist with such name found.</p>
+        }
     }
 
     const getWeeklyHits = ()=>{
@@ -46,7 +55,12 @@ const Home = () => {
         let data = []
 
         weeklyHits.map((i)=>data.push(<SongDisplay hits = {i}></SongDisplay>))
-        return data;
+        if(data.length>0){
+            return data;
+        }
+        else{
+            return <p>No Music Found.</p>
+        }
     }
 
 
@@ -61,7 +75,7 @@ const Home = () => {
                     <div className="innerContainer">
 
                         <div className="playlist row">
-                        <h6 className='playListTitle'>Popular Artist</h6>
+                        <h6 className='playListTitle'>Artists</h6>
                         <div className='album d-flex'>
 
                             {getData(artistDb)}
@@ -69,18 +83,15 @@ const Home = () => {
 
                         </div>
                         <div className="playlist p-3 d-flex flex-wrap">
-                            <div className='CarouselCtn'>
-                                <PlaylistCarousel></PlaylistCarousel>
-                            </div>
                             <div className='TrendingTracksCtn'>
-                            <h6 className='playListTitle l-padding'>Trending this week</h6>
+                            <h6 className='playListTitle'>Musics</h6>
                             <div className="trendList">
                                 {getWeeklyHits(weeklyHits)}
                             </div>
                             </div>
                             
                         </div>
-
+                        
                     </div>
 
                     </div>

@@ -21,9 +21,8 @@ export default function AlbumForm(){
 
 
     const[title, setTitle] = useState('');
-    const[artist, setArtist] = useState(JSON.parse(localStorage.getItem('user')).id);
+    const artist = JSON.parse(localStorage.getItem('user')).id;
     const[file, setFile] = useState(null);
-    const[hasFile, setHasFile] = useState(false);
 
 
      async function handleFile(e){
@@ -45,7 +44,6 @@ export default function AlbumForm(){
         else{
             return <div className="uploadTitleCtn d-flex justify-content-between align-items-center"><h6 className="uploadTitle">{file.name}</h6> <button onClick={()=>{removeUploadedSong()}} className="closeBtn"><img src={close} alt="" /></button></div> 
         }
-        return null
     }
     console.log(fileuploaded)
 
@@ -63,16 +61,13 @@ export default function AlbumForm(){
 
     }
 
-
-
-
     // Stores input data in fieldData. Executed after each time changes are made in input fields
     function handleChange(e){
         setTitle(e.target.value);
         console.log(title);
     }
 
-
+    if(localStorage.getItem('user')){
     return(
         // <div>
         //     <form  onSubmit={(e)=>{handleSubmit(e)}} method="POST" >
@@ -132,6 +127,8 @@ export default function AlbumForm(){
 
                 </div>
     )
-        
+    }
+
+
     
 }

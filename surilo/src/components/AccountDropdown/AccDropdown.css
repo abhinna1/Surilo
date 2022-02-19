@@ -10,6 +10,10 @@
 
 }
 
+.login-btn{
+  background:transparent;
+}
+
 .accountDropdown h6{
     color: #fff;
     /* padding: 5px 16px; */

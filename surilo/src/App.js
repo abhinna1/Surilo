@@ -22,7 +22,7 @@ import PlaylistTracks from './components/PlaylistPage/PlaylistTracks';
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import UserPanel from './AdminPanel/components/UserPanel/UserPanel';
 import AlbumPanel from './AdminPanel/components/AlbumPanel/AlbumPanel';
-
+import Search from './components/Search/Search';
 
 const App = ()=>{
 
@@ -65,6 +65,11 @@ const App = ()=>{
           </Route>
             <Route path="/artistDisplay">
               <MainDisplay/>
+              <MusicBar/> 
+            </Route>
+
+            <Route path="/search">
+              <Search/>
               <MusicBar/> 
             </Route>
 

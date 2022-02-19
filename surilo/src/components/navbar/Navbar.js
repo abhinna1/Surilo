@@ -18,7 +18,7 @@ const Navbar = () => {
 
     const [fileuploaded, setFileUploaded] = useState(false)
 
-
+    const [searchTag, setSearchTag] = useState('');
     function getButtons(){
         const getArtistBtn= ()=>{
             if(JSON.parse(localStorage.getItem('user'))['is_artist']==0) return <button className='artistBtn' onClick={() => setButtonPopup(true)}>Become an artist</button>;
@@ -36,7 +36,9 @@ const Navbar = () => {
             )
         }
     }
-
+    function handleSearchChange(e){
+        setSearchTag(e.target.value);
+    }
     function handleNameChange(e){
         setName(e.target.value);
     }
@@ -88,9 +90,9 @@ const Navbar = () => {
     
     return ( 
         <div className="navCtn d-flex align-items-center justify-content-between">
-
-            <input className="search-control" type="search" placeholder="Songs, podcasts, genre, artists" aria-label="Search"/>
-
+            <form action={`/search`} method='GET' class='searchForm'>
+                <input className="search-control" type="search" placeholder="Songs, podcasts, genre, artists" name='tag' onChange={setSearchTag} aria-label="Search"/>
+            </form>
             <div className='link-container justify-content-end'>
                 {getButtons()}
                 {accountDropdownShow?<AccDropdown userData = {JSON.parse(localStorage.getItem('user'))}></AccDropdown>:null}

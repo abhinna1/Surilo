@@ -4,10 +4,12 @@ import './multipleInputs.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "../images/surilo2.png";
 import { useState } from 'react';
+import { useHistory } from 'react-router';
 import Otp from './Otp.js';
 import { Link } from 'react-router-dom';
 import next from "../images/next.png";
 import axios from 'axios';
+
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'; 
 import { isValid } from 'ipaddr.js';
 
@@ -101,7 +103,6 @@ export default function InfoReg(){
 
         if(formIsValid){
             axios.post('/register',fieldData).then(response=>{console.log(response.data)});
-            history.push("/login");
 
         }
         setErrors(er);
