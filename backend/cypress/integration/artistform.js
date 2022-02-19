@@ -1,13 +1,12 @@
-context('Upload with right details', () => {
+context('Registered Artist filled artist form with right details', () => {
 
     it.only('artist',function(){
         cy.visit('/')
-        cy.get('#email').type("sanifkandel12345@gmail.com")
-        cy.get('#password').type("s@nif123")
+        cy.get('#email').type("surilouser@gmail.com")
+        cy.get('#password').type("surilo12345")
         cy.get(".reg-btn").click()
-        cy.get(".success").click()
         cy.get(".artistBtn").click()
-        cy.get('#artistName').type("Sanif Kandel")
+        cy.get('#artistName').type("userArtists")
         cy.get('#phoneNumber').type("9864400812")
         cy.get('#documentType').select("Citizenship")
         cy.fixture('people.png', null).then((people) => {
@@ -41,7 +40,6 @@ context('Upload with right details', () => {
         cy.get('#email').type("sanifkandel12345@gmail.com")
         cy.get('#password').type("s@nif123")
         cy.get(".reg-btn").click()
-        cy.get(".success").click()
         cy.get(".artistBtn").click()
         cy.get('#artistName').type("Sanif Kandel")
         cy.get('#phoneNumber').type("9864400812")
