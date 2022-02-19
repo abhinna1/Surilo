@@ -23,8 +23,13 @@ import ProfilePage from './components/ProfilePage/ProfilePage';
 import UserPanel from './AdminPanel/components/UserPanel/UserPanel';
 import AlbumPanel from './AdminPanel/components/AlbumPanel/AlbumPanel';
 import Search from './components/Search/Search';
+import Showdoc from './AdminPanel/components/ArtistPanel/showdoc';
+
+
 
 const App = ()=>{
+
+  
 
     return (
     <Router>
@@ -73,7 +78,7 @@ const App = ()=>{
               <MusicBar/> 
             </Route>
 
-
+          
             <Route path="/admin/dashboard">
               <Dashboard/>
             </Route>
@@ -96,6 +101,12 @@ const App = ()=>{
             <Route path="/admin/albumpanel">
               <AlbumPanel/>
             </Route>
+
+
+            <Route path="/artistdocimg">
+              <Showdoc/>
+            </Route>
+            
             <Redirect from="/" to="home" />
 
 

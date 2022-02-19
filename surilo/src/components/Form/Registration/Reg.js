@@ -29,6 +29,7 @@ export default function InfoReg(){
     let formIsValid = true;
     const [step, setStep] = useState(1);
     const[gender, setGender] = useState("");
+    const history = useHistory();
 
     const [fields,setFields] = useState({fieldData});
     const [errors, setErrors] = useState({firstEr:"error"});
@@ -103,6 +104,7 @@ export default function InfoReg(){
 
         if(formIsValid){
             axios.post('/register',fieldData).then(response=>{console.log(response.data)});
+            history.push('/login')
 
         }
         setErrors(er);

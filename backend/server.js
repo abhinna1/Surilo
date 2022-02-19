@@ -101,7 +101,7 @@ app.get('/getmusic/:id', (req, res)=>{
 app.get('/gethitmusic/:id', (req, res)=>{
     let con = db.getConnection();
 
-    con.query(`SELECT * FROM weekly_hits as h, tbl_music as m WHERE h.music_id=m.music_id AND m.music_id=${req.params.id} ;`, function (err, result) {
+    con.query(`SELECT * tbl_music as m WHERE m.music_id=${req.params.id} ;`, function (err, result) {
         if (err) throw err;
         if(result) {res.send(result);}
         else res.send({});
@@ -118,7 +118,15 @@ app.get('/addtohits/:id', (req, res)=>{
       });
 })
 
+app.get('/getartistverified/:id', (req, res)=>{
+    let con = db.getConnection();
 
+    con.query(`SELECT is_verified FROM tbl_artist  WHERE  artist_id=${req.params.id};`, function (err, result, fields) {
+        if (err) throw err;
+        if(result) { res.send(result);}
+        else res.send({});
+      });
+})
 
 app.get('/getartistdata/:id', (req, res)=>{
     let con = db.getConnection();
@@ -276,7 +284,7 @@ app.post('/setartistverifiedstate', (req, res)=>{
 app.post('/submitalbumform', async(req, res)=>{
     try{
         const file = req.files.file;
-        const dir = './artist_documents/'
+        const dir = '../surilo/public/artist_documents/'
         const file_name = Math.random() + file.name.replace(/\s/g, '');
         const file_location = dir + file_name;
         await file.mv(file_location, (er)=>{if(er)res.send(er); else res.send('uploaded')});
