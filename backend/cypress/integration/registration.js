@@ -6,7 +6,7 @@ context('Registration with already existing email', () => {
 
         cy.visit('http://localhost:3000/register')
         cy.get('#username').type("Surilo")
-        cy.get('#email').type("testuser1245@gmail.com")
+        cy.get('#email').type("testuser12456@gmail.com")
         cy.get('#password').type("testpass1234")
         cy.get('#confirmPassword').type("testpass1234")
         cy.get(".next-btn").click()
