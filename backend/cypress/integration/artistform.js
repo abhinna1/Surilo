@@ -2,8 +2,8 @@ context('Registered Artist filled artist form with right details', () => {
 
     it.only('artist',function(){
         cy.visit('/')
-        cy.get('#email').type("surilouser@gmail.com")
-        cy.get('#password').type("surilo12345")
+        cy.get('#email').type("testuser1245@gmail.com")
+        cy.get('#password').type("testpass1234")
         cy.get(".reg-btn").click()
         cy.get(".artistBtn").click()
         cy.get('#artistName').type("userArtists")

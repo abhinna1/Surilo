@@ -1,0 +1,16 @@
+;FFMETADATA1
+[CHAPTER]
+TIMEBASE=1/1000
+START=-33897
+END=14101
+title=Registered Artist filled artist form with right details artist
+[CHAPTER]
+TIMEBASE=1/1000
+START=53710
+END=62110
+title=Unregistered User artist
+[CHAPTER]
+TIMEBASE=1/1000
+START=58250
+END=70514
+title=Upload with empty details artist
