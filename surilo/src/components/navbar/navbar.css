@@ -6,7 +6,7 @@
 }
 
 .doctype-input{
-    background: transparent;
+    background: rgb(26, 26, 26);
     border: 0;
 }
 .type-option{
@@ -27,7 +27,12 @@
     background-color: var(--navbar);
     border:0;
 }
-
+.input-document{
+    width: 150px !important;
+    color: #000 !important;
+    font-size: 14px;
+    margin-top: 20px;
+}
 .navCtn{
     position: fixed;
     width: 85%;

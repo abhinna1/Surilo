@@ -12,6 +12,9 @@ export default function Login(){
 
     const [email,setemail] = useState("");
     const [password,setpassword] =useState("");
+    const [errormsg,Seterrormsg] = useState("")
+
+    let [SuccessDiv, setSuccessDiv] = useState(false);
 
 
     const history = useHistory();
@@ -23,9 +26,10 @@ export default function Login(){
             console.log(response.data)
             if (response.data.found==true){
                 localStorage.setItem('user', JSON.stringify(response.data.data))
-                history.push("/");
+                setSuccessDiv(true)
             }
             else {
+                Seterrormsg("Credentials Error")
                 localStorage.clear();
             }
         });
@@ -52,12 +56,16 @@ export default function Login(){
 
                 <div className='entry-Ctn'>
                     <input className='usrEnt' onChange={(e) =>{setemail(e.target.value)}} type="email" autoComplete='off' placeholder='surilo@email.com' name="email" id="email" />
+                    <div className="errormsg
+                    ">{errormsg}</div>
                 </div>
+                <div className="errormsg left-margin"></div>
                 <div className="label-ctn">
                     <label htmlFor="password">Password</label>
                     </div> 
                 <div className='entry-Ctn'>
                     <input className='usrEnt' onChange={(e) =>{setpassword(e.target.value)}} type="password" autoComplete='off' name="password" placeholder='********' id="password"/>
+                    <div className="errormsg">{errormsg}</div>
                     
                 </div>
                 
@@ -71,7 +79,17 @@ export default function Login(){
 
             </form>
 
-            </div>        
+            </div>     
+
+            {SuccessDiv?<div className='loginSuccess d-flex justify-content-center align-items-center'>
+                <div className='loginSuccessCtn p-2'>
+                    <h2>Login Success</h2>
+                    <Link to="/home">Go to Home</Link>
+
+                </div>
+
+                </div> :null}
+             
         </div>
     )   
 }

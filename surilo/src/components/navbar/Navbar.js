@@ -6,6 +6,7 @@ import AccDropdown from '../AccountDropdown/AccDropdown';
 import BecomeArtist from '../artistPage/BecomeArtist';
 import axios from 'axios';
 import { Redirect } from 'react-router';
+import close from '../img/close.png'
 
 const Navbar = () => {
     const [accountDropdownShow,setaccountDropdownShow]=useState(false)
@@ -14,6 +15,8 @@ const Navbar = () => {
     const [phone, setPhone] = useState('');
     const [file, setFile] = useState(null);
     const [documentType, setDocumentType] = useState('');
+
+    const [fileuploaded, setFileUploaded] = useState(false)
 
 
     function getButtons(){
@@ -28,7 +31,7 @@ const Navbar = () => {
             return (
                 <div className='d-flex justify-content-evenly align-items-center'>
                     {getArtistBtn()}
-                    <button className='accountUser' onClick={()=>setaccountDropdownShow(!accountDropdownShow)}><img src={accountUser} alt="" className="user-image"/> <h6 className='user-name'> {JSON.parse(localStorage.getItem('user'))['username']} </h6> </button>
+                    <button className='accountUser' onClick={()=>setaccountDropdownShow(!accountDropdownShow)}><img src={accountUser} alt="" className="user-image"/></button>
                 </div>
             )
         }
@@ -48,6 +51,7 @@ const Navbar = () => {
 
     function handleFile(e){
         setFile(e.target.files[0]);
+        setFileUploaded(true)
     }
 
     function  handleSubmit(event){
@@ -64,6 +68,23 @@ const Navbar = () => {
         const red = ()=>{return <Redirect to='/login'/>};
         red();
     }
+
+    function removeUploadedDocument(){
+        setFileUploaded(false)
+        setFile(null)
+        setName('');
+        setPhone('');
+    }
+
+    function getDocumentName(){
+        if (file == null){
+        }
+        else{
+            return <div className="uploadTitleCtn d-flex justify-content-between align-items-center"><h6 className="uploadTitle">{file.name}</h6> <button onClick={()=>{removeUploadedDocument()}} className="closeBtn"><img src={close} alt="" /></button></div> 
+        }
+        return null
+    }
+
     
     return ( 
         <div className="navCtn d-flex align-items-center justify-content-between">
@@ -89,7 +110,7 @@ const Navbar = () => {
                         </div>
 
                         <div className='artist-detail'>
-                            <label htmlFor="phoneNumber">Document Tyle</label><br />
+                            <label htmlFor="phoneNumber">Document Style</label><br />
                             <select name="documentType" class='doctype-input' id="documentType" onChange={handleTypeChange} >
                                 <option value="Citizenship" class='type-option'>Citizenship</option>
                                 <option value="License" class='type-option'>License</option>
@@ -98,9 +119,14 @@ const Navbar = () => {
                         </div>
 
                         <div className='artist-detail'>
-                            <label htmlFor="document">Document</label><br />
-                            <input type="file" accept='image/*' name="document" autocomplete ="off" placeholder='Driving Lisence, Passport or Citizenship' id="document" onChange={handleFile} />
+
+                            <label className="custom-file-upload input-document">
+                                <input className="uploadSongBtn" type="file" name='file' accept="image/*" id="document" onChange={handleFile}/>
+                                <i id="uploadSongLabel" className="fa fa-cloud-upload "></i> Select File
+                            </label>
+                            
                         </div>
+                        {getDocumentName()}
 
                         <button type="submit" className='sub-btn'> Submit </button>
 

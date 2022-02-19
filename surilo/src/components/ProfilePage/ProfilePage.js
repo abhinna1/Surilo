@@ -143,6 +143,8 @@ function ProfilePage(){
 
                                 </label>
 
+                        
+                        </div>
                                 <table className="table">
                            
                                     <tbody>
@@ -160,8 +162,6 @@ function ProfilePage(){
 
                                     </tbody>
                                 </table>
-                        
-                        </div>
 
                         
                         <button className='updateUsrBtn'>Update</button>

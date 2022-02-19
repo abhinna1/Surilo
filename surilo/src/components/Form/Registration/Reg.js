@@ -101,7 +101,8 @@ export default function InfoReg(){
 
         if(formIsValid){
             axios.post('/register',fieldData).then(response=>{console.log(response.data)});
-            alert("Valid");
+            history.push("/login");
+
         }
         setErrors(er);
     }

@@ -52,7 +52,7 @@ const SongDisplay = (props) => {
         </div> */}
         
         <div className='shareCtn'>
-            <button className = 'threeDot'onClick ={() => popDropdown()}>
+            <button className='threeDot' onClick={() => popDropdown()}>
                     <img src={threeDot} alt="" />
             </button>
         </div>
