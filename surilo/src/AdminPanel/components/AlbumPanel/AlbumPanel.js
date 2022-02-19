@@ -1,6 +1,9 @@
+import { useHistory } from "react-router";
 import AdminNavbar from "../AdminNavbar/AdminNavbar";
 import AlbumData from "./AlbumData";
 function AlbumPanel(){
+    const history = useHistory();
+    if(JSON.parse(localStorage.getItem('user')).is_admin){
     return(
         <div>
             <AdminNavbar></AdminNavbar>
@@ -8,6 +11,8 @@ function AlbumPanel(){
             <AlbumData></AlbumData>
         </div>
     )
+    }
+    else return useHistory().push('/home');
 }
 
 export default AlbumPanel;

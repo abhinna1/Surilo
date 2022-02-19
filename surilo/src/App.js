@@ -24,7 +24,11 @@ import UserPanel from './AdminPanel/components/UserPanel/UserPanel';
 import AlbumPanel from './AdminPanel/components/AlbumPanel/AlbumPanel';
 import Search from './components/Search/Search';
 
+
+
 const App = ()=>{
+
+  
 
     return (
     <Router>
@@ -73,7 +77,7 @@ const App = ()=>{
               <MusicBar/> 
             </Route>
 
-
+          
             <Route path="/admin/dashboard">
               <Dashboard/>
             </Route>
