@@ -5,9 +5,11 @@ function ArtistRow(props){
 
     const info = props.info;
 
+
+
     const getVerifiedStatus = ()=>{
-      if(info.is_verified===0) return <td>Verified</td>;
-      else return <td>Unverified</td>
+      if(info.is_verified===0) return <td>Unverified</td>;
+      else return <td>Verified</td>
     }
 
     const handleClick = async ()=>{
@@ -26,7 +28,7 @@ function ArtistRow(props){
         <td>{info.UID}</td>
         <td>{info.artist_name}</td>
         <td>{info.document_type}</td>
-        <td>{info.document_image}</td>
+        <td><a target='_black' href={`/artistdocimg?imgsrc=${info.document_image}`} >{info.document_image}</a></td>
         
         {getVerifiedStatus()}
         {getActionBtn()}
