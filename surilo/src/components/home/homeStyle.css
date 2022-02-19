@@ -115,8 +115,8 @@
 }
 
 .coverArt img{
-    width: 100%;
-    height: inherit;
+    width: 140px;
+    height: 155px;
     border-radius: 3px;
 }
  .artistName h6{

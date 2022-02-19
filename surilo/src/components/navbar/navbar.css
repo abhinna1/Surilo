@@ -94,6 +94,11 @@
     box-shadow: 0 0 8px var(--sdColor);
 }
 
+.accBtnsNavbar{
+    width: fit-content;
+    padding-right: 30px;
+}
+
 .searchForm{
     width:0 !important;
     margin-top: 0px !important;
@@ -126,6 +131,13 @@
         width: 90%;
         color: black !important;
 
+    }
+
+    .searchForm{
+        width:100% !important;
+        margin-top: 0px !important;
+        color: black !important;
+    
     }
 }
 

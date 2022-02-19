@@ -209,3 +209,15 @@
 .updateUsrBtn:hover {
   background: #00bd68;
 }
+
+
+@media screen and (max-width: 578px) {
+    .userPrf{
+        width: 100%;
+
+    }
+    .EditPrfForm{
+        width: 100%;
+
+    }
+}

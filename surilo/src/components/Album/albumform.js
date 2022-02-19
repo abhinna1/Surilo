@@ -11,6 +11,7 @@ import upload from '../img/upload.png'
 
 import Navbar from '../navbar/Navbar'
 import LeftSidebar from '../leftSidebar/LeftSidebar';
+
 export default function AlbumForm(){
     const [album, setAlbum] = useState([]);
     const [genreList, setGenreList] = useState([{value:1, label:'pop'}])

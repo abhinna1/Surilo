@@ -207,7 +207,7 @@ function ProfilePage(){
                         
                         {/* <button className='editPrf'>Edit Profile</button> */}
                         </div>
-                            {getArtistPart()}
+                           
                      </div>
                      </div>
                          

@@ -7,7 +7,6 @@ import axios from 'axios';
 
 function logout(){
     localStorage.clear();
-    // alert(localStorage.getItem('email'))
 }
 
 
@@ -37,14 +36,14 @@ function AccDropdown(props){
     function getMusicBtn(){
         if(JSON.parse(localStorage.getItem('user')).is_artist==1){
             if(isverified===1){
-            return <button onClick={logout} className='login-btn'><a href="/musicform" className='login-link'>Create music</a></button>
+            return <button className='login-btn'><a href="/musicform" className='login-link'>Create music</a></button>
         }}
 
     }
     function getAlbumBtn(){
         if(JSON.parse(localStorage.getItem('user')).is_artist==1){
             if(isverified===1){
-                return <button onClick={logout} className='login-btn'><a href="/albumform" className='login-link'>Create album</a></button>
+                return <button className='login-btn'><a href="/albumform" className='login-link'>Create album</a></button>
         }}
     }
 

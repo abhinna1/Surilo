@@ -229,7 +229,7 @@ app.get('/getAlbumData', (req, res)=>{
 app.get('/getpopularartist', (req, res)=>{
     let con = db.getConnection();
 
-    con.query(`SELECT * FROM tbl_artist as a, tbl_user as u where a.UID = u.UID;`, function (err, result, fields) {
+    con.query(`SELECT * FROM tbl_artist as a, tbl_user as u where a.UID = u.UID and a.is_verified=1;`, function (err, result, fields) {
         if (err) throw err;
         if(result) res.send(result);
         else res.send({});

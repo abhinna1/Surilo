@@ -29,7 +29,7 @@ const Navbar = () => {
         }
         else{
             return (
-                <div className='d-flex justify-content-evenly align-items-center'>
+                <div className='accBtnsNavbar d-flex justify-content-end align-items-center'>
                     {getArtistBtn()}
                     <button className='accountUser' onClick={()=>setaccountDropdownShow(!accountDropdownShow)}><img src={accountUser} alt="" className="user-image"/></button>
                 </div>
@@ -66,7 +66,7 @@ const Navbar = () => {
         formData.append('user', JSON.parse(localStorage.getItem('user')).id)
 
         axios.post('/submitalbumform', formData)
-        localStorage.clear()
+ 
         const red = ()=>{return <Redirect to='/login'/>};
         red();
     }
