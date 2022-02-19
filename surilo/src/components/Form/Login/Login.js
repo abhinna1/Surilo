@@ -26,7 +26,7 @@ export default function Login(){
             console.log(response.data)
             if (response.data.found==true){
                 localStorage.setItem('user', JSON.stringify(response.data.data))
-                setSuccessDiv(true)
+                history.push('/home')
             }
             else {
                 Seterrormsg("Credentials Error")

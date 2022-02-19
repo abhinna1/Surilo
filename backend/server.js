@@ -101,7 +101,7 @@ app.get('/getmusic/:id', (req, res)=>{
 app.get('/gethitmusic/:id', (req, res)=>{
     let con = db.getConnection();
 
-    con.query(`SELECT * FROM weekly_hits as h, tbl_music as m WHERE h.music_id=m.music_id AND m.music_id=${req.params.id} ;`, function (err, result) {
+    con.query(`SELECT * tbl_music as m WHERE m.music_id=${req.params.id} ;`, function (err, result) {
         if (err) throw err;
         if(result) {res.send(result);}
         else res.send({});
