@@ -6,6 +6,6 @@ context('Logout by logged in User', () => {
         cy.get('#password').type("surilo12345")
         cy.get(".reg-btn").click()
         cy.get(".user-image").click()
-        cy.get(".login-link").click()
+        cy.get(".login-btn").click()
     })
   })
