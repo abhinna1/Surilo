@@ -70,11 +70,8 @@ const MainDisplay = () => {
                                 <div className="artistTitle">
                                     <h1>{getArtistName()}</h1>
                                 </div>
-                                <div className="artistDesc">
-                                    <p> Nulla ultricies a leo sed aliquet. Proin pellentesque sapien nec faucibus tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ornare lacinia mi in suscipit.</p>
-                                </div>
+                                
                                 <div className="artistAction">
-                                    <button className="followBtn">Follow</button>
                                     <button className="followBtn playall" onClick={()=>{console.log(artistData)}}><img className='playAllBtn' src={playBtn} alt="" /></button>
                                 </div>
                             </div>

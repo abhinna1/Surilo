@@ -71,6 +71,9 @@
     /* background-color: rgb(224, 64, 117); */
     color: #fff;
 }
+.artistTitle h1{
+    font-size: 63px;
+}
 .artistDesc{
     display: flex;
     align-items: center;
@@ -82,10 +85,10 @@
 }
 .artistAction{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 50px;
-    width: 70%;
+    align-items: flex-end;
+    justify-content: flex-end;
+    height: 200px;
+    width:60%;
     /* background-color: rgb(109, 224, 64); */
 }
 

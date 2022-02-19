@@ -58,6 +58,7 @@ export default function AlbumForm(){
         formData.append('file', file)
         formData.append('artist', artist_id);
         await axios.post('/addAlbum', formData)
+        history.push('/home')
         
 
     }

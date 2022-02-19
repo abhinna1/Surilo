@@ -13,6 +13,7 @@ import upload from '../img/upload.png'
 import close from '../img/close.png'
 
 import './MusicForm.css'
+import { useHistory } from "react-router-dom";
 
 
 export default function MusicForm(){
@@ -25,6 +26,8 @@ export default function MusicForm(){
     const [songName, setSongName] = useState('');
 
     const [fileuploaded, setFileUploaded] = useState(false)
+
+    const history = useHistory()
 
     function onGenreChange(e){
         setGenre(e.value);
@@ -79,6 +82,8 @@ export default function MusicForm(){
         
 
         axios.post('/addMusic', formData)
+        history.push('/home')
+
     }
 
 

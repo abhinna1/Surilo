@@ -18,7 +18,7 @@ const LeftSidebar = () => {
         <div className='Navlink d-flex flex-column'>
             <div className='link d-flex'><Link to="/home"><img src={home} alt="" /> <h6>Home </h6></Link></div>
             <div className='link d-flex'><Link to="/playlist"><img src={playlist} alt=""/><h6>Playlist</h6></Link></div>
-            <div className='link d-flex'><Link to="/home"><img src={love} alt="" /><h6>Favourite</h6></Link></div>
+
 
         </div>
 

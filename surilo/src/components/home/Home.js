@@ -61,7 +61,7 @@ const Home = () => {
                     <div className="innerContainer">
 
                         <div className="playlist row">
-                        <h6 className='playListTitle'>Popular Artist</h6>
+                        <h6 className='playListTitle'>Recently Added Artist</h6>
                         <div className='album d-flex'>
 
                             {getData(artistDb)}
@@ -73,7 +73,7 @@ const Home = () => {
                                 <PlaylistCarousel></PlaylistCarousel>
                             </div>
                             <div className='TrendingTracksCtn'>
-                            <h6 className='playListTitle l-padding'>Trending this week</h6>
+                            <h6 className='playListTitle l-padding'>Recently Added Songs</h6>
                             <div className="trendList">
                                 {getWeeklyHits(weeklyHits)}
                             </div>
